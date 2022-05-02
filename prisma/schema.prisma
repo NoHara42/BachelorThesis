@@ -1,0 +1,19 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Author {
+  id        String   @id @default(uuid())
+  name      String
+}
+
+
+model Occurrence {
+  id          String   @id @default(uuid())
+  taxon       String
+}
