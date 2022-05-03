@@ -1,31 +1,33 @@
-import { ApolloServer } from 'apollo-server-micro';
-import { schema } from '../../graphql/schema';
-import { createContext } from '../../graphql/context';
-import Cors from 'micro-cors';
+// this doesnt execute because this is not nextjs anymore
 
-const cors = Cors();
+// import { ApolloServer } from 'apollo-server-micro';
+// import { schema } from '../../graphql/schema';
+// import { createContext } from '../../graphql/context';
+// import Cors from 'micro-cors';
 
-const apolloServer = new ApolloServer({
-  schema,
-  context: createContext,
-});
+// const cors = Cors();
 
-const startServer = apolloServer.start();
+// const apolloServer = new ApolloServer({
+//   schema,
+//   context: createContext,
+// });
 
-export default cors(async function handler(req, res) {
-  if (req.method === 'OPTIONS') {
-    res.end();
-    return false;
-  }
-  await startServer;
+// const startServer = apolloServer.start();
 
-  await apolloServer.createHandler({
-    path: '/api/graphql',
-  })(req, res);
-});
+// export default cors(async function handler(req, res) {
+//   if (req.method === 'OPTIONS') {
+//     res.end();
+//     return false;
+//   }
+//   await startServer;
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+//   await apolloServer.createHandler({
+//     path: '/api/graphql',
+//   })(req, res);
+// });
+
+// export const config = {
+//   api: {
+//     bodyParser: false,
+//   },
+// };

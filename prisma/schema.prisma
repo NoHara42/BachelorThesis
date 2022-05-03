@@ -7,13 +7,107 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Author {
-  id        String   @id @default(uuid())
-  name      String
+model Occurrence {
+  id    String @id @default(uuid())
+  OccId String
+  Term String
+  Scientific String
+  Name String
+  File String
+  FrameId Int
+  Sentence String
 }
 
-
-model Occurrence {
-  id          String   @id @default(uuid())
-  taxon       String
+model Author {
+  id   String @id @default(uuid())
+  name String
+  Author_y String
+  workId String
+  RframeMean Float
+  NframeMean Float
+  HframeMean Float
+  SframeMean Float
+  Rwork Float
+  Nwork Float
+  Hwork Float
+  Swork Float
+  Rbeta Float
+  Hbeta Float
+  Sbeta Float
+  Author_x String
+  RframeMean_genDiv Float
+  Rwork_genDiv Float
+  NframeMean_genDiv Float
+  Nwork_genDiv Float
+  vocab Int
+  words Int
+  Rbeta_genDiv Float
+  Nbeta_genDiv Float
+  Lustrum Int
+  Title String
+  Work String
+  Age_Publication Int
+  Year Int
+  join String
+  split String
+  Region_x String
+  Original_Language String
+  Literature_Form String
+  Genre_x String
+  Origin String
+  Main_Subject String
+  Narrative_Location String
+  Downloads Int
+  Size Int
+  completeFlag_x Boolean
+  Literary_period_x String
+  Literature_Form_v2 String
+  Author String
+  Forename String
+  Surname String
+  Birth Int
+  Death Int
+  Work_Start String
+  Gender String
+  Religion String
+  Ethnicity String
+  Native_language String
+  Childhood_Residence String
+  Childhood_Region String
+  Residence String
+  Region_y String
+  Literary_period_y String
+  Partners String
+  Children String
+  Highest_Education String
+  Biodiversity_Specification String
+  Field String
+  Occupation String
+  Country String
+  Genre_y String
+  Works String[]
+  WorkCount Int
+  VocabCount Int
+  WordCount Int
+  Birthname String
+  Pseudonym String
+  Aliases String
+  Father String
+  Mother String
+  Languages String
+  Employer String
+  Position String
+  University String
+  Academic_Degree String
+  Member String
+  Death_Manner String
+  Death_Cause String
+  completeFlag_y Boolean
+  Age Int
+  Siblings String
+  Social_status String
+  Main_Region String
+  Main_Region_v2 String
+  Locality Int
+  Main_Residence String
 }

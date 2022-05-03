@@ -1,18 +1,23 @@
 import { PrismaClient } from '@prisma/client';
-import { authors } from '../data/authors';
-import { occurrences } from '../data/occurrences';
+const csvToJson = require('csvtojson');
 
 const prisma = new PrismaClient();
 
+let fileInputName = '../data/occurrences.csv';
+
 async function main() {
-  const allAuthors = await prisma.author.createMany({
-    data: authors,
-  });
+  // csvToJson()
+  // .fromFile(fileInputName)
+  // .then(async (authorsJson)=>{
+  //     await prisma.author.createMany({
+  //       data: authorsJson,
+  //     });
+  // })
 
-  const allOccurrences = await prisma.occurrence.createMany({
-    data: occurrences,
-  });
 
+  const allAuthors = await prisma.author.findMany();
+  const allOccurrences = await prisma.occurrence.findMany();
+  
   console.dir(allAuthors, { depth: null });
   console.dir(allOccurrences, { depth: null });
 }

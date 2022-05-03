@@ -1,25 +1,28 @@
 {
-  "name": "awesome-links",
+  "name": "bachelor-thesis",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "start": "react-scripts start pages/index.tsx",
+    "build": "react-scripts build"
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",
+    "@graphiql/toolkit": "^0.4.3",
     "@prisma/client": "^3.7.0",
     "apollo-server-micro": "^3.6.1",
-    "graphql": "^15.6.0",
-    "micro-cors": "^0.1.1",
-    "next": "^12.0.7",
-    "nexus": "^1.1.0",
-    "react": "17.0.2",
+    "csvtojson": "^2.0.10",
+    "graphiql": "^1.8.8",
+    "graphql": "^15.8.0",
     "graphql-relay": "^0.9.0",
-    "react-dom": "17.0.2",
+    "graphql-ws": "^5.8.1",
+    "micro-cors": "^0.1.1",
+    "nexus": "^1.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-hook-form": "^7.22.5",
-    "react-hot-toast": "^2.1.1"
+    "react-hot-toast": "^2.1.1",
+    "react-scripts": "5.0.0"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -28,8 +31,10 @@
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
     "@types/node": "^16.3.2",
-    "@types/react": "^17.0.14",
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.3",
     "autoprefixer": "^10.4.1",
+    "parcel": "^2.5.0",
     "postcss": "^8.4.5",
     "prisma": "^3.7.0",
     "tailwindcss": "^3.0.8",
