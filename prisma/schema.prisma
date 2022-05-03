@@ -11,8 +11,7 @@ model Occurrence {
   id    String @id @default(uuid())
   OccId String
   Term String
-  Scientific String
-  Name String
+  Scientific_Name String
   File String
   FrameId Int
   Sentence String
