@@ -12,6 +12,9 @@
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
+  "scripts": {
+    "start": "yarn parcel src/index.html"
+  },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.0",
     "@types/node": "^16.3.2",
