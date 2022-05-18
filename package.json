@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@prisma/client": "^3.7.0",
+    "async": "^3.2.3",
     "d3": "^7.4.4",
     "graphql": "^15.8.0",
     "papaparse": "^5.3.2",

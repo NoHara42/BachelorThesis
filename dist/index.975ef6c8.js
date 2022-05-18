@@ -22797,11 +22797,16 @@ var _dashboardDefault = parcelHelpers.interopDefault(_dashboard);
 function App() {
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_dashboardDefault.default, {}, void 0, false, {
         fileName: "src/app.tsx",
-        lineNumber: 7,
+        lineNumber: 8,
         columnNumber: 9
     }, this);
 }
 _c = App;
+main().catch((e)=>{
+    throw e;
+}).finally(async ()=>{
+    await prisma.$disconnect();
+});
 var _c;
 $RefreshReg$(_c, "App");
 

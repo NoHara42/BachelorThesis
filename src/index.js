@@ -1,6 +1,11 @@
 import ReactDOM from "react-dom";
 import { App } from "./app";
 
-const app = document.getElementById("app");
-ReactDOM.render(<App />, app);
-
+async function main() {
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+}
