@@ -33,7 +33,7 @@ function processData(papaParseOptions, csvFileName, prismaModelName, useBufferin
 
       buffer.push(processChunk(chunk));
       
-      if(buffer.length >= 2000) {        
+      if(buffer.length >= 500) {        
         await prisma[prismaModelName].createMany({
           data: buffer
         }, true);
@@ -70,7 +70,7 @@ async function main() {
     newline: "\n",
     header: true,
     dynamicTyping: true,
-  }, authorsFileName, "author", false);
+  }, authorsFileName, "author", true);
   
 }
 
