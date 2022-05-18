@@ -1010,19 +1010,27 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
 var _app = require("./app");
-const app = document.getElementById("app");
-_reactDomDefault.default.render(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_app.App, {}, void 0, false, {
-    fileName: "src/index.js",
-    lineNumber: 5,
-    columnNumber: 17
-}, undefined), app);
+async function main() {
+    const root = _reactDomDefault.default.createRoot(document.getElementById('root'));
+    root.render(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(React.StrictMode, {
+        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_app.App, {}, void 0, false, {
+            fileName: "src/index.js",
+            lineNumber: 8,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/index.js",
+        lineNumber: 7,
+        columnNumber: 5
+    }, this));
+}
 
   $parcel$ReactRefreshHelpers$20e5.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom":"j6uA9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./app":"41oNQ"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom":"j6uA9","./app":"41oNQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-dev-runtime.development.js');
 
@@ -22629,7 +22637,68 @@ module.exports = require('./cjs/scheduler-tracing.development.js');
     exports.unstable_wrap = unstable_wrap;
 })();
 
-},{}],"gkKU3":[function(require,module,exports) {
+},{}],"41oNQ":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$13a7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$13a7.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "App", ()=>App
+);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _tailwindCss = require("../styles/tailwind.css");
+var _dashboard = require("../components/dashboard");
+var _dashboardDefault = parcelHelpers.interopDefault(_dashboard);
+function App() {
+    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_dashboardDefault.default, {}, void 0, false, {
+        fileName: "src/app.tsx",
+        lineNumber: 7,
+        columnNumber: 9
+    }, this);
+}
+_c = App;
+var _c;
+$RefreshReg$(_c, "App");
+
+  $parcel$ReactRefreshHelpers$13a7.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","../styles/tailwind.css":"3ewYW","../components/dashboard":"2CsXY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3ewYW":[function() {},{}],"2CsXY":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$caea = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$caea.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+function Dashboard(props) {
+    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+        children: props.children
+    }, void 0, false, {
+        fileName: "components/dashboard.tsx",
+        lineNumber: 6,
+        columnNumber: 9
+    }, this);
+}
+exports.default = Dashboard;
+_c = Dashboard;
+var _c;
+$RefreshReg$(_c, "Dashboard");
+
+  $parcel$ReactRefreshHelpers$caea.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -22779,72 +22848,6 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"786KC"}],"41oNQ":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$13a7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$13a7.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "App", ()=>App
-);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _tailwindCss = require("../styles/tailwind.css");
-var _dashboard = require("../components/dashboard");
-var _dashboardDefault = parcelHelpers.interopDefault(_dashboard);
-function App() {
-    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_dashboardDefault.default, {}, void 0, false, {
-        fileName: "src/app.tsx",
-        lineNumber: 8,
-        columnNumber: 9
-    }, this);
-}
-_c = App;
-main().catch((e)=>{
-    throw e;
-}).finally(async ()=>{
-    await prisma.$disconnect();
-});
-var _c;
-$RefreshReg$(_c, "App");
-
-  $parcel$ReactRefreshHelpers$13a7.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","../styles/tailwind.css":"3ewYW","../components/dashboard":"2CsXY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3ewYW":[function() {},{}],"2CsXY":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$caea = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$caea.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-function Dashboard(props) {
-    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-        children: props.children
-    }, void 0, false, {
-        fileName: "components/dashboard.tsx",
-        lineNumber: 6,
-        columnNumber: 9
-    }, this);
-}
-exports.default = Dashboard;
-_c = Dashboard;
-var _c;
-$RefreshReg$(_c, "Dashboard");
-
-  $parcel$ReactRefreshHelpers$caea.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["kn9T2","7fmqN","8lqZg"], "8lqZg", "parcelRequire4d3a")
+},{"react-refresh/runtime":"786KC"}]},["kn9T2","7fmqN","8lqZg"], "8lqZg", "parcelRequire4d3a")
 
 //# sourceMappingURL=index.975ef6c8.js.map

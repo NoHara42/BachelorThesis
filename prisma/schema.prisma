@@ -47,7 +47,7 @@ model Author {
   Age_Publication Int?
   Year Int?
   join Int?
-  split String?
+  split Int?
   Region_x String?
   Original_Language String?
   Literature_Form String?
@@ -65,7 +65,7 @@ model Author {
   Surname String?
   Birth Int?
   Death Int?
-  Work_Start String?
+  Work_Start Int?
   Gender String?
   Religion String?
   Ethnicity String?

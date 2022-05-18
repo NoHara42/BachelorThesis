@@ -11,22 +11,40 @@ let authorsFileName = '/home/nohaha/Git/Bachelor/data/extCompDB.csv';
 
 const prisma = new PrismaClient();
 
-function processData(papaParseOptions, csvFileName, prismaModelName) {
-  function processChunk (chunk) {
-    if (prismaModelName == "author") return processAuthor(chunk);
-    if (prismaModelName == "occurrence") return processOccurrence(chunk);
-  }
+function processData(papaParseOptions, csvFileName, prismaModelName, useBuffering) {
+  
+  
   let dataStream = fs.createReadStream(csvFileName);
   const parseStream = Papa.parse(Papa.NODE_STREAM_INPUT, papaParseOptions);
   
   dataStream.pipe(parseStream);
+  
+  function processChunk (chunk) {
+    if (prismaModelName == "author") return processAuthor(chunk);
+    if (prismaModelName == "occurrence") return processOccurrence(chunk);
+  }
 
+  let buffer = [];
 
   parseStream.on("data", async (chunk) => {
     console.count("Processed Items");
-    let response = await prisma[prismaModelName].create({
-      data: processChunk(chunk)
-    });
+
+    if(useBuffering) {
+
+      buffer.push(processChunk(chunk));
+      
+      if(buffer.length >= 2000) {        
+        await prisma[prismaModelName].createMany({
+          data: buffer
+        }, true);
+        console.count("Processed buffer");
+        buffer = [];
+      }
+    } else {
+      await prisma[prismaModelName].create({
+        data: processChunk(chunk)
+      });
+      }  
     }
   );
 
@@ -51,9 +69,8 @@ async function main() {
     delimiter: ",",
     newline: "\n",
     header: true,
-    preview: 5,
     dynamicTyping: true,
-  }, authorsFileName, "author");
+  }, authorsFileName, "author", false);
   
 }
 
