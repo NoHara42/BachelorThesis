@@ -19,58 +19,71 @@ function processData(papaParseOptions, csvFileName, prismaModelName, useBufferin
   
   dataStream.pipe(parseStream);
   
-  function processChunk (chunk) {
+  function preProcess(chunk) {
     if (prismaModelName == "author") return processAuthor(chunk);
     if (prismaModelName == "occurrence") return processOccurrence(chunk);
+    console.error("There is no predefined preprocessing pipeline for this model");
   }
 
   let buffer = [];
+  let errorBuffer = [];
+
 
   parseStream.on("data", async (chunk) => {
-    console.count("Processed Items");
-
-    if(useBuffering) {
-
-      buffer.push(processChunk(chunk));
-      
-      if(buffer.length >= 500) {        
-        await prisma[prismaModelName].createMany({
-          data: buffer
-        }, true);
-        console.count("Processed buffer");
-        buffer = [];
+    console.count(`Processed ${prismaModelName}`);
+    try {
+      if(useBuffering) {
+        buffer.push(preProcess(chunk));
+        
+        if(buffer.length >= 500) {        
+          await prisma[prismaModelName].createMany({
+            data: buffer
+          }, true);
+          console.count("Processed buffer");
+          buffer = [];
+        }
+      } else {
+        let preProcessedChunk = preProcess(chunk);
+        await prisma[prismaModelName].create({
+          data: preProcessedChunk
+        });      
       }
-    } else {
-      await prisma[prismaModelName].create({
-        data: processChunk(chunk)
-      });
-      }  
+    } catch (error) {
+      errorBuffer.push(error);
     }
-  );
+  });
 
   parseStream.on("error", (error) => {
     console.log(error);
   });
 
   parseStream.on("finish", () => {
-      console.log("Finished processing", csvFileName);
+    console.log("Finished processing", csvFileName);
+    if(errorBuffer.length != 0) {
+      console.log("Errors:", csvFileName);
+      console.log(errorBuffer);
+    } else {
+      console.log("No errors while processing.")
+    }
+      
   });
 }
 
 async function main() {
-  // await processData({
-  //   delimiter: ";",
-  //   newline: "\n",
-  //   header: true,
-  //   dynamicTyping: true,
-  //   }, occurrencesFileName, "occurrence");
+  await processData({
+    delimiter: ";",
+    newline: "\n",
+    header: true,
+    dynamicTyping: true,
+    }, occurrencesFileName, "occurrence", false);
 
   await processData({
     delimiter: ",",
     newline: "\n",
     header: true,
     dynamicTyping: true,
-  }, authorsFileName, "author", true);
+  }, authorsFileName, "author", false);
+  
   
 }
 
