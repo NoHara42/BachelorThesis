@@ -1,95 +1,133 @@
 import { PrismaClient } from '@prisma/client';
 import Papa from 'papaparse';
-import processAuthor from './processAuthor';
-import processOccurrence from './processOccurrence';
+import preprocessor from './utils/preprocessor';
+import processAuthor from "./utils/processAuthor";
+import processOccurrence from './utils/processOccurrence';
+const exec = require('child_process').exec;
 
 const fs = require("fs");
-const async = require('async');
+
 
 let occurrencesFileName = '/home/nohaha/Git/Bachelor/data/validCorpus.csv';
 let authorsFileName = '/home/nohaha/Git/Bachelor/data/extCompDB.csv';
 
 const prisma = new PrismaClient();
 
-function processData(papaParseOptions, csvFileName, prismaModelName, useBuffering) {
-  
-  
-  let dataStream = fs.createReadStream(csvFileName);
-  const parseStream = Papa.parse(Papa.NODE_STREAM_INPUT, papaParseOptions);
-  
-  dataStream.pipe(parseStream);
-  
-  function preProcess(chunk) {
-    if (prismaModelName == "author") return processAuthor(chunk);
-    if (prismaModelName == "occurrence") return processOccurrence(chunk);
-    console.error("There is no predefined preprocessing pipeline for this model");
-  }
+const errorBuffer = [];
 
-  let buffer = [];
-  let errorBuffer = [];
+const sizeAuthor = 13519;
+
+const sizeOccurrences = 5733516;
 
 
-  parseStream.on("data", async (chunk) => {
-    console.count(`Processed ${prismaModelName}`);
-    try {
-      if(useBuffering) {
-        buffer.push(preProcess(chunk));
-        
-        if(buffer.length >= 500) {        
-          await prisma[prismaModelName].createMany({
-            data: buffer
-          }, true);
-          console.count("Processed buffer");
-          buffer = [];
-        }
+function processData(papaParseOptions, csvFileName) {
+  
+  let readableStream = fs.createReadStream(csvFileName);
+  
+  Papa.parse(readableStream, {
+    ...papaParseOptions,
+    complete: (result, file) => {
+      console.log("Finished processing", file);
+      if(errorBuffer.length != 0) {
+        console.log("Errors:", file);
+        console.log(errorBuffer);
       } else {
-        let preProcessedChunk = preProcess(chunk);
-        await prisma[prismaModelName].create({
-          data: preProcessedChunk
-        });      
+        console.log("No errors while processing.")
       }
-    } catch (error) {
-      errorBuffer.push(error);
+    },
+    error: (err, file) => {
+      errorBuffer.push(err);
+      console.error(err, file);
     }
-  });
-
-  parseStream.on("error", (error) => {
-    console.log(error);
-  });
-
-  parseStream.on("finish", () => {
-    console.log("Finished processing", csvFileName);
-    if(errorBuffer.length != 0) {
-      console.log("Errors:", csvFileName);
-      console.log(errorBuffer);
-    } else {
-      console.log("No errors while processing.")
-    }
-      
   });
 }
 
+
 async function main() {
-  await processData({
+  let occurenceLabel = "occurrence";
+  let authorLabel = "author";
+  let countOccurrence = 0;
+
+  processData({
+    encoding: "utf8",
     delimiter: ";",
     newline: "\n",
     header: true,
+    transformHeader: (header, index) => {
+      console.log(header,index);
+      switch (index) {
+        case 0:
+          return "id";
+        case 3:
+          return "Scientific_Name";
+        case 5:
+          return "FrameId";
+        case 7:
+          return "Column";
+        case 8:
+          return "Spalte";
+        default:
+          return header; 
+      }
+    },
+    step: async (result, parser) => {
+      let op = await prisma[occurenceLabel].create({
+        data: processOccurrence(result.data)
+      });
+      countOccurrence++;
+      console.log(`Occurrence insert percentage complete: ${(countOccurrence / sizeOccurrences) * 100}`);
+    },
     dynamicTyping: true,
-    }, occurrencesFileName, "occurrence", false);
+    }, occurrencesFileName);
 
-  await processData({
+  let countAuthor = 0;
+  processData({
+    step: async (result, parser) => {
+      let op = await prisma[authorLabel].create({
+        data: processAuthor(result.data)
+      });
+      countAuthor++;
+      console.log(`Author insert percentage complete: ${(countAuthor / sizeAuthor) * 100}`);
+    },
+    transformHeader: (header, index) => {
+      console.log(header,index);
+      switch (index) {
+        case 0:
+          return "Author_y";
+        case 13:
+          return "Author_x";
+        case 29:
+          return "Region_x";
+        case 32:
+          return "Genre_x";
+        case 38:
+          return "completeFlag_x";
+        case 39:
+          return "Literary_period_x";
+        case 54:
+          return "Region_y";
+        case 55:
+          return "Literary_period_y";
+        case 63:
+          return "Genre_y";
+        case 81:
+          return "completeFlag_y";
+        default:
+          return header; 
+      }
+    },
+    encoding: "utf8",
     delimiter: ",",
     newline: "\n",
     header: true,
     dynamicTyping: true,
-  }, authorsFileName, "author", false);
-  
+  }, authorsFileName);
   
 }
 
 main()
-  .catch((e) => {
-    console.error(e);
+.catch((e) => {
+  console.error(e);
     process.exit(1);
   })
   .finally(async () => await prisma.$disconnect);

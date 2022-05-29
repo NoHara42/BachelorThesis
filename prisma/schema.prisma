@@ -8,17 +8,19 @@ generator client {
 }
 
 model Occurrence {
-  id    String @id @default(uuid())
-  OccId String
-  Term String
-  Scientific_Name String
-  File String
-  FrameId Int
-  Sentence String
+  id    Int @id
+  OccId String?
+  Term String?
+  Scientific_Name String?
+  File String?
+  FrameId Int?
+  Sentence String?
+  Column Int?
+  Spalte Int?
 }
 
 model Author {
-  id   String @id @default(uuid())
+  id   Int @id @default(autoincrement())
   Author_y String?
   workId String?
   RframeMean Float?

@@ -12,7 +12,7 @@
     "react-dom": "^17.0.2"
   },
   "prisma": {
-    "seed": "NODE_OPTIONS='--max_old_space_size=16384' ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "scripts": {
     "start": "yarn parcel src/index.html",
