@@ -1,9 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import Papa from 'papaparse';
-import preprocessor from './utils/preprocessor';
 import processAuthor from "./utils/processAuthor";
 import processOccurrence from './utils/processOccurrence';
-const exec = require('child_process').exec;
 
 const fs = require("fs");
 
@@ -81,6 +79,7 @@ async function main() {
     }, occurrencesFileName);
 
   let countAuthor = 0;
+  
   processData({
     step: async (result, parser) => {
       let op = await prisma[authorLabel].create({

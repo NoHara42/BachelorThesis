@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><link rel="stylesheet" href="/index.4dfe6794.css">
-    <meta charset="utf-8">
-    <title>Bachelor Thesis</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="/index.975ef6c8.js" defer=""></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Bachelor Thesis</title>
+  <link href="/index.4d663569.css" rel="stylesheet">
+</head>
+
+<body>
+  <div x-data="">
+    <header class="font-sans font-medium text-5xl w-full p-4">Animal Studies Explorer 🐕🍃</header>
+    <div class="p-4">
+      <div x-data="{
+        search: '',
+        
+        items: ['foo', 'bar', 'baz'],
+        
+        get filteredItems() {
+          return this.items.filter(
+            i => i.startsWith(this.search)
+            )
+          }
+        }">
+        <input class="focus:border-green-300 rounded-md p-2 w-full focus:outline-none border-2" x-model="search" placeholder="Search...">
+
+        <ul class="">
+          <template x-for="item in filteredItems" :key="item">
+            <li class="rounded-md border-2 w-full" x-text="item"></li>
+          </template>
+        </ul>
+      </div>
+      <div x-data="{ open: false }">
+        <button @click="open = ! open">Toggle</button>
+
+        <div x-show="open" @click.outside="open = false">Contents...</div>
+      </div>
+      <div x-data="viz">
+        <!-- Will be filled dynamically -->
+      </div>
+    </div>
+  </div>
+  <script src="/index.c63dff72.js" defer=""></script>
+</body>
+
 </html>
