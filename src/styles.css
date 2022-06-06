@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  h1 {
+    @apply font-medium text-5xl;
+  }
 }
 
 @layer components {

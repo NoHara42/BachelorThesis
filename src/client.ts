@@ -7,11 +7,14 @@ window.Alpine = Alpine;
 window.document.addEventListener('alpine:init', () => {
   Alpine.data("viz", () => ({
     init() {
-      getViz(this);
-      window.document.addEventListener("resize", () => {
+      window.addEventListener("resize", () => {
         console.log("Resized");
         getViz(this);
-      });      
+      });
+      window.document.addEventListener("DOMContentLoaded", () => {
+        console.log("DOMContentLoaded");
+        getViz(this);
+      });
     }
   }));
 });
@@ -19,7 +22,7 @@ window.document.addEventListener('alpine:init', () => {
 function getViz(self, params = null) {
   axios.get('http://localhost:3000/viz', {
     params: params || {
-      width: window.visualViewport.width
+      viewport: window.visualViewport
     }
   })
   .then((response) => {

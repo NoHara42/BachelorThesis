@@ -26,11 +26,11 @@ async function main() {
   expressApp.get('/viz', (req, res) => {
     let chart = new LineChart(data, {
       width: req.query.width,
+      height: (req.query.height / 2),
       xFunc: d => d.date,
       yFunc: d => d.unemployment,
       zFunc: d => d.division,
       yLabel: "y axis",
-      height: 500,
       color: "teal",
     }).compute();
     res.send(chart);

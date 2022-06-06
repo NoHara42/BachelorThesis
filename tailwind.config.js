@@ -1,12 +1,15 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: [
     './src/**/*.{js,ts,jsx,tsx,html}',
   ],
   theme: {
-    fontFamily: {
-      
-    },
-    extend: {},
+    extend: {
+      fontFamily: {
+        'sans': ['Proxima Nova', ...defaultTheme.fontFamily.sans],
+      },
+    }
   },
   variants: {
     extend: {},
