@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply font-medium text-5xl;
+  }
+}
+
+@layer components {
+  ._nav-button {
+    @apply text-xl font-medium shadow-inner bg-slate-50 transition hover:shadow-sm hover:bg-white p-4 md:my-4 rounded-lg;
+  }
+}
+
+@layer utilities {
+
+}

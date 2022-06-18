@@ -1,0 +1,58 @@
+<div class="p-4">
+  <div class="flex flex-row">
+    <div
+      x-data="{
+      open: false,
+      search: '',
+      
+      items: ['foo', 'bar', 'baz'],
+      
+      get filteredItems() {
+        return this.items.filter(
+          i => i.startsWith(this.search)
+          )
+        }
+      }"
+    >
+      <input
+        @click="open = ! open"
+        class="peer focus:border-green-300 rounded-md p-2 w-full focus:outline-none border-2"
+        x-model="search"
+        placeholder="Search..."
+      />
+      <ul x-show="open" @click.outside="open = false">
+        <template x-for="item in filteredItems" :key="item">
+          <li
+            class="hover:bg-gray-100 active:border-green-300 rounded-md border-2 w-full"
+            x-text="item"
+          ></li>
+        </template>
+      </ul>
+    </div>
+    <div
+      x-data="{ 
+    open: false,
+    items: ['foo', 'bar', 'baz']
+    }"
+    >
+      <button
+        class="hover:bg-gray-100 active:border-green-300 rounded-md p-2 focus:outline-none focus:border-green-300 border-2"
+        @click="open = ! open"
+      >
+        Toggle
+      </button>
+
+      <ul x-show="open" @click.outside="open = false">
+        <template x-for="item in items" : key="item">
+          <li
+            class="hover:bg-gray-100 active:border-green-300 rounded-md border-2 w-max px-4"
+            x-text="item"
+          ></li>
+        </template>
+      </ul>
+    </div>
+  </div>
+  <div class="absolute bottom-0" x-data="viz">
+    <!-- Will be filled dynamically -->
+  </div>
+</div>
