@@ -85,7 +85,7 @@ model Author {
   Occupation String?
   Country String?
   Genre_y String?
-  Works String[]
+  Works String?
   WorkCount Int?
   VocabCount Int?
   WordCount Int?

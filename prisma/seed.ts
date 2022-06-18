@@ -45,11 +45,10 @@ async function main() {
   let occurenceLabel = "occurrence";
   let authorLabel = "author";
   let countOccurrence = 0;
-
   processData({
     encoding: "utf8",
+    preview: 200,
     delimiter: ";",
-    newline: "\n",
     header: true,
     transformHeader: (header, index) => {
       console.log(header,index);
@@ -81,6 +80,7 @@ async function main() {
   let countAuthor = 0;
   
   processData({
+    preview: 200,
     step: async (result, parser) => {
       let op = await prisma[authorLabel].create({
         data: processAuthor(result.data)
@@ -117,7 +117,6 @@ async function main() {
     },
     encoding: "utf8",
     delimiter: ",",
-    newline: "\n",
     header: true,
     dynamicTyping: true,
   }, authorsFileName);

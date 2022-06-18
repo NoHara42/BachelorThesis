@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "target": "es5",
     "allowJs": true,
     "skipLibCheck": true,
@@ -17,11 +18,12 @@
     ],
     "typeRoots": [
       "/node_modules/@types",
-      "/node_modules/@leanadmin/alpine-typescript"
+      "/node_modules/@types/tailwindcss",
+      "/node_modules/@types/alpinejs"
     ]
   },
   "include": [
-    "**/*.ts",
+    "**/*.ts", "server/pages/diachronicView.tsx",
   ],
   "exclude": [
     "node_modules"
