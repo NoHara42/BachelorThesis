@@ -25,8 +25,8 @@ function processData(papaParseOptions, csvFileName) {
   Papa.parse(readableStream, {
     ...papaParseOptions,
     complete: (result, file) => {
-      console.log("Finished processing", file);
-      if(errorBuffer.length != 0) {
+      console.log("Finished processing", csvFileName);
+      if(errorBuffer.length > 0) {
         console.log("Errors:", file);
         console.log(errorBuffer);
       } else {
@@ -47,8 +47,10 @@ async function main() {
   let countOccurrence = 0;
   processData({
     encoding: "utf8",
-    preview: 200,
     delimiter: ";",
+    newline: '\n',
+    quoteChar: "",
+    escapeChar: "",
     header: true,
     transformHeader: (header, index) => {
       console.log(header,index);
@@ -80,7 +82,6 @@ async function main() {
   let countAuthor = 0;
   
   processData({
-    preview: 200,
     step: async (result, parser) => {
       let op = await prisma[authorLabel].create({
         data: processAuthor(result.data)

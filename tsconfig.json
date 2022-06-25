@@ -18,12 +18,13 @@
     ],
     "typeRoots": [
       "/node_modules/@types",
-      "/node_modules/@types/tailwindcss",
-      "/node_modules/@types/alpinejs"
+      "/node_modules/@types/react",
+      "/node_modules/@types/react-dom",
+      "/node_modules/@types/tailwindcss"
     ]
   },
   "include": [
-    "**/*.ts", "server/pages/diachronicView.tsx",
+    "**/*.ts", "server/pages/diachronicView.tsx", "public/src/app.tsx", "public/src/index.ks", "public/src/app.ts", "public/src/index.ks", "public/src/index.ks", "public/src/components/formElements/dropDown.js", "public/src/components/formElements/multiSelectSearch.js", "public/src/components/formElements/rangeSlider.js", "public/src/components/exports.js", "public/src/components/sidenav.ks",
   ],
   "exclude": [
     "node_modules"
