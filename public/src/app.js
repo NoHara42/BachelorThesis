@@ -6,6 +6,8 @@ import {
   Drawers,
 } from "./components/exports";
 import { AnnotationIcon } from "@heroicons/react/solid";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 const mainConfig = {
   isMulti: true,
@@ -22,7 +24,6 @@ export function App() {
   const onSelectedOptionsChange = (value) => {
     setSelectedOptions(value);
   };
-
   return (
     <Drawers
       leftNav={<SelectCardList data={selectedOptions} />}

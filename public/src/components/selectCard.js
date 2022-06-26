@@ -1,28 +1,51 @@
-import React from "react";
-import { ChevronRightIcon } from "@heroicons/react/solid";
+import React, { useContext } from "react";
+import { ChevronLeftIcon, XIcon } from "@heroicons/react/solid";
+import { DrawerContext } from "./drawers";
 
 export function SelectCard(props) {
-  function handleClick() {
-    /*
-      TODO: send option in props to drawer parent to widen
-      the sidenav to configure the plot corresponding to the option
-    */
-  }
+  const drawerState = useContext(DrawerContext);
+
+  const handleTaxonClick = (e) => {
+    e.taxonId = props.key;
+    drawerState.showNav(drawerState.leftNavExpanded, "left");
+  };
+
   return (
     <li>
-      <a onClick={handleClick}>{props.children}</a>
+      <a onClick={handleTaxonClick}>{props.children}</a>
     </li>
   );
 }
 
 export function SelectCardList(props) {
+  const drawerState = useContext(DrawerContext);
+
   const selectCardList = props.data.map(
     (option, index) =>
-      option && <SelectCard key={index}>{String(option)}</SelectCard>
+      option && (
+        <SelectCard key={index}>
+          {String(option)}
+        </SelectCard>
+      )
   );
-  let divider;
-  if (selectCardList.length > 0) {
-    divider = <div className="divider"></div>;
+  let divider =
+    selectCardList.length > 0 ? <div className="divider"></div> : null;
+
+  function SwapIcon() {
+    return (
+      <label
+        htmlFor="left"
+        className={`btn btn-square btn-ghost drawer-button swap swap-rotate ${
+          drawerState.leftNavExpanded ? "swap-active" : ""
+        }`}
+      >
+        <XIcon
+          className="w-6 swap-on"
+          onClick={drawerState.closeNav}
+        ></XIcon>
+        <ChevronLeftIcon className="w-6 swap-off"></ChevronLeftIcon>
+      </label>
+    );
   }
 
   return (
@@ -32,12 +55,7 @@ export function SelectCardList(props) {
           <a className="ml-2 font-medium text-xl">Configure</a>
         </div>
         <div className="flex-none">
-          <label
-            htmlFor="left"
-            className="btn btn-square btn-ghost drawer-button"
-          >
-            <ChevronRightIcon className="w-6"></ChevronRightIcon>
-          </label>
+          <SwapIcon></SwapIcon>
         </div>
       </div>
       <div className="p-4 menu">
