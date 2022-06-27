@@ -1,51 +1,19 @@
 import React, { useContext } from "react";
 import { ChevronLeftIcon, XIcon } from "@heroicons/react/solid";
-import { DrawerContext } from "./drawers";
-
-export function SelectCard(props) {
-  const drawerState = useContext(DrawerContext);
-
-  const handleTaxonClick = (e) => {
-    e.taxonId = props.key;
-    drawerState.showNav(drawerState.leftNavExpanded, "left");
-  };
-
-  return (
-    <li>
-      <a onClick={handleTaxonClick}>{props.children}</a>
-    </li>
-  );
-}
+import { LeftDrawerContext } from "./drawers";
 
 export function SelectCardList(props) {
-  const drawerState = useContext(DrawerContext);
+  const drawer = useContext(LeftDrawerContext);
 
   const selectCardList = props.data.map(
     (option, index) =>
-      option && (
-        <SelectCard key={index}>
-          {String(option)}
-        </SelectCard>
-      )
+      option && <SelectCard key={index}>{String(option)}</SelectCard>
   );
   let divider =
     selectCardList.length > 0 ? <div className="divider"></div> : null;
 
-  function SwapIcon() {
-    return (
-      <label
-        htmlFor="left"
-        className={`btn btn-square btn-ghost drawer-button swap swap-rotate ${
-          drawerState.leftNavExpanded ? "swap-active" : ""
-        }`}
-      >
-        <XIcon
-          className="w-6 swap-on"
-          onClick={drawerState.closeNav}
-        ></XIcon>
-        <ChevronLeftIcon className="w-6 swap-off"></ChevronLeftIcon>
-      </label>
-    );
+  const closeLeftNav = () => {
+    drawer.closeNav("left");
   }
 
   return (
@@ -55,7 +23,13 @@ export function SelectCardList(props) {
           <a className="ml-2 font-medium text-xl">Configure</a>
         </div>
         <div className="flex-none">
-          <SwapIcon></SwapIcon>
+          <label
+            onClick={closeLeftNav}
+            htmlFor="left"
+            className="btn btn-square btn-ghost drawer-button"
+          >
+            <ChevronLeftIcon className="w-6 swap-off"></ChevronLeftIcon>
+          </label>
         </div>
       </div>
       <div className="p-4 menu">
@@ -66,5 +40,20 @@ export function SelectCardList(props) {
         </div>
       </div>
     </>
+  );
+}
+
+export function SelectCard(props) {
+  const drawer = useContext(LeftDrawerContext);
+
+  const showLeftNav = (e) => {
+    e.taxonId = props.key;
+
+  };
+
+  return (
+    <li>
+      <a onClick={showLeftNav}>{props.children}</a>
+    </li>
   );
 }
