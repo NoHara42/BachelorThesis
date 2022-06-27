@@ -1,103 +1,77 @@
 import React, { useState } from "react";
 
-export const DrawerContext = React.createContext();
+export const LeftNavContext = React.createContext();
+export const RightNavContext = React.createContext();
+
+export const DrawerStateType = {
+  Closed: "Closed",
+  Open: "Open",
+  Expanded: "Expanded",
+};
 
 export default function Drawers(props) {
-  toggleLeftNav = () => {
-    console.log(drawerState);
-    setDrawerState({
-      leftNavExpanded: !drawerState.leftNavExpanded,
-      rightNavExpanded: drawerState.rightNavExpanded,
-      toggleLeftNav,
-      toggleRightNav,
-      showNav,
-      closeNav,
-    });
-  };
-  toggleRightNav = () => {
-    setDrawerState({
-      leftNavExpanded: drawerState.leftNavExpanded,
-      rightNavExpanded: !drawerState.rightNavExpanded,
-      toggleLeftNav,
-      toggleRightNav,
-      showNav,
-      closeNav,
-    });
-  };
-  showNav = (isNavExpanded, navType) => {
-    if (!isNavExpanded) {
-      if (navType == "left") {
-        toggleLeftNav();
-      } else if (navType == "right") {
-        toggleRightNav();
-      }
-    }
-  };
-  closeNav = (isNavExpanded, navType) => {
-    if (isNavExpanded) {
-      if (navType == "left") {
-        toggleLeftNav();
-      } else if (navType == "right") {
-        toggleRightNav();
-      }
-    }
-  };
+  const leftNavStateObj = [leftNavState, setLeftNavState] = useState(DrawerStateType.Closed);
 
-  const [drawerState, setDrawerState] = useState({
-    leftNavExpanded: false,
-    rightNavExpanded: false,
-    toggleLeftNav,
-    toggleRightNav,
-    showNav,
-    closeNav,
-  });
+  const rightNavStateObj = [rightNavState, setRightNavState] = useState(DrawerStateType.Closed);
 
-  function LeftNav() {
-    if (drawerState.leftNavExpanded) {
-      return (
-        <div className="drawer-side grid-cols-2">
-          <label htmlFor="left" className="drawer-overlay order-none"></label>
-          <ul className="menu overflow-y-auto w-full transition-all delay-150 ease-in-out duration-300 bg-base-100 text-base-content">
-            {props.leftNav}
-          </ul>
-          <div className="bg-base-200 z-[999]">Config Menu</div>
+  return (
+    <div className="drawer">
+      <input id="left" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content">
+        <div className="drawer drawer-end">
+          <input id="right" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-content">
+            <LeftNavContext.Provider value={leftNavStateObj}>
+              <RightNavContext.Provider value={rightNavStateObj}>
+                {props.content}
+              </RightNavContext.Provider>
+            </LeftNavContext.Provider>
+          </div>
+          <div className="drawer-side">
+            <label htmlFor="right" className="drawer-overlay"></label>
+            <ul className="menu overflow-y-auto w-80 bg-base-100 text-base-content">
+              <RightNavContext.Provider value={rightNavStateObj}>
+                <RightNav stateObj={rightNavStateObj} {...props}></RightNav>
+              </RightNavContext.Provider>
+            </ul>
+          </div>
         </div>
-      );
-    } else
-      return (
-        <div className="drawer-side grid-cols-1">
-          <label htmlFor="left" className="drawer-overlay"></label>
-          <ul className="menu col-span-1 overflow-y-auto w-80 transition-all delay-150 ease-in-out duration-300 bg-base-100 text-base-content">
-            {props.leftNav}
-          </ul>
-        </div>
-      );
-  }
-
-  function RightNav() {
-    return (
+      </div>
       <div className="drawer-side">
-        <label htmlFor="right" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-          {props.rightNav}
+        <label htmlFor="left" className="drawer-overlay"></label>
+          <LeftNavContext.Provider value={leftNavStateObj}>
+            <LeftNav stateObj={leftNavStateObj} {...props}></LeftNav>
+          </LeftNavContext.Provider>
+      </div>
+    </div>
+  );
+}
+
+function LeftNav(props) {
+  const navTemplate = (
+    <div className="w-full overflow-y-auto grid grid-cols-4 gap-4">
+      <ul className="menu overflow-y-auto col-span-1 bg-base-100 text-base-content">
+        {props.leftNav}
+      </ul>
+      <label htmlFor="left" className="drawer-button col-span-3"></label>
+    </div>
+  );
+
+  if (props.stateObj[0] == DrawerStateType.Closed) {
+    return navTemplate;
+  } else if (props.stateObj[0] == DrawerStateType.Open) {
+    return navTemplate;
+  } else if (props.stateObj[0] == DrawerStateType.Expanded) {
+    return (
+      <div className="w-full overflow-y-auto grid grid-cols-4 gap-4">
+        <ul className="menu bg-base-100 col-span-1 text-base-content">
+          {props.leftNav}
         </ul>
+        <div className="rounded-xl transition col-span-3 bg-base-100 my-4 mr-4">Expanded</div>
       </div>
     );
   }
+}
 
-  return (
-    <DrawerContext.Provider value={drawerState}>
-      <div className="drawer">
-        <input id="left" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
-          <div className="drawer drawer-end">
-            <input id="right" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">{props.content}</div>
-            <RightNav></RightNav>
-          </div>
-        </div>
-        <LeftNav></LeftNav>
-      </div>
-    </DrawerContext.Provider>
-  );
+function RightNav(props) {
 }

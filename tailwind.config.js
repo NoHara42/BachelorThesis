@@ -24,6 +24,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      colors: {
+        "tertiary": "#F3AD61",
+      },
       fontFamily: {
         sans: ["Proxima Nova", ...defaultTheme.fontFamily.sans],
       },

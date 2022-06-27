@@ -6,8 +6,6 @@ import {
   Drawers,
 } from "./components/exports";
 import { AnnotationIcon } from "@heroicons/react/solid";
-import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css";
 
 const mainConfig = {
   isMulti: true,
@@ -44,7 +42,10 @@ export function App() {
                 onSelectedOptionsChange={onSelectedOptionsChange}
               ></MultiSelectSearch>
             </div>
-            <MoreButton drawerName="left" toolTipText="Configure filtering for individual plots..."></MoreButton>
+            <MoreButton
+              drawerName="left"
+              toolTipText="Configure filtering for individual plots..."
+            ></MoreButton>
           </div>
           <div id="outlet" className="m-4 prose">
             <br></br>

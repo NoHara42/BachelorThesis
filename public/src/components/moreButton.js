@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { DotsHorizontalIcon } from "@heroicons/react/solid";
+import { DrawerStateType, LeftNavContext } from "./drawers";
+
 
 export default function MoreButton(props) {
+  const [leftNavState, setLeftNavState] = useContext(LeftNavContext);
+  
+  const handleClick = () => {
+    setLeftNavState(DrawerStateType.Open);
+  }
   return (
-    <label className="drawer-button flex items-center" htmlFor={props.drawerName}>
+    <label className="flex items-center drawer-button" onClick={handleClick} htmlFor={props.drawerName}>
       <DotsHorizontalIcon
         data-tip={props.toolTipText}
         tabIndex={1}

@@ -12,10 +12,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "incremental": true,
-    "types": [
-      "node",
-      "alpine-typescript"
-    ],
+    "types": ["node"],
     "typeRoots": [
       "/node_modules/@types",
       "/node_modules/@types/react",
@@ -24,9 +21,15 @@
     ]
   },
   "include": [
-    "**/*.ts", "server/pages/diachronicView.tsx", "public/src/app.tsx", "public/src/index.ks", "public/src/app.ts", "public/src/index.ks", "public/src/index.ks", "public/src/components/formElements/dropDown.js", "public/src/components/formElements/multiSelectSearch.js", "public/src/components/formElements/rangeSlider.js", "public/src/components/exports.js", "public/src/components/sidenav.ks",
+    "**/*.ts",
+    "**/*.js"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "plugins": [
+    "react-hooks"
+  ],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "exclude": ["node_modules"]
 }
