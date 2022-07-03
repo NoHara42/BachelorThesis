@@ -1,6 +1,6 @@
 import objMap from "./helpers";
 
-const processAuthor = (result) => {
+const processWork = (result) => {
     // replace all NA with null values
     result = objMap(result, (keyValuePair) => {
         if(keyValuePair[1] == 'NA') {
@@ -19,6 +19,15 @@ const processAuthor = (result) => {
         };
     });
 
+    // transform semi-colon seperated "works" into array 
+    result = objMap(result, (keyValuePair) => {
+      if(keyValuePair[0] == "Works") {
+          return [keyValuePair[0], keyValuePair[1].split(";")];
+      } else {
+          return keyValuePair;
+      };
+    });
+
     // clean Siblings string irregularity
     result = objMap(result, (keyValuePair) => {
         if(keyValuePair[0] == "Siblings" && keyValuePair[1] == "1 (?)") {
@@ -33,4 +42,4 @@ const processAuthor = (result) => {
 }
 
   
-export default processAuthor;
+export default processWork;

@@ -1,17 +1,20 @@
 import DropDown from "./formElements/dropDown";
-import MultiSelectSearch from "./formElements/multiSelectSearch";
+import SelectSearch, {SelectSearchAsync} from "./formElements/selectSearch";
 import RangeSlider from "./formElements/rangeSlider";
 
 import MoreButton from "./moreButton";
 import {SelectCard, SelectCardList} from "./selectCardList";
 import Drawers from "./drawers";
+import ConfigLoader from "./configLoader";
 
 export {
+  ConfigLoader,
   Drawers,
   MoreButton,
   SelectCard,
   SelectCardList,
   DropDown,
-  MultiSelectSearch,
+  SelectSearch,
+  SelectSearchAsync,
   RangeSlider,
 };

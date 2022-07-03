@@ -1,10 +1,12 @@
+const { PrismaClient } = require("@prisma/client");
 const LineChart = require('./LineChart');
-// import LineChart from './LineChart';
 const dotenv = require('dotenv').config()
 const express = require('express');
 const expressApp = express();
 const cors = require('cors');
 const port = 3000;
+
+const prisma = new PrismaClient();
 
 expressApp.use(express.static('dist'));
 
@@ -38,6 +40,22 @@ async function main() {
     }).compute();
     res.send(chart);
   });
+
+  expressApp.get('/taxons', async (req, res) => {
+    const allTaxons = await prisma.taxon.findMany();
+    res.send(allTaxons);
+  });
+
+  expressApp.get('/authors', async (req, res) => {
+    const allAuthors = await prisma.author.findMany();
+    res.send(allAuthors);
+  });
+
+  expressApp.get('/headers', async (req, res) => {
+    let headers = await prisma._baseDmmf.typeAndModelMap[req.query.tableName].fields;    
+    res.send(headers);
+  });
+
 }
 
 main();

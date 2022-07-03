@@ -78,7 +78,7 @@ module.exports = class LineChart {
     const O = d3.map(this.data, d => d);
     if (this.defined === undefined) this.defined = (d, i) => !isNaN(X[i]) && !isNaN(Y[i]);
     const D = d3.map(this.data, this.defined);
-
+    
     // Compute default domains, and unique the z-domain.
     if (this.xDomain === undefined) this.xDomain = d3.extent(X);
     if (this.yDomain === undefined) this.yDomain = [0, d3.max(Y, d => typeof d === "string" ? +d : d)];

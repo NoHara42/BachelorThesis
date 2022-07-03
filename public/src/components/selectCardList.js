@@ -1,33 +1,36 @@
 import React, { useContext } from "react";
 import { ChevronLeftIcon } from "@heroicons/react/solid";
-import { LeftNavContext, DrawerStateType } from "./drawers";
+import { LeftNavContext, DrawerStateType, ExpandedNavContext } from "./drawers";
 
 export function SelectCard(props) {
   const [leftNavState, setLeftNavState] = useContext(LeftNavContext);
+  const [expandedNavSelection, setExpandedNavSelection] = useContext(ExpandedNavContext);
 
-  const handleTaxonClick = (e) => {
-    e.taxonId = props.key;
+  const handleTaxonClick = () => {
     setLeftNavState(DrawerStateType.Expanded);
+    setExpandedNavSelection({
+      value: props.value,
+      label: props.label,
+      id: props.id,
+    });
   };
 
   return (
     <li>
-      {/* TODO: figure out the selection logic and apply class when selected */}
       <a onClick={handleTaxonClick}>{props.children}</a>
     </li>
   );
 }
 
 export function SelectCardList(props) {
-  const [leftNavState, setLeftNavState] = useContext(LeftNavContext);
 
-  const selectCardList = props.data.map(
+  let selectCardList = props.data?.map(
     (option, index) =>
-      option && <SelectCard key={index}>{String(option)}</SelectCard>
+      option && <SelectCard key={option.key} id={option.key} value={option.value} label={option.label}>{option.label}</SelectCard>
   );
 
   let divider =
-    selectCardList.length > 0 ? <div className="divider"></div> : null;
+    selectCardList?.length > 0 ? <div className="divider"></div> : null;
 
   return (
     <>
@@ -43,11 +46,11 @@ export function SelectCardList(props) {
           </label>
         </div>
       </div>
-      <div className="p-4 menu">
+      <div className="p-4 menu overflow-y-auto">
         {selectCardList}
         {divider}
         <div className="menu">
-          <SelectCard>General Configuration</SelectCard>
+          <SelectCard key="generalConfig" uid="generalConfig" label="All Taxa">General Configuration</SelectCard>
         </div>
       </div>
     </>

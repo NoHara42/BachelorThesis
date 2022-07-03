@@ -26,6 +26,8 @@ module.exports = {
     extend: {
       colors: {
         "tertiary": "#F3AD61",
+        "primary-light": "#93EBB4",
+
       },
       fontFamily: {
         sans: ["Proxima Nova", ...defaultTheme.fontFamily.sans],
