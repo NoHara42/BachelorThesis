@@ -21,6 +21,9 @@
   h6 {
     @apply font-normal text-xl;
   }
+  tbody {
+    @apply block;
+  }
 }
 
 @layer components {

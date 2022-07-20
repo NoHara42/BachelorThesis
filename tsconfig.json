@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "ES6",
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
     "noEmit": true,
     "esModuleInterop": true,
     "module": "ES2022",
@@ -19,16 +20,13 @@
       "/node_modules/@types/tailwindcss"
     ]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.js"
-  ],
-  "plugins": [
-    "react-hooks"
-  ],
+  "plugins": ["react-hooks"],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "validators": {
+    "*.{ts,tsx,js,jsx}": ["@parcel/validator-typescript"]
+  }
 }
