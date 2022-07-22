@@ -41,21 +41,62 @@ async function main() {
     res.send(chart);
   });
 
+
   expressApp.get('/taxons', async (req, res) => {
-    const allTaxons = await prisma.taxon.findMany();
+    // const allTaxons = await prisma.taxon.findMany();
+    
+    // dummy data for demo without local db
+    const allTaxons = [{
+        occId: "dog",
+        term: "Dog",
+        scientificName: "Dogicus Maximus"
+      }, 
+      {
+        occId: "cat",
+        term: "Cat",
+        scientificName: "Caticus Minimae"
+      }
+    ]
     res.send(allTaxons);
   });
 
   expressApp.get('/authors', async (req, res) => {
-    const allAuthors = await prisma.author.findMany();
+    // const allAuthors = await prisma.author.findMany();
+
+    // dummy data for demo without local db
+    const allAuthors = [
+      {
+        authorY: "Charles Dickens",
+      },
+      {
+        authorY: "Goethe",
+      }
+    ]
     res.send(allAuthors);
   });
 
   expressApp.get('/headers', async (req, res) => {
-    let headers = await prisma._baseDmmf.typeAndModelMap[req.query.tableName].fields;    
+    // let headers = await prisma._baseDmmf.typeAndModelMap[req.query.tableName].fields;    
+    let headers;
+
+    // dummy data
+    headers = [{
+      name: "birth",
+      type: "Int",
+      isId: false,
+    },
+    {
+      name: "death",
+      type: "Int",
+      isId: false,
+    },
+    {
+      name: "religion",
+      type: "String",
+      isId: false,
+    }]
     res.send(headers);
   });
-
 }
 
 main();
