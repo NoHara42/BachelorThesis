@@ -14,6 +14,11 @@ export const DrawerStateType = {
 export default function Drawers(props) {
   const [leftNavState, setLeftNavState] = useState(DrawerStateType.Closed);
   const [rightNavState, setRightNavState] = useState(DrawerStateType.Closed);
+
+  // Contains the currently selected plot to configure as an object containing:
+  // * id
+  // * value
+  // * label 
   const [expandedNavSelection, setExpandedNavSelection] = useState();
 
   return (
@@ -87,7 +92,7 @@ function LeftNav(props) {
           {props.leftNav}
         </ul>
         <div className="flex overflow-y-clip flex-col grow justify-between rounded-xl transparent transition col-span-2 lg:col-span-3 bg-base-100 my-4 mr-4 p-4 shadow-xl">
-          <ExpandedNav {...expandedNavSelection} allPlotConfigs={props.allPlotConfigs}></ExpandedNav>
+          <ExpandedNav {...expandedNavSelection}></ExpandedNav>
         </div>
       </div>
     );

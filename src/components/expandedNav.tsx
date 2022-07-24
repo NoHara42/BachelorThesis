@@ -19,62 +19,45 @@ const excludedDefaultWorkHeaders = [];
 export default function ExpandedNav(props) {
   const globalData = useContext(GlobalContext);
 
-  const getConfigById = (id: string) => {
-    return props.allPlotConfigs.get(id);
-  };
-
   const getConfigByIdAndProp = (id: string, propName: string) => {
-    return getConfigById(id)?.[propName];
+    return globalData.allPlotConfigs.get(id)?.[propName];
   };
 
-  const checkForOverridingConfigs = (propName: string, nullValue?: any) => {
+  const checkForOverridingConfigs = (propName: string, nullValue?: any) => {    
     return (
-      config[propName] ??
+      configObj?.[propName] ??
       getConfigByIdAndProp("generalConfig", propName) ??
       nullValue ??
       null
     );
   };
-
-  // let config = getConfigById(props.id);
-  const [config, setConfig] = useState(getConfigById(props.id));
+  
+  const [configObj, setConfigObj] = useState(globalData.allPlotConfigs.get(props.id));
 
   useEffect(() => {
-    // config = getConfigById(props.id);
-    setConfig(getConfigById(props.id));
-    return () => {
-      props.allPlotConfigs.set(props.id, config);
-    };
+    setConfigObj(globalData.allPlotConfigs.get(props.id));
   }, [props.id]);
 
+  useEffect(() => {
+    globalData.setAllPlotConfigs(globalData.allPlotConfigs.set(props.id, configObj));
+    console.log({allPlotConfigs: globalData.allPlotConfigs});
+  }, [configObj])
+
   const handleAuthorsChange = (authors) => {
-    // config.authors = authors;
-    setConfig({...config, authors: authors});
-    console.log(config);
+    setConfigObj({...configObj, authors: authors});
   };
 
   const handleRangeChange = (range) => {
-    setConfig({...config, range: range});
-    console.log(config);
+    setConfigObj({...configObj, range: range});
   };
 
   const handleDynChange = (dynChange, label, tableName, type) => {
-    // config = {
-    //   ...config,
-    //   [tableName]: {
-    //     ...config[tableName],
-    //     [label]: { value: dynChange.target.value, type: type },
-    //   },
-    // };
-    setConfig({
-      ...config,
-      [tableName]: {
-        ...config[tableName],
-        [label]: { value: dynChange.target.value, type: type },
-      },
-    });
-    console.log(config);
+    setConfigObj(configObj[tableName].add(label, { value: dynChange.target.value, type: type }));
   };
+
+  useEffect(() => {
+    console.log({configObj});
+  });
 
   return (
     <>

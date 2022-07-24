@@ -1,3 +1,5 @@
+import React from 'react';
+
 function CheckBox(props) {
   const handleChange = (change) => {
     props.onChange(change, props.label, props.tableName, props.type);

@@ -14,6 +14,7 @@ export default function ConfigLoader(props) {
 
   const endpoint = "headers";
   const param = { tableName: props.tableName };
+
   let excludedMetadata = props.excludedMetadata;
 
   const requestHeaders = async () => {
@@ -42,19 +43,17 @@ export default function ConfigLoader(props) {
   }, []);
 
 
-  // useEffect(() => {
-  //   console.log(props.defaultConfigs);
-  //   setLoadedConfigs(props.defaultConfigs);
-  // }, [props.defaultConfigs]);
-
-
   const onSelectedOptionsChange = (option) => {
     setLoadedConfigs([...loadedConfigs, option]);
-    console.log(loadedConfigs);
-        
+
     excludedMetadata.push(option.label);
+    
     setOptionsCache(optionsCache.filter(excludeFunc));
   };
+
+  useEffect(() => {
+    console.log({loadedConfigs}, {optionsCache});
+  });
 
   return (
     <table className="w-full">

@@ -6,7 +6,7 @@ export function SelectCardList(props) {
 
   let selectCardList = props.data?.map(
     (option, index) =>
-      option && <SelectCard key={option.value} id={option.id} value={option.value} label={option.label}>{option.label}</SelectCard>
+      option && <SelectCard key={option.id} id={option.id} value={option.value} label={option.label}>{option.label}</SelectCard>
   );
 
   let divider =

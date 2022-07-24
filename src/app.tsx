@@ -7,45 +7,50 @@ import {
 } from "./components/exports";
 import { v4 as uuidv4 } from "uuid";
 import { AnnotationIcon } from "@heroicons/react/solid";
-import { toOptions } from "./components/formElements/selectSearch";
 
 export const GlobalContext = React.createContext(null);
 
 export function App(props) {
+
   const defaultPlots = [
     { value: "dog", label: "Dog", id: uuidv4() },
     { value: "cat", label: "Cat", id: uuidv4() },
   ];
 
-  const mainConfig = {
+  const taxaSearchSelectConfig = {
     hideSelectedOptions: false,
     defaultValue: defaultPlots,
     isOptionSelected: () => false,
     isMulti: true,
     placeholder: "Select taxa to plot...",
   };
+  
+  const [allPlotConfigs, setAllPlotConfigs] = useState(new Map());
 
   const [selectedOptions, setSelectedOptions] = useState(defaultPlots);
-
-  const allPlotConfigs = new Map();
-
-  const handleSelectedOptionsChange = (changes) => {
-    setSelectedOptions(toOptions(changes, (value) => value.label));
+  
+  const handleSelectedOptionsChange = (changes) => {    
+    setSelectedOptions(changes.map((option) => ({
+      id: option.id ?? option.value,
+      label: option.label,
+      value: option.label.toLowerCase()
+    })));
   };
 
-  const fillMap = (options) => {
-    options.map((option) => {
-      if(!allPlotConfigs.has(option.id)) allPlotConfigs.set(option.id, { authors: null, range: null });
-    });
-    console.log(allPlotConfigs);
-  };
+  const generalConfigObj = { value: "generalConfig", label: "All Taxa", id: "generalConfig" };
 
   useEffect(() => {
-    fillMap([...selectedOptions, { value: "generalConfig", label: "All Taxa", id: "generalConfig" }]);
+    [...selectedOptions, generalConfigObj].map((option) => {           
+      if(!allPlotConfigs.has(option.id)) setAllPlotConfigs(allPlotConfigs.set(option.id, { authors: null, range: null, Author: new Set(), Work: new Set() }));
+    });
   }, [selectedOptions]);
 
+  useEffect(() => {
+    console.log({selectedOptions}, {allPlotConfigs});
+  });
+
   return (
-    <GlobalContext.Provider value={{ allAuthors: props.allAuthors }}>
+    <GlobalContext.Provider value={{ allAuthors: props.allAuthors, allPlotConfigs, setAllPlotConfigs }}>
       <Drawers
         allPlotConfigs={allPlotConfigs}
         leftNav={<SelectCardList data={selectedOptions} />}
@@ -67,9 +72,8 @@ export function App(props) {
                     dataValue.occId.charAt(0).toUpperCase() +
                     dataValue.occId.slice(1)
                   }
-                  selectedOptions={selectedOptions}
                   onSelectedOptionsChange={handleSelectedOptionsChange}
-                  config={mainConfig}
+                  config={taxaSearchSelectConfig}
                 ></SelectSearch>
               </div>
               <MoreButton
@@ -81,6 +85,7 @@ export function App(props) {
               <br></br>
               <AnnotationIcon className="w-10 animate-bounce"></AnnotationIcon>
               This is some about information to help contextualise this tool.
+              <br />
               Aute commodo sit consectetur enim qui. Aute eu quis in cillum
               exercitation enim. Laboris labore nulla cillum incididunt Lorem
               incididunt minim sint aliqua do amet. Ea sint eu duis laborum ut
