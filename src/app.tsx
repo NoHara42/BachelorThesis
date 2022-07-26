@@ -7,6 +7,7 @@ import {
 } from "./components/exports";
 import { v4 as uuidv4 } from "uuid";
 import { AnnotationIcon } from "@heroicons/react/solid";
+import { getViz } from ".";
 
 export const GlobalContext = React.createContext(null);
 
@@ -37,11 +38,27 @@ export function App(props) {
     })));
   };
 
+  //handles the saving of a plot config and overriding of non-general config default values
+  const savePlotConfig = (id, plotToSave) => {
+    setAllPlotConfigs(allPlotConfigs.set(id, plotToSave));
+
+    // //override non-general configs default values when general config values change.
+    // if (id == "generalConfig") {
+
+    // }
+
+    getViz({allPlotConfigs});
+  }
+
+  const saveDynChange = (currentPlotId, tableName, dynKey, dynValue) => {
+    allPlotConfigs.get(currentPlotId)[tableName].set(dynKey, dynValue);
+  }
+
   const generalConfigObj = { value: "generalConfig", label: "All Taxa", id: "generalConfig" };
 
   useEffect(() => {
     [...selectedOptions, generalConfigObj].map((option) => {           
-      if(!allPlotConfigs.has(option.id)) setAllPlotConfigs(allPlotConfigs.set(option.id, { authors: null, range: null, Author: new Set(), Work: new Set() }));
+      if(!allPlotConfigs.has(option.id)) setAllPlotConfigs(allPlotConfigs.set(option.id, { authors: null, range: [1705, 1969], Author: new Map(), Work: new Map() }));
     });
   }, [selectedOptions]);
 
@@ -50,7 +67,7 @@ export function App(props) {
   });
 
   return (
-    <GlobalContext.Provider value={{ allAuthors: props.allAuthors, allPlotConfigs, setAllPlotConfigs }}>
+    <GlobalContext.Provider value={{ allAuthors: props.allAuthors, allPlotConfigs, savePlotConfig, saveDynChange }}>
       <Drawers
         allPlotConfigs={allPlotConfigs}
         leftNav={<SelectCardList data={selectedOptions} />}

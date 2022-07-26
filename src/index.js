@@ -2,8 +2,7 @@
 
 import * as ReactDOMClient from 'react-dom/client';
 import { App } from './app';
-
-const axios = require("axios").default;
+import axios from 'axios';
 
 const app = document.getElementById("app");
 const root = ReactDOMClient.createRoot(app);
@@ -67,7 +66,7 @@ export function getViz(params = null) {
   
   axios
     .get(url, {
-      params: params || {
+      params: {...params,
         viewport: window.visualViewport,
       },
     })

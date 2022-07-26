@@ -10,6 +10,7 @@ export default function NumberInput(props) {
         <span>{props.label}</span>
         <input
           onChange={handleChange}
+          defaultValue={props.defaultValue}
           type="number"
           placeholder="Type here..."
           className="input w-full input-bordered input-sm"

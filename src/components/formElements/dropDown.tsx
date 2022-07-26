@@ -11,7 +11,7 @@ function DropDown(props) {
     <div className="form-control">
       <label className="input-group w-full input-group-sm">
         <span>{props.label}</span>
-        <input type="text" onChange={debounceLeading(handleChange)} placeholder="Type here" className="input w-full input-bordered input-sm" />
+        <input type="text" onChange={debounceLeading(handleChange)} defaultValue={props.defaultValue} placeholder="Type here" className="input w-full input-bordered input-sm" />
       </label>
     </div>
   );

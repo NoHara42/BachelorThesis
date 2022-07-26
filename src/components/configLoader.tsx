@@ -1,34 +1,73 @@
 import { PlusIcon } from "@heroicons/react/solid";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../app";
 import { DropDown, NumberInput, CheckBox } from "./exports";
 import SelectSearch, { toOptions } from "./formElements/selectSearch";
 
 type Option = { value: string; label: string; type?: string };
 
 export default function ConfigLoader(props) {
-  const excludeFunc = (value) => !excludedMetadata.includes(value.label);
+  const globalData = useContext(GlobalContext);
 
-  const [loadedConfigs, setLoadedConfigs] = useState(props.defaultConfigs);
+  const getCurrentSavedTable = () => {
+    return globalData.allPlotConfigs.get(props.currentPlotId)[props.tableName];
+  }
+
+  const excludeFunc = (value) => !props.excludedMetadata.includes(value.label);
+
+  //A list of available headers to configure before their inputs are filled with values
   const [optionsCache, setOptionsCache] = useState(null);
 
-  const endpoint = "headers";
-  const param = { tableName: props.tableName };
+  //A map of all the loaded configs, which may have been assigned a value.
+  const [loadedConfigs, setLoadedConfigs] = useState(props.values);
 
-  let excludedMetadata = props.excludedMetadata;
+  //called when a form input has been changed
+  const handleDynChange = (changeEvent, changeTuple) => {
+    globalData.saveDynChange(
+      props.currentPlotId,
+      props.tableName,
+      changeTuple[0],
+      {
+        label: changeTuple[1].label,
+        type: changeTuple[1].type,
+        value: changeEvent.target.value
+      });
+  };
+
+  //called when a dynamic config has been selected
+  const onSelectedOptionsChange = (option) => {
+    globalData.saveDynChange(
+      props.currentPlotId,
+      props.tableName,
+      option.id,
+      {
+        label: option.label,
+        type: option.type,
+        value: option.value
+      });
+
+    props.excludedMetadata.push(option.label);
+
+    // sets all availableOptions values to the id of the option, because the searchable select uses "value" as a key for some reason.
+    // removing causes a bug
+    // also filteres any already selected options
+    setOptionsCache(optionsCache.map((availableOption) => ({ ...availableOption, value: availableOption.id })).filter(excludeFunc));
+  };
+
 
   const requestHeaders = async () => {
     return axios
-      .get(new URL(endpoint, process.env.SERVER_URL).href, {
-        params: param,
+      .get(new URL("headers", process.env.SERVER_URL).href, {
+        params: { tableName: props.tableName },
       })
       .then((response) => {
         let options = toOptions(
           response.data.filter((value) => !value.isId),
-          (dataValue) => dataValue.name,
-          (dataValue) => ({ type: dataValue.type })
+          (dataLabel) => dataLabel.name,
+          (dataValue) => null,
+          (metaData) => ({ type: metaData.type })
         ).filter(excludeFunc);
-        console.log("Response:", response, "Options:", options);
         return options;
       })
       .catch((err) => {
@@ -42,17 +81,13 @@ export default function ConfigLoader(props) {
     })();
   }, []);
 
+  useEffect(() => {
+    setLoadedConfigs(props.values);    
+  }, [props.values]);
 
-  const onSelectedOptionsChange = (option) => {
-    setLoadedConfigs([...loadedConfigs, option]);
-
-    excludedMetadata.push(option.label);
-    
-    setOptionsCache(optionsCache.filter(excludeFunc));
-  };
 
   useEffect(() => {
-    console.log({loadedConfigs}, {optionsCache});
+    console.log({tableName: props.tableName, loadedConfigs, optionsCache });
   });
 
   return (
@@ -63,14 +98,15 @@ export default function ConfigLoader(props) {
         </tr>
       </thead>
       <tbody>
-        {loadedConfigs?.map((value) => (
-          <tr key={value.value}>
+        {Array.from(loadedConfigs)?.map((loadedConfig) => (
+          <tr key={loadedConfig[0]}>
             <td>
               <FormElement
-                onChange={props.onDynChange}
+                onChange={changeEvent => handleDynChange(changeEvent, loadedConfig)}
+                defaultValue={getCurrentSavedTable().get(loadedConfig[0])?.value}
                 tableName={props.tableName}
-                type={value.type}
-                label={value.label}
+                type={loadedConfig[1].type}
+                label={loadedConfig[1].label}
               ></FormElement>
             </td>
           </tr>
@@ -106,14 +142,16 @@ export function FormElement(props) {
       return (
         <DropDown
           type={props.type}
+          defaultValue={props.defaultValue}
           tableName={props.tableName}
-          onChange={props.onChange} 
+          onChange={props.onChange}
           label={props.label}></DropDown>
       );
     case "Float":
       return (
         <NumberInput
           type={props.type}
+          defaultValue={props.defaultValue}
           tableName={props.tableName}
           onChange={props.onChange}
           label={props.label}
@@ -123,6 +161,7 @@ export function FormElement(props) {
       return (
         <NumberInput
           type={props.type}
+          defaultValue={props.defaultValue}
           tableName={props.tableName}
           onChange={props.onChange}
           label={props.label}
@@ -132,7 +171,8 @@ export function FormElement(props) {
       return (
         <CheckBox
           type={props.type}
-          tableName={props.tableName} 
+          defaultValue={props.defaultValue}
+          tableName={props.tableName}
           onChange={props.onChange}
           label={props.label}></CheckBox>
       );

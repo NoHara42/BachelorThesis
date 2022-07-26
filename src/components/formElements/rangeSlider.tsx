@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Range } from "react-range";
 
 export default function RangeSlider(props) {
-  const [dateValues, setDateValues] = useState(props.defaultRangePair);
+  
+  const [dateValues, setDateValues] = useState(props.values);
 
-  const handleChange = (change) => {
-    props.onRangeChange(change);
-    setDateValues(change);
-  };
+  useEffect(() => {    
+    setDateValues(props.values);
+  }, [props.values]);
 
   return (
     <Range
@@ -15,7 +15,7 @@ export default function RangeSlider(props) {
       step={1}
       min={props.defaultRangePair[0]}
       max={props.defaultRangePair[1]}
-      onChange={handleChange}
+      onChange={props.onRangeChange}
       renderTrack={({ props, children }) => (
         <div
           onMouseDown={props.onMouseDown}

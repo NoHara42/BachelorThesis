@@ -5,54 +5,25 @@ import { debounce } from "../utils/debounces";
 import { SelectSearch, RangeSlider, ConfigLoader } from "./exports";
 
 
-const excludedDefaultAuthorHeaders = [
-  "author",
-  "authorX",
-  "authorY",
-  "forename",
-  "surname",
-  "works",
-];
-
-const excludedDefaultWorkHeaders = [];
-
 export default function ExpandedNav(props) {
   const globalData = useContext(GlobalContext);
-
-  const getConfigByIdAndProp = (id: string, propName: string) => {
-    return globalData.allPlotConfigs.get(id)?.[propName];
-  };
-
-  const checkForOverridingConfigs = (propName: string, nullValue?: any) => {    
-    return (
-      configObj?.[propName] ??
-      getConfigByIdAndProp("generalConfig", propName) ??
-      nullValue ??
-      null
-    );
-  };
   
   const [configObj, setConfigObj] = useState(globalData.allPlotConfigs.get(props.id));
 
   useEffect(() => {
-    setConfigObj(globalData.allPlotConfigs.get(props.id));
+    setConfigObj(globalData.allPlotConfigs.get(props.id));    
   }, [props.id]);
 
   useEffect(() => {
-    globalData.setAllPlotConfigs(globalData.allPlotConfigs.set(props.id, configObj));
-    console.log({allPlotConfigs: globalData.allPlotConfigs});
-  }, [configObj])
+    globalData.savePlotConfig(props.id, configObj);    
+  }, [configObj]);
 
-  const handleAuthorsChange = (authors) => {
-    setConfigObj({...configObj, authors: authors});
+  const handleAuthorsChange = (authorsChange) => {
+    setConfigObj({...configObj, authors: authorsChange});
   };
 
-  const handleRangeChange = (range) => {
-    setConfigObj({...configObj, range: range});
-  };
-
-  const handleDynChange = (dynChange, label, tableName, type) => {
-    setConfigObj(configObj[tableName].add(label, { value: dynChange.target.value, type: type }));
+  const handleRangeChange = (rangeChange) => {
+    setConfigObj({...configObj, range: rangeChange});
   };
 
   useEffect(() => {
@@ -67,6 +38,7 @@ export default function ExpandedNav(props) {
         Filter by author(s)...
         <SelectSearch
           labelFunc={(dataValue) => dataValue.authorY}
+          value={configObj.authors}
           data={globalData.allAuthors}
           config={{
             defaultOptions: true,
@@ -78,18 +50,23 @@ export default function ExpandedNav(props) {
       </label>
       <div className="flex flex-col md:flex-row justify-evenly grow my-4">
         <ConfigLoader
-          defaultConfigs={Object.entries(
-            checkForOverridingConfigs("Author", [])
-          )}
-          onDynChange={handleDynChange}
-          excludedMetadata={excludedDefaultAuthorHeaders}
+          currentPlotId={props.id}
+          values={configObj["Author"]}
+          excludedMetadata={[
+            "author",
+            "authorX",
+            "authorY",
+            "forename",
+            "surname",
+            "works",
+          ]}
           tableName="Author"
         ></ConfigLoader>
         <div className="divider divider-vertical md:divider-horizontal"></div>
         <ConfigLoader
-          defaultConfigs={Object.entries(checkForOverridingConfigs("Work", []))}
-          excludedMetadata={excludedDefaultWorkHeaders}
-          onDynChange={handleDynChange}
+          currentPlotId={props.id}
+          values={configObj["Work"]}
+          excludedMetadata={[]}
           tableName="Work"
         ></ConfigLoader>
       </div>
@@ -97,7 +74,8 @@ export default function ExpandedNav(props) {
         Works published between the years... (inclusive)
         <RangeSlider
           onRangeChange={debounce(handleRangeChange)}
-          defaultRangePair={checkForOverridingConfigs("range", [1705, 1969])}
+          values={configObj.range}
+          defaultRangePair={[1705, 1969]}
         ></RangeSlider>
       </div>
     </>
