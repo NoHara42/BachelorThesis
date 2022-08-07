@@ -4,22 +4,22 @@
 
 @layer base {
   h1 {
-    @apply font-black text-6xl;
+    @apply font-black text-5xl;
   }
   h2 {
-    @apply font-extrabold text-5xl;
+    @apply font-extrabold text-4xl;
   }
   h3 {
-    @apply font-bold text-4xl;
+    @apply font-bold text-3xl;
   }
   h4 {
-    @apply font-semibold text-3xl;
+    @apply font-semibold text-2xl;
   }
   h5 {
-    @apply font-medium text-2xl;
+    @apply font-medium text-xl;
   }
   h6 {
-    @apply font-normal text-xl;
+    @apply font-normal text-lg;
   }
   tbody {
     @apply block;

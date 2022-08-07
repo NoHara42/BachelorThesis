@@ -1,21 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL_LOCAL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model Author {
-
-  id                        Int      @id @default(autoincrement())
   author                    String?
-  authorX                   String
-  authorY                   String
-  works                     String[]
   forename                  String?
-  surname                   String
+  surname                   String?
   birth                     Int?
   death                     Int?
   workStart                 Int?
@@ -60,12 +56,14 @@ model Author {
   mainRegionV2              String?
   locality                  Int?
   mainResidence             String?
-
-  @@unique([surname, authorX, authorY])
+  id                        Int     @id @default(autoincrement())
+  authorX                   String?
+  authorY                   String?
+  works                     Work[]
 }
 
 model Work {
-  fileId            String  @id
+  fileId            String       @id
   rFrameMean        Float?
   nFrameMean        Float?
   hFrameMean        Float?
@@ -104,6 +102,8 @@ model Work {
   completeFlagX     Int?
   literaryPeriodX   String?
   literatureFormV2  String?
+  occurrences       Occurrence[]
+  authors           Author[]
 }
 
 model Occurrence {
@@ -111,11 +111,12 @@ model Occurrence {
   occId          String?
   term           String?
   scientificName String?
-  fileId         String?
+  fileId         String
   frameId        Int?
   sentence       String?
   column         Int?
   spalte         Int?
+  work           Work   @relation(fields: [fileId], references: [fileId])
 }
 
 model Taxon {

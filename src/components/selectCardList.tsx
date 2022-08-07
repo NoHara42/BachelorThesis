@@ -28,10 +28,10 @@ export function SelectCardList(props) {
       </div>
       <div className="p-4 menu overflow-y-auto">
         {selectCardList}
-        {divider}
+        {/* {divider}
         <div className="menu">
           <SelectCard key="generalConfig" id="generalConfig" value="generalConfig" label="All Taxa">General Configuration</SelectCard>
-        </div>
+        </div> */}
       </div>
     </>
   );

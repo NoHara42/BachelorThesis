@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "module": "ES2022",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "incremental": true,
+    "types": ["node"],
+    "typeRoots": [
+      "@types/react",
+      "@types/react-dom",
+      "@types/tailwindcss",
+      "/node_modules/@types",
+    ]
+  },
+  "plugins": ["react-hooks"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "include": ["./**/*.tsx", "./**/*.ts"],
+  "exclude": ["node_modules", "./dist"],
+  "validators": {
+    "*.{ts,tsx,js,jsx}": ["@parcel/validator-typescript"]
+  }
+}

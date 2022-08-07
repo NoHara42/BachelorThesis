@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_LOCAL")
+}
+
+model Author {
+  author                    String?
+  forename                  String?
+  surname                   String?
+  birth                     Int?
+  death                     Int?
+  workStart                 Int?
+  gender                    String?
+  religion                  String?
+  ethnicity                 String?
+  nativeLanguage            String?
+  childhoodResidence        String?
+  childhoodRegion           String?
+  residence                 String?
+  regionY                   String?
+  literaryPeriodY           String?
+  partners                  Int?
+  children                  Int?
+  highestEducation          String?
+  biodiversitySpecification Int?
+  field                     String?
+  occupation                String?
+  country                   String?
+  genreY                    String?
+  workCount                 Int?
+  vocabCount                Int?
+  wordCount                 Int?
+  birthname                 String?
+  pseudonym                 String?
+  aliases                   String?
+  father                    String?
+  mother                    String?
+  languages                 String?
+  employer                  String?
+  position                  String?
+  university                String?
+  academicDegree            String?
+  member                    String?
+  deathManner               String?
+  deathCause                String?
+  completeFlagY             Int?
+  age                       Int?
+  siblings                  Int?
+  socialStatus              String?
+  mainRegion                String?
+  mainRegionV2              String?
+  locality                  Int?
+  mainResidence             String?
+  id                        Int     @id @default(autoincrement())
+  authorX                   String?
+  authorY                   String?
+  works                     Work[]
+}
+
+model Work {
+  fileId            String       @id
+  rFrameMean        Float?
+  nFrameMean        Float?
+  hFrameMean        Float?
+  sFrameMean        Float?
+  rWork             Float?
+  nWork             Float?
+  hWork             Float?
+  sWork             Float?
+  rBeta             Float?
+  hBeta             Float?
+  sBeta             Float?
+  rFrameMean_genDiv Float?
+  rWork_genDiv      Float?
+  nFrameMean_genDiv Float?
+  nWork_genDiv      Float?
+  vocab             Int?
+  words             Int?
+  rBeta_genDiv      Float?
+  nBeta_genDiv      Float?
+  lustrum           Int?
+  title             String?
+  work              String?
+  agePublication    Int?
+  year              Int?
+  join              Int?
+  split             Int?
+  regionX           String?
+  originalLanguage  String?
+  literatureForm    String?
+  genreX            String?
+  origin            String?
+  mainSubject       String?
+  narrativeLocation String?
+  downloads         Int?
+  size              Int?
+  completeFlagX     Int?
+  literaryPeriodX   String?
+  literatureFormV2  String?
+  occurrences       Occurrence[]
+  authors           Author[]
+}
+
+model Occurrence {
+  id             Int     @id
+  occId          String?
+  term           String?
+  scientificName String?
+  fileId         String
+  frameId        Int?
+  sentence       String?
+  column         Int?
+  spalte         Int?
+  work           Work   @relation(fields: [fileId], references: [fileId])
+}
+
+model Taxon {
+  occId          String  @id
+  term           String?
+  scientificName String?
+}

@@ -39,3 +39,7 @@ yarn.lock
 
 
 /.parcel-cache
+
+/src/generated/**/*
+
+/prisma/migrations/**/*

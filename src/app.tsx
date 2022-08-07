@@ -8,6 +8,8 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { AnnotationIcon } from "@heroicons/react/solid";
 import { getViz } from ".";
+import { debounce, debounceLeading } from "./utils/debounces";
+import { ActionMeta, InputActionMeta } from "react-select";
 
 export const GlobalContext = React.createContext(null);
 
@@ -30,24 +32,35 @@ export function App(props) {
 
   const [selectedOptions, setSelectedOptions] = useState(defaultPlots);
   
-  const handleSelectedOptionsChange = (changes) => {    
-    setSelectedOptions(changes.map((option) => ({
-      id: option.id ?? option.value,
-      label: option.label,
-      value: option.label.toLowerCase()
-    })));
+  const handleSelectedOptionsChange = (changes, {action, name, removedValue}) => {    
+    console.log(changes, action,name,removedValue);
+
+    switch(action) {
+      case "remove-value":
+        allPlotConfigs.delete(removedValue.id);
+        getViz(allPlotConfigs);
+      case "deselect-option":
+        allPlotConfigs.delete(removedValue.id);
+        getViz(allPlotConfigs);
+      case "pop-value":
+        allPlotConfigs.delete(removedValue.id);
+        getViz(allPlotConfigs);  
+      case "clear":
+        allPlotConfigs.clear();
+        getViz(allPlotConfigs);
+      case "select-option":        
+        setSelectedOptions({...selectedOptions, ...changes});
+      default: 
+        setSelectedOptions(changes.map((option) => ({
+          id: option.id ?? option.value,
+          label: option.label,
+          value: option.label.toLowerCase()
+        })));
+      }
   };
 
-  //handles the saving of a plot config and overriding of non-general config default values
   const savePlotConfig = (id, plotToSave) => {
-    setAllPlotConfigs(allPlotConfigs.set(id, plotToSave));
-
-    // //override non-general configs default values when general config values change.
-    // if (id == "generalConfig") {
-
-    // }
-
-    getViz({allPlotConfigs});
+    allPlotConfigs.set(id, plotToSave);
   }
 
   const saveDynChange = (currentPlotId, tableName, dynKey, dynValue) => {
@@ -57,14 +70,21 @@ export function App(props) {
   const generalConfigObj = { value: "generalConfig", label: "All Taxa", id: "generalConfig" };
 
   useEffect(() => {
-    [...selectedOptions, generalConfigObj].map((option) => {           
-      if(!allPlotConfigs.has(option.id)) setAllPlotConfigs(allPlotConfigs.set(option.id, { authors: null, range: [1705, 1969], Author: new Map(), Work: new Map() }));
+    [...selectedOptions, generalConfigObj].map((option) => {                 
+      if(!allPlotConfigs.has(option.id)) allPlotConfigs.set(option.id, { label: option.value, authors: null, range: [1705, 1969], Author: new Map(), Work: new Map() });
     });
   }, [selectedOptions]);
 
   useEffect(() => {
     console.log({selectedOptions}, {allPlotConfigs});
   });
+
+  useEffect(() => {
+    getViz(allPlotConfigs);
+  }, [allPlotConfigs, selectedOptions]);
+
+  window.addEventListener("resize", debounceLeading(() => getViz(allPlotConfigs), 1000));
+  
 
   return (
     <GlobalContext.Provider value={{ allAuthors: props.allAuthors, allPlotConfigs, savePlotConfig, saveDynChange }}>
@@ -76,8 +96,8 @@ export function App(props) {
           <>
             <header className="p-4">
               <a href="/" tabIndex={0}>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl">
-                  Animal Studies Explorer 🐕🍃
+                <h1 className="text-4xl md:text-5xl">
+                  BiL Explorer <span className="whitespace-nowrap">🐕🍃</span>
                 </h1>
               </a>
             </header>
@@ -98,7 +118,8 @@ export function App(props) {
                 toolTipText="Configure filtering for individual plots..."
               ></MoreButton>
             </div>
-            <div id="outlet" className="m-4 prose font-sans">
+            <div id="outlet" className="m-4 grow">
+              <div className="prose font-sans">
               <br></br>
               <AnnotationIcon className="w-10 animate-bounce"></AnnotationIcon>
               This is some about information to help contextualise this tool.
@@ -113,6 +134,7 @@ export function App(props) {
               exercitation enim. Laboris labore nulla cillum incididunt Lorem
               incididunt minim sint aliqua do amet. Ea sint eu duis laborum ut
               est.
+              </div>
             </div>
           </>
         }

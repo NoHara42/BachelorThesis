@@ -44,6 +44,7 @@ export default function ExpandedNav(props) {
             defaultOptions: true,
             isMulti: true,
             tabIndex: 0,
+            hideSelectedOptions: true
           }}
           onSelectedOptionsChange={handleAuthorsChange}
         ></SelectSearch>
