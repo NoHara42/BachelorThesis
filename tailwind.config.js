@@ -4,7 +4,6 @@ module.exports = {
   content: [
     "./public/**/*.{js,ts,jsx,tsx,html}",
     "./src/**/*.{js,ts,jsx,tsx,html}",
-    "./src/dist/*.{js,ts,jsx,tsx,html}",
   ],
   daisyui: {
     themes: [
