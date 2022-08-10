@@ -1,6 +1,10 @@
 {
   "name": "bachelor-thesis",
   "version": "0.1.0",
+  "author": {
+    "email": "contact@nohara.me",
+    "name": "Ned O'Hara"
+  },
   "private": true,
   "source": "public/index.html",
   "dependencies": {
@@ -31,8 +35,7 @@
     "uuid": "^8.3.2"
   },
   "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts",
-    "makeRelational": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/makeRelational.ts"
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "scripts": {
     "client": "yarn parcel --dist-dir src/dist",

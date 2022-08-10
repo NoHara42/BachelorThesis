@@ -1,12 +1,12 @@
-import { PrismaClient } from "../src/generated/client";
+import { PrismaClient } from "@prisma/client";
 import Papa from "papaparse";
 import processAuthorsAndWorks from "./utils/processAuthorsAndWork";
 import processOccurrence from "./utils/processOccurrence";
 import { extractedAuthor } from "./utils/types/authorType";
 import { extractedWork } from "./utils/types/workType";
 import { occurrenceType } from "./utils/types/occurrenceType";
+import fs from "fs";
 
-const fs = require("fs");
 
 const occurrencesFileName = "/home/nohaha/Git/Bachelor/data/validCorpus.csv";
 const worksFileName = "/home/nohaha/Git/Bachelor/data/extCompDB.csv";

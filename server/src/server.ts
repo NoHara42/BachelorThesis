@@ -2,7 +2,7 @@ import { PrismaClient } from "../../prisma/generated/client";
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import LineChart from "./LineChart";
+import { Blob } from "buffer";
 
 const expressApp = express();
 const port = 3000;
@@ -29,6 +29,12 @@ expressApp.listen(port, () => {
 function deserialize(serializedJavascript) {
   return eval("(" + serializedJavascript + ")");
 }
+
+type ProcessedData = {
+  occId: string;
+  year: Date;
+  count: number;
+};
 
 expressApp.post("/viz", (req, res) => {
   let plotOccurrencePromises = [];
@@ -77,36 +83,113 @@ expressApp.post("/viz", (req, res) => {
         });
       }
     });
-    let processedData = Array.from(tempMap.values()).sort((a, b) => a.year - b.year);
 
-    // let maxCount = processedData.reduce((acc = 0, current) => {
-    //   console.log(acc, current.count);
-      
-    //   return Math.max(acc.count ?? acc, current.count) 
-    // });
-    // console.log(maxCount);
-    
-    // processedData = processedData.map(({count, ...data}) => ({...data, count: count / maxCount}));
+    let processedData: Array<ProcessedData> = Array.from(tempMap.values()).sort(
+      (a, b) => a.year - b.year
+    );
 
+    console.log("ProcessedData number of elements:", processedData.length);
+    console.log(
+      "ProcessedData size in KB:",
+      new Blob(processedData as any).size / 1000
+    );
 
-    type ProcessedData = {
-      occId: string;
-      year: number;
-      count: number;
-    };
-    
-    import("d3").then((d3) => {
-    return LineChart(d3, processedData, {
-      width: req.body.viewport.width,
-      height: req.body.viewport.height,
-      x: (d: ProcessedData) => d.year,
-      y: (d: ProcessedData) => d.count,
-      z: (d: ProcessedData) => d.occId,
-      yLabel: "Absolute no. of Occurrences",
-    })}).then((chart) => {      
-      res.send(chart);
-    });
+    res.send(processedData);
   });
+});
+
+type WorkFreqParams = {
+  year: number;
+  label: string;
+  isSortedAscending?: boolean;
+};
+
+expressApp.post("/workfreq", async (req, res) => {
+  let params: WorkFreqParams = deserialize(req.body.config) as WorkFreqParams;
+
+  type OccurrencesOfAWorkObj = {
+    title: string;
+    occurrences: [];
+  };
+
+  type ProcessedOccurrencesOfAWorkObj = {
+    title: string;
+    count: number;
+  }
+
+  let bookFreqData : Array<any>;
+  const selectedOccurrencesOfWorks: Array<any> = await prisma.work.findMany({
+    where: {
+      year: Number(params.year),
+    },
+    select: {
+      title: true,
+      occurrences: {
+        where: {
+          occId: params.label,
+        },
+      },
+    },
+  });
+
+  bookFreqData = selectedOccurrencesOfWorks.map(
+    (occurrencesOfAWorkObj: OccurrencesOfAWorkObj) => 
+      (occurrencesOfAWorkObj.occurrences.length === 0) ? undefined : {
+        title: occurrencesOfAWorkObj.title,
+        count: occurrencesOfAWorkObj.occurrences.length,
+        year: params.year,
+        label: params.label,
+      } as ProcessedOccurrencesOfAWorkObj
+  );
+
+  bookFreqData = bookFreqData.sort()
+
+  bookFreqData = (params.isSortedAscending ?? false)
+  ? bookFreqData.sort((objA, objB) => objA.count - objB.count)
+  : bookFreqData.sort((objA, objB) => objB.count - objA.count);
+
+  bookFreqData.splice(100);
+
+  res.send(bookFreqData);
+});
+
+type AssociatedMetadataParams = {
+  year: number,
+  title: string,
+  label: string,
+}
+expressApp.post("/associatedmetadata", async (req, res) => {
+  let params: AssociatedMetadataParams = deserialize(req.body.config) as AssociatedMetadataParams;
+
+  let relatedOccurrences = await prisma.occurrence.findMany({
+    where: {
+      occId: params.label,
+      work: {
+        is: {
+          title: params.title,
+          year: Number(params.year)
+        }
+      }
+    },
+    select: {
+      sentence: true
+    }
+  });
+
+  relatedOccurrences = relatedOccurrences.splice(0, 100);
+
+  let relatedAuthors = await prisma.work.findMany({
+    where: {
+      title: params.title,
+      year: Number(params.year),
+    },
+    select: {
+      authors: true
+    }
+  });
+  relatedAuthors = relatedAuthors.splice(0, 100);
+
+  res.send({relatedOccurrences, relatedAuthors});
 });
 
 expressApp.get("/taxons", async (req, res) => {
@@ -143,7 +226,8 @@ expressApp.get("/authors", async (req, res) => {
 });
 
 expressApp.get("/headers", async (req: any, res: any) => {
-  let headers = await prisma._baseDmmf.typeAndModelMap[req.query.tableName].fields;
+  let headers = await prisma._baseDmmf.typeAndModelMap[req.query.tableName]
+    .fields;
   // let headers;
 
   // // dummy data
