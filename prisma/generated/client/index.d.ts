@@ -187,6 +187,7 @@ export class PrismaClient<
        * @private
        */
       private readonly measurePerformance;
+  _baseDmmf: any;
 
     /**
    * ##  Prisma Client ʲˢ

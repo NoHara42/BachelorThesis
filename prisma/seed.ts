@@ -37,6 +37,7 @@ function processData(papaParseOptions, csvFileName) {
         resolve(true);
       },
       error: (err, file) => {
+        //@ts-ignore
         errorBuffer.push(err);
         console.error(err, file);
       },
