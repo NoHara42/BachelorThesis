@@ -178,16 +178,16 @@ expressApp.post("/associatedmetadata", async (req, res) => {
 
   relatedOccurrences = relatedOccurrences.splice(0, 100);
 
-  let relatedAuthors = await prisma.work.findMany({
+  let authorsOfRelatedWorks = await prisma.work.findMany({
     where: {
       title: params.title,
       year: Number(params.year),
     },
-    select: {
+    include: {
       authors: true
     }
   });
-  relatedAuthors = relatedAuthors.splice(0, 100);
+  let relatedAuthors = [...authorsOfRelatedWorks.splice(0, 100).flatMap(value => value.authors)];
 
   res.send({relatedOccurrences, relatedAuthors});
 });
@@ -226,6 +226,7 @@ expressApp.get("/authors", async (req, res) => {
 });
 
 expressApp.get("/headers", async (req: any, res: any) => {
+  //@ts-ignore
   let headers = await prisma._baseDmmf.typeAndModelMap[req.query.tableName]
     .fields;
   // let headers;

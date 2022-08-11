@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import ExpandedMetadataNav from "./expandedMetadataNav";
 import ExpandedNav from "./expandedNav";
 
 declare module 'react' {
@@ -11,6 +12,7 @@ declare module 'react' {
 export const LeftNavContext = React.createContext(null);
 export const RightNavContext = React.createContext(null);
 export const ExpandedNavContext = React.createContext(null);
+export const ExpandedMetadataNavContext = React.createContext(null);
 
 export const DrawerStateType = {
   Closed: "Closed",
@@ -44,6 +46,7 @@ export default function Drawers({rightNavMetadataStateObj, rightNavStateObj, ...
   // * value
   // * label 
   const [expandedNavSelection, setExpandedNavSelection] = useState();
+  const [expandedNavMetadataSelection, setExpandedNavMetadataSelection] = useState();
 
   return (
     <div className="drawer">
@@ -69,14 +72,16 @@ export default function Drawers({rightNavMetadataStateObj, rightNavStateObj, ...
               htmlFor="right" 
               className="drawer-overlay"></label>
             <ul className="menu overflow-y-auto overflow-x-clip w-full text-base-content">
-              <RightNavContext.Provider
-                value={[rightNavState, setRightNavState]}
-              >
-                <RightNav
-                  stateObj={[rightNavState, setRightNavState]}
-                  {...props}
-                ></RightNav>
-              </RightNavContext.Provider>
+              <ExpandedMetadataNavContext.Provider value={[expandedNavMetadataSelection, setExpandedNavMetadataSelection]}>
+                <RightNavContext.Provider
+                  value={[rightNavState, setRightNavState]}
+                >
+                  <RightNav
+                    stateObj={[rightNavState, setRightNavState]}
+                    {...props}
+                  ></RightNav>
+                </RightNavContext.Provider>
+              </ExpandedMetadataNavContext.Provider>
             </ul>
           </div>
         </div>
@@ -134,6 +139,8 @@ function LeftNav(props) {
 }
 
 function RightNav(props) {
+  const [expandedNavMetadataSelection, setExpandedNavMetadataSelection] = useContext(ExpandedMetadataNavContext);
+
   const navTemplate = (
     <div className="w-full grid grid-cols-2 overflow-y-auto">
       <div
@@ -145,6 +152,10 @@ function RightNav(props) {
       </ul>
     </div>
   );
+  useEffect(() => {
+    console.log(expandedNavMetadataSelection);
+    
+  }, [expandedNavMetadataSelection]);
 
   if (props.stateObj[0] === DrawerStateType.Closed) {
     return navTemplate;
@@ -152,9 +163,9 @@ function RightNav(props) {
     return navTemplate;
   } else if (props.stateObj[0] === DrawerStateType.Expanded) {
     return (
-      <div className="w-full overflow-y-auto grid grid-cols-2 gap-4">
-        <div className="flex overflow-y-clip flex-col grow justify-between rounded-xl transparent transition col-span-1 bg-base-100 my-4 mr-4 p-4 shadow-xl">
-          This is the expanded right nav
+      <div className="w-full overflow-y-auto grid grid-cols-2">
+        <div className="overflow-y-clip justify-between rounded-xl transparent transition col-span-1 bg-base-100 m-4 p-4 shadow-xl">
+          <ExpandedMetadataNav data={expandedNavMetadataSelection}></ExpandedMetadataNav>
         </div>
         <ul className="menu bg-base-100 col-span-1 text-base-content">
           {props.rightNav}

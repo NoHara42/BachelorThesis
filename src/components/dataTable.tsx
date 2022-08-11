@@ -1,10 +1,15 @@
-import React, { useContext } from "react";
-import { ChevronRightIcon } from "@heroicons/react/solid";
-import { DrawerStateType } from "./drawers";
+import React, { LegacyRef, useContext, useState } from "react";
+import { ChevronRightIcon, RefreshIcon } from "@heroicons/react/solid";
+import { DrawerStateType, ExpandedMetadataNavContext } from "./drawers";
 import { requestAssociatedMetadata } from "..";
 
 export function DataTable({ rightNavStateObj, data, ...props }) {
   const [rightNavState, setRightNavState] = rightNavStateObj;
+  const [expandedNavMetadataSelection, setExpandedNavMetadataSelection] =
+    useContext(ExpandedMetadataNavContext);
+  const [selectedListIndex, setSelectedListIndex] = useState(null);
+
+  let activeTr = null;
 
   return (
     <>
@@ -24,28 +29,55 @@ export function DataTable({ rightNavStateObj, data, ...props }) {
         </div>
       </div>
       <div className="p-4">
-        <h5 className="mb-4">{`"${data?.[0].label}" occurrences in literature in the year ${data?.[0].year}...`}</h5>
-        <table className="table overflow-y-scroll overflow-x-clip">
-          <thead>
-            <tr>
-              <th>Count</th>
-              <th>Title</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data?.map((dataObj, idx) => (
-              <tr key={idx} onClick={() => {
-                requestAssociatedMetadata({label: dataObj.label, year: dataObj.year, title: dataObj.title}).then((data) => {
-                  console.log(data);
-                  
-                });
-              }}>
-                <td>{dataObj?.count}</td>
-                <td className="whitespace-normal">{dataObj?.title}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {data == undefined ? (
+          <RefreshIcon className="text-primary h-20 w-20 animate-spin"></RefreshIcon>
+        ) : (
+          <>
+            <h5 className="mb-4">{`"${data?.[0].label}" occurrences in literature in the year ${data?.[0].year}...`}</h5>
+            <table className="table overflow-y-scroll overflow-x-clip">
+              <thead>
+                <tr>
+                  <th>Count</th>
+                  <th>Title</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data?.map((dataObj, idx) => (
+                  <tr
+                    key={idx}
+                    className="hover hover:cursor-pointer"
+                    onClick={() => {
+                      setExpandedNavMetadataSelection(null);
+                      setRightNavState(DrawerStateType.Expanded);
+                      requestAssociatedMetadata({
+                        label: dataObj.label,
+                        year: dataObj.year,
+                        title: dataObj.title,
+                      }).then((data) => {
+                        setExpandedNavMetadataSelection(data);
+                        setSelectedListIndex(idx);
+                      });
+                    }}
+                  >
+                    {idx === selectedListIndex ? (
+                      <>
+                        <td className="bg-primary">{dataObj?.count}</td>
+                        <td className="whitespace-normal bg-primary">
+                          {dataObj?.title}
+                        </td>
+                      </>
+                    ) : (
+                      <>
+                        <td>{dataObj?.count}</td>
+                        <td className="whitespace-normal">{dataObj?.title}</td>
+                      </>
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
       </div>
     </>
   );
