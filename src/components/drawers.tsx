@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import ExpandedMetadataNav from "./expandedMetadataNav";
 import ExpandedNav from "./expandedNav";
 
-declare module 'react' {
+declare module "react" {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
     // extends React's HTMLAttributes, htmlFor for some reason not typed
     htmlFor?: string;
@@ -20,7 +20,11 @@ export const DrawerStateType = {
   Expanded: "Expanded",
 };
 
-export default function Drawers({rightNavMetadataStateObj, rightNavStateObj, ...props}: any) {
+export default function Drawers({
+  rightNavMetadataStateObj,
+  rightNavStateObj,
+  ...props
+}: any) {
   const [rightNavState, setRightNavState] = rightNavStateObj;
   const [rightNavMetadata, setRightNavMetadata] = rightNavMetadataStateObj;
   const [leftNavState, setLeftNavState] = useState(DrawerStateType.Closed);
@@ -29,31 +33,38 @@ export default function Drawers({rightNavMetadataStateObj, rightNavStateObj, ...
   const rightDrawerRef = useRef();
 
   useEffect(() => {
-    if(rightNavMetadata !== undefined) setRightNavState(DrawerStateType.Open);
+    if (rightNavMetadata !== undefined) setRightNavState(DrawerStateType.Open);
   }, [rightNavMetadata]);
 
   useEffect(() => {
-    console.log("rightDrawerState",(rightDrawerRef.current as HTMLInputElement).checked);
-    (rightDrawerRef.current as HTMLInputElement).checked = (rightNavState === DrawerStateType.Closed ? false : true);
+    (rightDrawerRef.current as HTMLInputElement).checked =
+      rightNavState === DrawerStateType.Closed ? false : true;
   }, [rightNavState]);
-
-  useEffect(() => {
-    console.log({leftNavState, rightNavState, rightNavMetadata});
-  })
 
   // Contains the currently selected plot to configure as an object containing:
   // * id
   // * value
-  // * label 
+  // * label
   const [expandedNavSelection, setExpandedNavSelection] = useState();
-  const [expandedNavMetadataSelection, setExpandedNavMetadataSelection] = useState();
+  const [expandedNavMetadataSelection, setExpandedNavMetadataSelection] =
+    useState();
 
   return (
     <div className="drawer">
-      <input id="left" ref={leftDrawerRef} type="checkbox" className="drawer-toggle" />
+      <input
+        id="left"
+        ref={leftDrawerRef}
+        type="checkbox"
+        className="drawer-toggle"
+      />
       <div className="drawer-content">
         <div className="drawer drawer-end">
-          <input id="right" ref={rightDrawerRef} type="checkbox" className="drawer-toggle" />
+          <input
+            id="right"
+            ref={rightDrawerRef}
+            type="checkbox"
+            className="drawer-toggle"
+          />
           <div className="drawer-content flex flex-col">
             <LeftNavContext.Provider value={[leftNavState, setLeftNavState]}>
               <RightNavContext.Provider
@@ -66,13 +77,19 @@ export default function Drawers({rightNavMetadataStateObj, rightNavStateObj, ...
           <div className="drawer-side">
             <label
               onClick={(e) => {
-                e.preventDefault();
+                e.preventDefault();      
                 setRightNavState(DrawerStateType.Closed);
               }}
-              htmlFor="right" 
-              className="drawer-overlay"></label>
-            <ul className="menu overflow-y-auto overflow-x-clip w-full text-base-content">
-              <ExpandedMetadataNavContext.Provider value={[expandedNavMetadataSelection, setExpandedNavMetadataSelection]}>
+              htmlFor="right"
+              className="drawer-overlay"
+            ></label>
+            <ul className="menu overflow-y-auto overflow-x-clip w-full text-base-content ">
+              <ExpandedMetadataNavContext.Provider
+                value={[
+                  expandedNavMetadataSelection,
+                  setExpandedNavMetadataSelection,
+                ]}
+              >
                 <RightNavContext.Provider
                   value={[rightNavState, setRightNavState]}
                 >
@@ -88,7 +105,9 @@ export default function Drawers({rightNavMetadataStateObj, rightNavStateObj, ...
       </div>
       <div className="drawer-side">
         <label htmlFor="left" className="drawer-overlay"></label>
-        <ExpandedNavContext.Provider value={[expandedNavSelection, setExpandedNavSelection]}>
+        <ExpandedNavContext.Provider
+          value={[expandedNavSelection, setExpandedNavSelection]}
+        >
           <LeftNavContext.Provider value={[leftNavState, setLeftNavState]}>
             <LeftNav
               stateObj={[leftNavState, setLeftNavState]}
@@ -102,8 +121,9 @@ export default function Drawers({rightNavMetadataStateObj, rightNavStateObj, ...
 }
 
 function LeftNav(props) {
-  const [expandedNavSelection, setExpandedNavSelection] = useContext(ExpandedNavContext);
-  
+  const [expandedNavSelection, setExpandedNavSelection] =
+    useContext(ExpandedNavContext);
+
   const navTemplate = (
     <div className="w-full overflow-y-auto grid grid-cols-3 lg:grid-cols-4 gap-4">
       <ul className="menu overflow-y-auto col-span-1 bg-base-100 text-base-content">
@@ -139,23 +159,17 @@ function LeftNav(props) {
 }
 
 function RightNav(props) {
-  const [expandedNavMetadataSelection, setExpandedNavMetadataSelection] = useContext(ExpandedMetadataNavContext);
+  const [expandedNavMetadataSelection, setExpandedNavMetadataSelection] =
+    useContext(ExpandedMetadataNavContext);
 
   const navTemplate = (
     <div className="w-full grid grid-cols-2 overflow-y-auto">
-      <div
-        htmlFor={"right"}
-        className="drawer-button"
-      ></div>
-      <ul className="menu overflow-y-auto col-span-1 bg-base-100 text-base-content">
+      <div htmlFor={"right"} className="drawer-button"></div>
+      <ul className="menu overflow-y-auto col-span-1 bg-base-100 text-base-content h-screen">
         {props.rightNav}
       </ul>
     </div>
   );
-  useEffect(() => {
-    console.log(expandedNavMetadataSelection);
-    
-  }, [expandedNavMetadataSelection]);
 
   if (props.stateObj[0] === DrawerStateType.Closed) {
     return navTemplate;
@@ -165,7 +179,9 @@ function RightNav(props) {
     return (
       <div className="w-full overflow-y-auto grid grid-cols-2">
         <div className="overflow-y-clip justify-between rounded-xl transparent transition col-span-1 bg-base-100 m-4 p-4 shadow-xl">
-          <ExpandedMetadataNav data={expandedNavMetadataSelection}></ExpandedMetadataNav>
+          <ExpandedMetadataNav
+            data={expandedNavMetadataSelection}
+          ></ExpandedMetadataNav>
         </div>
         <ul className="menu bg-base-100 col-span-1 text-base-content">
           {props.rightNav}

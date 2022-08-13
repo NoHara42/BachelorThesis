@@ -1,4 +1,4 @@
-import React, { LegacyRef, useContext, useState } from "react";
+import React, { LegacyRef, useContext, useEffect, useState } from "react";
 import { ChevronRightIcon, RefreshIcon } from "@heroicons/react/solid";
 import { DrawerStateType, ExpandedMetadataNavContext } from "./drawers";
 import { requestAssociatedMetadata } from "..";
@@ -10,6 +10,11 @@ export function DataTable({ rightNavStateObj, data, ...props }) {
   const [selectedListIndex, setSelectedListIndex] = useState(null);
 
   let activeTr = null;
+
+  useEffect(() => {
+    setSelectedListIndex(null);
+    return () => setSelectedListIndex(null);
+  }, [])
 
   return (
     <>
@@ -30,10 +35,10 @@ export function DataTable({ rightNavStateObj, data, ...props }) {
       </div>
       <div className="p-4">
         {data == undefined ? (
-          <RefreshIcon className="text-primary h-20 w-20 animate-spin"></RefreshIcon>
+          <RefreshIcon className=" text-primary-light h-20 w-20 animate-spin"></RefreshIcon>
         ) : (
           <>
-            <h5 className="mb-4">{`"${data?.[0].label}" occurrences in literature in the year ${data?.[0].year}...`}</h5>
+            <h5 className="mb-4">{`\"${data?.[0]?.label}\" occurrences in literature in the year ${data?.[0]?.year}:`}</h5>
             <table className="table overflow-y-scroll overflow-x-clip">
               <thead>
                 <tr>
@@ -59,7 +64,7 @@ export function DataTable({ rightNavStateObj, data, ...props }) {
                       });
                     }}
                   >
-                    {idx === selectedListIndex ? (
+                    {(idx == selectedListIndex) ? (
                       <>
                         <td className="bg-primary">{dataObj?.count}</td>
                         <td className="whitespace-normal bg-primary">

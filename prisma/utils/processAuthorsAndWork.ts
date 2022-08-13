@@ -19,9 +19,12 @@ const processAuthorsAndWorks = (result) => {
         };
     });
 
-    // transform semi-colon seperated "works" into array 
+    // This list is incomplete, as we agreed only these values are within the scope of the project
+    const listOfColumnNamesThatContainCommaSeparatedValues = ["Works", "Literature_Form", "Genre_x"];
+    
+    // transform semi-colon seperated values into an array... 
     result = objMap(result, (keyValuePair) => {
-      if(keyValuePair[0] == "Works") {
+      if(listOfColumnNamesThatContainCommaSeparatedValues.includes(keyValuePair[0])) {
           return [keyValuePair[0], keyValuePair[1].split(";")];
       } else {
           return keyValuePair;

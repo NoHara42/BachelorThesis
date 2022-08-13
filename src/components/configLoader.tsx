@@ -1,6 +1,7 @@
 import { PlusIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { requestRangeNumberValuesOfColumn } from "..";
 import { GlobalContext } from "../app";
 import { DropDown, NumberInput, CheckBox } from "./exports";
 import SelectSearch, { toOptions } from "./formElements/selectSearch";
@@ -9,12 +10,9 @@ type Option = { value: string; label: string; type?: string };
 
 export default function ConfigLoader(props) {
   const globalData = useContext(GlobalContext);
-
-  const getCurrentSavedTable = () => {
-    return globalData.allPlotConfigs.get(props.currentPlotId)[props.tableName];
-  }
-
-  const excludeFunc = (value) => !props.excludedMetadata.includes(value.label);
+  const excludedMetadata = props.excludedMetadata;
+  const excludeFunc = (value) => !excludedMetadata.includes(value.label);
+  const includeFunc = (value) => props.supportedMetadata.includes(value.label);
 
   //A list of available headers to configure before their inputs are filled with values
   const [optionsCache, setOptionsCache] = useState(null);
@@ -23,7 +21,7 @@ export default function ConfigLoader(props) {
   const [loadedConfigs, setLoadedConfigs] = useState(props.values);
 
   //called when a form input has been changed
-  const handleDynChange = (changeEvent, changeTuple) => {
+  const handleDynChange = (changeValue, changeTuple) => {
     globalData.saveDynChange(
       props.currentPlotId,
       props.tableName,
@@ -31,30 +29,37 @@ export default function ConfigLoader(props) {
       {
         label: changeTuple[1].label,
         type: changeTuple[1].type,
-        value: changeEvent.target.value
-      });
+        value: changeValue,
+      }
+    );
   };
 
   //called when a dynamic config has been selected
   const onSelectedOptionsChange = (option) => {
-    globalData.saveDynChange(
-      props.currentPlotId,
-      props.tableName,
-      option.id,
-      {
-        label: option.label,
-        type: option.type,
-        value: option.value
-      });
+    
+    //Makes sure that value is initialised with null, 
+    // -as we will set value to the id below
+    globalData.saveDynChange(props.currentPlotId, props.tableName, option.id, {
+      label: option.label,
+      type: option.type,
+      value: null,
+    });
 
-    props.excludedMetadata.push(option.label);
+    excludedMetadata.push(option.label);    
 
-    // sets all availableOptions values to the id of the option, because the searchable select uses "value" as a key for some reason.
+    // sets all availableOptions values to the id of the option, 
+    // because the searchable select uses "value" as a key for some reason.
     // removing causes a bug
     // also filteres any already selected options
-    setOptionsCache(optionsCache.map((availableOption) => ({ ...availableOption, value: availableOption.id })).filter(excludeFunc));
+    setOptionsCache(
+      optionsCache
+        .map((availableOption) => ({
+          ...availableOption,
+          value: availableOption.id,
+        }))
+        .filter(excludeFunc)
+    );
   };
-
 
   const requestHeaders = async () => {
     return axios
@@ -67,7 +72,9 @@ export default function ConfigLoader(props) {
           (dataLabel) => dataLabel.name,
           (dataValue) => null,
           (metaData) => ({ type: metaData.type })
-        ).filter(excludeFunc);
+        )
+          .filter(excludeFunc)
+          .filter(includeFunc);
         return options;
       })
       .catch((err) => {
@@ -82,19 +89,14 @@ export default function ConfigLoader(props) {
   }, []);
 
   useEffect(() => {
-    setLoadedConfigs(props.values);    
+    setLoadedConfigs(props.values);
   }, [props.values]);
 
-
-  useEffect(() => {
-    console.log({tableName: props.tableName, loadedConfigs, optionsCache });
-  });
-
   return (
-    <table className="w-full">
+    <table className="w-full self-start">
       <thead>
         <tr>
-          <th>{props.tableName}</th>
+          <th>{props.tableName} (Currently supported metadata)</th>
         </tr>
       </thead>
       <tbody>
@@ -102,8 +104,12 @@ export default function ConfigLoader(props) {
           <tr key={loadedConfig[0]}>
             <td>
               <FormElement
-                onChange={changeEvent => handleDynChange(changeEvent, loadedConfig)}
-                defaultValue={getCurrentSavedTable().get(loadedConfig[0])?.value}
+                formId={loadedConfig[0]}
+                currentPlotId={props.currentPlotId}
+                configStateObj={props.configStateObj}
+                onChange={(changeEvent) =>
+                  handleDynChange(changeEvent, loadedConfig)
+                }
                 tableName={props.tableName}
                 type={loadedConfig[1].type}
                 label={loadedConfig[1].label}
@@ -119,7 +125,7 @@ export default function ConfigLoader(props) {
             >
               <PlusIcon
                 tabIndex={0}
-                className="btn btn-square btn-ghost btn-sm text-primary m-1"
+                className="animate-pulse btn btn-square btn-ghost btn-sm text-primary m-1"
               ></PlusIcon>
               <label className="dropdown-content shadow-xl w-52">
                 <SelectSearch
@@ -137,29 +143,50 @@ export default function ConfigLoader(props) {
 }
 
 export function FormElement(props) {
+  const [minMax, setMinMax] = useState(props.minMax);
+
+  useEffect(() => {
+    (async () => {
+      let data: Array<any> = await requestRangeNumberValuesOfColumn(
+        props.tableName,
+        props.label
+      );
+      setMinMax(data);
+    })();
+  }, []);
+
   switch (props.type) {
     case "String":
       return (
         <DropDown
-          type={props.type}
-          defaultValue={props.defaultValue}
+          formId={props.formId}
+          currentPlotId={props.currentPlotId}
           tableName={props.tableName}
+          configStateObj={props.configStateObj}
+          label={props.label}
+          type={props.type}
           onChange={props.onChange}
-          label={props.label}></DropDown>
+        ></DropDown>
+      );
+    case "Int":
+      return (
+        minMax && (
+          <NumberInput
+            formId={props.formId}
+            currentPlotId={props.currentPlotId}
+            tableName={props.tableName}
+            label={props.label}
+            configStateObj={props.configStateObj}
+            type={props.type}
+            onChange={props.onChange}
+            minMax={minMax}
+          ></NumberInput>
+        )
       );
     case "Float":
       return (
         <NumberInput
-          type={props.type}
-          defaultValue={props.defaultValue}
-          tableName={props.tableName}
-          onChange={props.onChange}
-          label={props.label}
-        ></NumberInput>
-      );
-    case "Int":
-      return (
-        <NumberInput
+          formId={props.formId}
           type={props.type}
           defaultValue={props.defaultValue}
           tableName={props.tableName}
@@ -170,11 +197,13 @@ export function FormElement(props) {
     case "Boolean":
       return (
         <CheckBox
+          formId={props.formId}
           type={props.type}
           defaultValue={props.defaultValue}
           tableName={props.tableName}
           onChange={props.onChange}
-          label={props.label}></CheckBox>
+          label={props.label}
+        ></CheckBox>
       );
     default:
       console.error(props.type, "type does not have a supported FormElement");

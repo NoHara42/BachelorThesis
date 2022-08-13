@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { ChevronLeftIcon } from "@heroicons/react/solid";
 import { LeftNavContext, DrawerStateType, ExpandedNavContext } from "./drawers";
+import { v4 as uuidv4 } from "uuid";
 
 export function SelectCardList(props) {
 
-  let selectCardList = props.data?.map(
+  let selectCardList = props.data && props.data.map(
     (option, index) =>
       option && <SelectCard key={option.id} id={option.id} value={option.value} label={option.label}>{option.label}</SelectCard>
   );
@@ -21,7 +22,11 @@ export function SelectCardList(props) {
         <div className="flex-none">
           <label
             htmlFor="left"
-            className="btn btn-square btn-ghost drawer-button">
+            className="btn btn-square btn-ghost drawer-button"
+            onClick={() => {
+              props.triggerAllPlotConfigRerender();
+            }
+            }>
             <ChevronLeftIcon className="w-6"></ChevronLeftIcon>
           </label>
         </div>

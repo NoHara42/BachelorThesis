@@ -11,7 +11,7 @@ export const toOptions = (data, labelFunc: (dataValue: any) => string | number, 
     // generates a unique ID to differentiate duplicate options
     id: uuidv4(),
     value: valueFunc?.(dataValue),
-    label: labelFunc(dataValue),
+    label: labelFunc?.(dataValue),
     ...spreadedMetaData?.(dataValue)
   }));
 };
@@ -27,6 +27,7 @@ const theme = (theme) => ({
 
 
 export default function SelectSearch(props) {
+
   const filterFunc = props.filterFunc ?? ((option, inputValue) =>
     option.label.toLowerCase().includes(inputValue.toLowerCase())
   );

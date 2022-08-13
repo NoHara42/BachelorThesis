@@ -44,3 +44,4 @@ yarn.lock
 /src/generated/**/*
 
 /prisma/migrations/**/*
+/prisma/generated/**/*

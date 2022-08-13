@@ -2,7 +2,7 @@ import React from 'react';
 
 function CheckBox(props) {
   const handleChange = (change) => {
-    props.onChange(change, props.label, props.tableName, props.type);
+    props.onChange(change.target.value, props.label, props.tableName, props.type);
   }
   return (
     <div className="form-control">

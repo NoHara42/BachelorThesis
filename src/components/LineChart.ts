@@ -190,7 +190,7 @@ svg.selectAll("mylabels")
       Math.hypot(xScale(X[i]) - xm, yScale(Y[i]) - ym)
     );
     //request data for year and label to fill right sidenav with
-    const year: number = X[i].toLocaleString("de-DE", {year: "numeric"});
+    const year: number = (new Date(X[i]) as Date)?.toLocaleString("de-DE", {year: "numeric"});
     const label: string = T[i];
     
     requestWorkFreq({year,label}, context);
@@ -207,8 +207,8 @@ svg.selectAll("mylabels")
       .style("stroke", ([z]) => (Z[i] === z ? null : "#ddd"))
       .filter(([z]) => Z[i] === z)
       .raise();
-    dot.attr("transform", `translate(${xScale(X[i])},${yScale(Y[i])})`);
-    if (T) dot.select("text").text(`${T[i]}, Count: ${Y[i]}, Year: ${X[i].toLocaleString("de-DE", {year: "numeric"})}`);
+    dot.attr("transform", `translate(${xScale(X[i]) ?? 0},${yScale(Y[i]) ?? 0})`);
+    if (T) dot.select("text").text(`${T[i]}, Count: ${Y[i]}, Year: ${X[i]?.toLocaleString("de-DE", {year: "numeric"})}`);
 
     xLine
     .style("stroke", "red")

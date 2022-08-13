@@ -1,4 +1,6 @@
-export function debounce(func, timeout = 300) {
+import { useEffect, useRef } from "react";
+
+export function debounce(func, timeout = 500) {
   let timer;
   return (...args) => {    
     clearTimeout(timer);
@@ -9,7 +11,7 @@ export function debounce(func, timeout = 300) {
   };
 }
 
-export const debounceLeading = (func, timeout = 300) => {
+export function debounceLeading(func, timeout = 500) {
   let timer;
   return (...args) => {
     if (!timer) {
@@ -20,5 +22,34 @@ export const debounceLeading = (func, timeout = 300) => {
     timer = setTimeout(() => {
       timer = undefined;
     }, timeout);
+  };
+}
+
+var timeoutId;
+
+export function throttle(func, timeout = 500) {
+  clearTimeout(timeoutId);
+  timeoutId = setTimeout(func, timeout);
+  
+}
+
+
+export function useDebounce(callback: () => void, delay: number) {
+  const latestCallback = useRef<() => void>();
+  const latestTimeout = useRef<NodeJS.Timeout>();
+
+  useEffect(() => {
+    latestCallback.current = callback;
+  }, [callback]);
+
+  return () => {
+    if (latestTimeout.current) {
+      clearTimeout(latestTimeout.current);
+    }
+
+    latestTimeout.current = setTimeout(() => {
+      if (!latestCallback.current) return;
+      latestCallback.current();
+    }, delay);
   };
 }

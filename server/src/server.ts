@@ -3,6 +3,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import { Blob } from "buffer";
+import fs from "fs";
 
 const expressApp = express();
 const port = 3000;
@@ -36,17 +37,214 @@ type ProcessedData = {
   count: number;
 };
 
+type Author = {
+  id: string;
+  value: string;
+  label: string;
+};
+
+type PlotObj = {
+  label: string;
+  authors: Array<Author>;
+  range: Array<number>;
+  Author: Map<string, DynamicFormEntry>;
+  Work: Map<string, DynamicFormEntry>;
+};
+
+type DynamicFormEntry = {
+  label: string;
+  type: string;
+  value: string | [any] | any;
+};
+
 expressApp.post("/viz", (req, res) => {
   let plotOccurrencePromises = [];
-  let plotConfigs = deserialize(req.body.config);
-
+  let plotConfigs: Map<string, PlotObj> = deserialize(req.body.config);
   // Get the plots, find all occurrences by year
 
   plotConfigs.forEach((plotConfig) => {
+    let authorTableFormPairs = new Map(
+      Array.from(plotConfig.Author).map(
+        (tableKey: [string, DynamicFormEntry]) => [
+          tableKey[1].label,
+          tableKey[1].value,
+        ]
+      )
+    );
+    let workTableFormPairs = new Map(
+      Array.from(plotConfig.Work).map(
+        (tableKey: [string, DynamicFormEntry]) => [
+          tableKey[1].label,
+          tableKey[1].value,
+        ]
+      )
+    );
+    let selectedAuthors = !plotConfig.authors
+      ? undefined
+      : Array.from(plotConfig.authors).map((authorObj) => authorObj?.label);
+
+    console.log(
+      { plotConfigsSize: plotConfigs.size },
+      plotConfig.label,
+      { selectedAuthors },
+      plotConfig.range,
+      Array.from(authorTableFormPairs),
+      Array.from(workTableFormPairs)
+    );
+
     plotOccurrencePromises.push(
-      //gets all occurrences for a plot label
+      // prisma.author.findMany({
+      //   where: {
+      //     gender: {
+      //       equals: authorTableFormPairs.get("gender") ?? undefined,
+      //     },
+      //     mainRegion: {
+      //       equals: authorTableFormPairs.get("mainRegion") ?? undefined,
+      //     },
+      //     mainResidence: {
+      //       equals:
+      //         authorTableFormPairs.get("mainResidence") ?? undefined,
+      //     },
+      //     authorY: {
+      //       in: selectedAuthors,
+      //     },
+      //     works: {
+      //       every: {
+      //         year: plotConfig?.range
+      //           ? {
+      //               gte: plotConfig?.range[0] ?? undefined,
+      //               lte: plotConfig?.range[1] ?? undefined,
+      //             }
+      //           : undefined,
+      //         agePublication: workTableFormPairs.get("agePublication") && {
+      //           gte: workTableFormPairs.get("agePublication")?.[0] ?? undefined,
+      //           lte: workTableFormPairs.get("agePublication")?.[1] ?? undefined,
+      //         },
+      //         literatureForm: {
+      //           equals: workTableFormPairs.get("literatureForm") ?? undefined,
+      //         },
+      //         genreX: {
+      //           equals: workTableFormPairs.get("genreX") ?? undefined,
+      //         },
+      //         occurrences: {
+      //           every: {
+      //             occId: {
+      //               equals: plotConfig?.label ?? undefined,
+      //             }
+      //           }
+      //         }
+      //       }
+      //     },
+      //   },
+      //   select: {
+      //     works: {
+      //       select: {
+      //         occurrences: {
+      //           select: {
+      //             occId: true
+      //           },
+      //         },
+      //         year: true
+      //       },
+      //     },
+      //   }
+      // })
+
+      // prisma.work.findMany({
+      //   where: {
+      //     year: plotConfig?.range
+      //       ? {
+      //           gte: plotConfig?.range[0] ?? undefined,
+      //           lte: plotConfig?.range[1] ?? undefined,
+      //         }
+      //       : undefined,
+      //     agePublication: workTableFormPairs.get("agePublication") && {
+      //       gte: workTableFormPairs.get("agePublication")?.[0] ?? undefined,
+      //       lte: workTableFormPairs.get("agePublication")?.[1] ?? undefined,
+      //     },
+      //     literatureForm: {
+      //       equals: workTableFormPairs.get("literatureForm") ?? undefined,
+      //     },
+      //     genreX: {
+      //       equals: workTableFormPairs.get("genreX") ?? undefined,
+      //     },
+      //     occurrences: {
+      //       every: {
+      //         occId: {
+      //           equals: plotConfig?.label ?? undefined,
+      //         }
+      //       }
+      //     },
+      //     authors: {
+      //       every: {
+      //         gender: {
+      //           equals: authorTableFormPairs.get("gender") ?? undefined,
+      //         },
+      //         mainRegion: {
+      //           equals: authorTableFormPairs.get("mainRegion") ?? undefined,
+      //         },
+      //         mainResidence: {
+      //           equals:
+      //             authorTableFormPairs.get("mainResidence") ?? undefined,
+      //         },
+      //         authorY: {
+      //           in: selectedAuthors,
+      //         },
+      //       },
+      //     }
+      //   },
+      //   select: {
+      //     occurrences: {
+      //       select: {
+      //         occId: true
+      //       },
+      //     },
+      //     year: true
+      //   }
+      // })
+
+      // gets all occurrences for a plot label
       prisma.occurrence.findMany({
-        where: { occId: plotConfig.label },
+        where: {
+          occId: {
+            equals: plotConfig?.label ?? undefined,
+          },
+          work: {
+            year: plotConfig?.range
+              ? {
+                  gte: plotConfig?.range[0] ?? undefined,
+                  lte: plotConfig?.range[1] ?? undefined,
+                }
+              : undefined,
+            agePublication: workTableFormPairs.get("agePublication") && {
+              gte: workTableFormPairs.get("agePublication")?.[0] ?? undefined,
+              lte: workTableFormPairs.get("agePublication")?.[1] ?? undefined,
+            },
+            literatureForm: {
+              equals: workTableFormPairs.get("literatureForm") ?? undefined,
+            },
+            genreX: {
+              equals: workTableFormPairs.get("genreX") ?? undefined,
+            },
+            authors: {
+              every: {
+                gender: {
+                  equals: authorTableFormPairs.get("gender") ?? undefined,
+                },
+                mainRegion: {
+                  equals: authorTableFormPairs.get("mainRegion") ?? undefined,
+                },
+                mainResidence: {
+                  equals:
+                    authorTableFormPairs.get("mainResidence") ?? undefined,
+                },
+                authorY: {
+                  in: selectedAuthors,
+                },
+              },
+            },
+          },
+        },
         select: {
           occId: true,
           work: {
@@ -60,6 +258,16 @@ expressApp.post("/viz", (req, res) => {
   });
 
   Promise.all(plotOccurrencePromises).then((dataPlotConfigs) => {
+    
+    // let flattenedData = dataPlotConfigs
+    // .flat(2);
+    
+    // let flattenedData = dataPlotConfigs
+    //   .flat(1)
+    //   .map(({ occurrences, ...allFlatConfigsOmittedOccurrences }: any) => ({
+    //     ...allFlatConfigsOmittedWork,
+    //     occId: occurrences.occId,
+    //   }));
     let flattenedData = dataPlotConfigs
       .flat(1)
       .map(({ work, ...allFlatConfigsOmittedWork }: any) => ({
@@ -115,51 +323,57 @@ expressApp.post("/workfreq", async (req, res) => {
   type ProcessedOccurrencesOfAWorkObj = {
     title: string;
     count: number;
-  }
+  };
 
-  let bookFreqData : Array<any>;
-  const selectedOccurrencesOfWorks: Array<any> = await prisma.work.findMany({
-    where: {
-      year: Number(params.year),
-    },
-    select: {
-      title: true,
-      occurrences: {
-        where: {
-          occId: params.label,
+  let bookFreqData: Array<any>;
+
+    const selectedOccurrencesOfWorks: Array<any> = await prisma.work.findMany({
+      where: {
+        year: Number(params.year),
+      },
+      select: {
+        title: true,
+        occurrences: {
+          where: {
+            occId: params.label,
+          },
         },
       },
-    },
-  });
+    });
 
-  bookFreqData = selectedOccurrencesOfWorks.map(
-    (occurrencesOfAWorkObj: OccurrencesOfAWorkObj) => 
-      (occurrencesOfAWorkObj.occurrences.length === 0) ? undefined : {
-        title: occurrencesOfAWorkObj.title,
-        count: occurrencesOfAWorkObj.occurrences.length,
-        year: params.year,
-        label: params.label,
-      } as ProcessedOccurrencesOfAWorkObj
-  );
+    bookFreqData = selectedOccurrencesOfWorks.map(
+      (occurrencesOfAWorkObj: OccurrencesOfAWorkObj) =>
+        occurrencesOfAWorkObj.occurrences.length === 0
+          ? undefined
+          : ({
+              title: occurrencesOfAWorkObj.title,
+              count: occurrencesOfAWorkObj.occurrences.length,
+              year: params.year,
+              label: params.label,
+            } as ProcessedOccurrencesOfAWorkObj)
+    );
 
-  bookFreqData = bookFreqData.sort()
+    bookFreqData = bookFreqData.sort();
 
-  bookFreqData = (params.isSortedAscending ?? false)
-  ? bookFreqData.sort((objA, objB) => objA.count - objB.count)
-  : bookFreqData.sort((objA, objB) => objB.count - objA.count);
+    bookFreqData =
+      params.isSortedAscending ?? false
+        ? bookFreqData.sort((objA, objB) => objA.count - objB.count)
+        : bookFreqData.sort((objA, objB) => objB.count - objA.count);
 
-  bookFreqData.splice(100);
+    bookFreqData.splice(100);
 
-  res.send(bookFreqData);
+  res.send(bookFreqData ?? null);
 });
 
 type AssociatedMetadataParams = {
-  year: number,
-  title: string,
-  label: string,
-}
+  year: number;
+  title: string;
+  label: string;
+};
 expressApp.post("/associatedmetadata", async (req, res) => {
-  let params: AssociatedMetadataParams = deserialize(req.body.config) as AssociatedMetadataParams;
+  let params: AssociatedMetadataParams = deserialize(
+    req.body.config
+  ) as AssociatedMetadataParams;
 
   let relatedOccurrences = await prisma.occurrence.findMany({
     where: {
@@ -167,13 +381,13 @@ expressApp.post("/associatedmetadata", async (req, res) => {
       work: {
         is: {
           title: params.title,
-          year: Number(params.year)
-        }
-      }
+          year: Number(params.year),
+        },
+      },
     },
     select: {
-      sentence: true
-    }
+      sentence: true,
+    },
   });
 
   relatedOccurrences = relatedOccurrences.splice(0, 100);
@@ -184,12 +398,14 @@ expressApp.post("/associatedmetadata", async (req, res) => {
       year: Number(params.year),
     },
     include: {
-      authors: true
-    }
+      authors: true,
+    },
   });
-  let relatedAuthors = [...authorsOfRelatedWorks.splice(0, 100).flatMap(value => value.authors)];
+  let relatedAuthors = [
+    ...authorsOfRelatedWorks.splice(0, 100).flatMap((value) => value.authors),
+  ];
 
-  res.send({relatedOccurrences, relatedAuthors});
+  res.send({ relatedOccurrences, relatedAuthors });
 });
 
 expressApp.get("/taxons", async (req, res) => {
@@ -248,4 +464,28 @@ expressApp.get("/headers", async (req: any, res: any) => {
   //   isId: false,
   // }]
   res.send(headers);
+});
+
+expressApp.post("/distinct-column-values", async (req: any, res: any) => {
+  let params: { columnName: string; tableName: string } = deserialize(
+    req.body.config
+  );
+  const distinctColumnValues = await prisma[params.tableName].findMany({
+    select: {
+      [params.columnName]: true,
+    },
+    distinct: [params.columnName],
+  });
+  res.send(distinctColumnValues);
+});
+
+expressApp.post("/range-column-number-values", async (req: any, res: any) => {
+  let params: { columnName: string; tableName: string } = deserialize(
+    req.body.config
+  );
+  const rangeValues = await prisma[params.tableName].aggregate({
+    _min: { [params.columnName]: true },
+    _max: { [params.columnName]: true },
+  });
+  res.send(Object.values(rangeValues).map((key) => key[params.columnName]));
 });

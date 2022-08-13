@@ -1,14 +1,14 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../app";
-import { debounce } from "../utils/debounces";
 import { SelectSearch, RangeSlider, ConfigLoader } from "./exports";
 
 
 export default function ExpandedNav(props) {
   const globalData = useContext(GlobalContext);
-  
-  const [configObj, setConfigObj] = useState(globalData.allPlotConfigs.get(props.id));
+
+  const configStateObj = useState(globalData.allPlotConfigs.get(props.id));
+  const [configObj, setConfigObj] = configStateObj;
 
   useEffect(() => {
     setConfigObj(globalData.allPlotConfigs.get(props.id));    
@@ -26,10 +26,6 @@ export default function ExpandedNav(props) {
     setConfigObj({...configObj, range: rangeChange});
   };
 
-  useEffect(() => {
-    console.log({configObj});
-  });
-
   return (
     <>
       <h5>Configure filtering for: "{props.label}"</h5>
@@ -38,8 +34,9 @@ export default function ExpandedNav(props) {
         Filter by author(s)...
         <SelectSearch
           labelFunc={(dataValue) => dataValue.authorY}
-          value={configObj.authors}
-          data={globalData.allAuthors}
+          value={configObj?.authors}
+          //filters already selected authors out of the initial dataset
+          data={globalData.allAuthors.filter((author) => !configObj?.authors?.map((author) => author.label)?.includes(author.authorY))}
           config={{
             defaultOptions: true,
             isMulti: true,
@@ -51,6 +48,7 @@ export default function ExpandedNav(props) {
       </label>
       <div className="flex flex-col md:flex-row justify-evenly grow my-4">
         <ConfigLoader
+          configStateObj={configStateObj}
           currentPlotId={props.id}
           values={configObj["Author"]}
           excludedMetadata={[
@@ -61,20 +59,31 @@ export default function ExpandedNav(props) {
             "surname",
             "works",
           ]}
+          supportedMetadata={[
+            "mainRegion",
+            "mainResidence",
+            "gender"
+          ]}
           tableName="Author"
         ></ConfigLoader>
         <div className="divider divider-vertical md:divider-horizontal"></div>
         <ConfigLoader
+          configStateObj={configStateObj} 
           currentPlotId={props.id}
           values={configObj["Work"]}
           excludedMetadata={[]}
+          supportedMetadata={[
+            "agePublication",
+            "literatureForm",
+            "genreX"
+          ]}
           tableName="Work"
         ></ConfigLoader>
       </div>
       <div className="italic text-xs mb-5 mx-2">
         Works published between the years... (inclusive)
         <RangeSlider
-          onRangeChange={debounce(handleRangeChange)}
+          onRangeChange={handleRangeChange}
           values={configObj.range}
           defaultRangePair={[1705, 1969]}
         ></RangeSlider>

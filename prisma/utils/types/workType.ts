@@ -30,6 +30,7 @@ export const extractedWork = (processedData) => {return {
   originalLanguage: processedData.Original_Language,
   literatureForm: processedData.Literature_Form,
   genreX: processedData.Genre_x,
+  genreY: processedData.Genre_y,
   origin: processedData.Origin,
   mainSubject: processedData.Main_Subject,
   narrativeLocation: processedData.Narrative_Location,

@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "./generated/client";
 import Papa from "papaparse";
 import processAuthorsAndWorks from "./utils/processAuthorsAndWork";
 import processOccurrence from "./utils/processOccurrence";
@@ -17,7 +17,6 @@ const errorBuffer = [];
 let countWorks = 0;
 let countAuthors = 0;
 let countOccurrence = 0;
-let countTaxon = 0;
 
 function processData(papaParseOptions, csvFileName) {
   return new Promise((resolve) => {
@@ -44,159 +43,159 @@ function processData(papaParseOptions, csvFileName) {
 }
 
 async function main() {
-  // // Insert all Authors
-  // await processData(
-  //   {
-  //     step: (result, parser) => {
-  //       parser.pause();
-  //       let processedAuthorsAndWorks = processAuthorsAndWorks(result.data);
-  //       let worksList = processedAuthorsAndWorks.Works;
-  //       let authorData = extractedAuthor(processedAuthorsAndWorks);
+  // Insert all Authors
+  await processData(
+    {
+      step: (result, parser) => {
+        parser.pause();
+        let processedAuthorsAndWorks = processAuthorsAndWorks(result.data);
+        let worksList = processedAuthorsAndWorks.Works;
+        let authorData = extractedAuthor(processedAuthorsAndWorks);
 
-  //       Promise.all(
-  //         worksList.map(async (workId: string) => {
-  //           return prisma.author.create({
-  //             data: {
-  //               ...authorData,
-  //               works: {
-  //                 connectOrCreate: {
-  //                   where: {
-  //                     fileId: workId,
-  //                   },
-  //                   create: {
-  //                     fileId: workId,
-  //                   },
-  //                 },
-  //               },
-  //             },
-  //           });
-  //         })
-  //       ).then(() => {
-  //         if (countAuthors % 1000 == 0) {
-  //           console.log(
-  //             `Total author insert percentage complete: ${
-  //               (countAuthors / sizeWorks) * 100
-  //             }`
-  //           );
-  //         }
-  //         countAuthors++;
-  //         parser.resume();
-  //       });
-  //     },
-  //     transformHeader: (header, index) => {
-  //       switch (index) {
-  //         case 0:
-  //           return "Author_y";
-  //         case 1:
-  //           return "fileId";
-  //         case 13:
-  //           return "Author_x";
-  //         case 29:
-  //           return "Region_x";
-  //         case 32:
-  //           return "Genre_x";
-  //         case 38:
-  //           return "completeFlag_x";
-  //         case 39:
-  //           return "Literary_period_x";
-  //         case 54:
-  //           return "Region_y";
-  //         case 55:
-  //           return "Literary_period_y";
-  //         case 63:
-  //           return "Genre_y";
-  //         case 81:
-  //           return "completeFlag_y";
-  //         default:
-  //           return header;
-  //       }
-  //     },
-  //     encoding: "utf8",
-  //     delimiter: ",",
-  //     header: true,
-  //     dynamicTyping: true,
-  //   },
-  //   worksFileName
-  // );
-  // // get distinct authors
-  // const distinctAuthors = await prisma.author.findMany({
-  //   distinct: ["author", "authorX", "authorY"]
-  // });
+        Promise.all(
+          worksList.map(async (workId: string) => {
+            return prisma.author.create({
+              data: {
+                ...authorData,
+                works: {
+                  connectOrCreate: {
+                    where: {
+                      fileId: workId,
+                    },
+                    create: {
+                      fileId: workId,
+                    },
+                  },
+                },
+              },
+            });
+          })
+        ).then(() => {
+          if (countAuthors % 1000 == 0) {
+            console.log(
+              `Total author insert percentage complete: ${
+                (countAuthors / sizeWorks) * 100
+              }`
+            );
+          }
+          countAuthors++;
+          parser.resume();
+        });
+      },
+      transformHeader: (header, index) => {
+        switch (index) {
+          case 0:
+            return "Author_y";
+          case 1:
+            return "fileId";
+          case 13:
+            return "Author_x";
+          case 29:
+            return "Region_x";
+          case 32:
+            return "Genre_x";
+          case 38:
+            return "completeFlag_x";
+          case 39:
+            return "Literary_period_x";
+          case 54:
+            return "Region_y";
+          case 55:
+            return "Literary_period_y";
+          case 63:
+            return "Genre_y";
+          case 81:
+            return "completeFlag_y";
+          default:
+            return header;
+        }
+      },
+      encoding: "utf8",
+      delimiter: ",",
+      header: true,
+      dynamicTyping: true,
+    },
+    worksFileName
+  );
+  // get distinct authors
+  const distinctAuthors = await prisma.author.findMany({
+    distinct: ["author", "authorX", "authorY"]
+  });
 
-  // const distinctIds = distinctAuthors.map((distinctAuthor) => distinctAuthor.id);
+  const distinctIds = distinctAuthors.map((distinctAuthor) => distinctAuthor.id);
 
-  // //remove duplicate authors
-  // await prisma.author.deleteMany({
-  //   where: {
-  //     id: {
-  //       notIn: distinctIds,
-  //     }
-  //   }
-  // });
+  //remove duplicate authors
+  await prisma.author.deleteMany({
+    where: {
+      id: {
+        notIn: distinctIds,
+      }
+    }
+  });
 
-  // // update all Works with work Data
-  // await processData(
-  //   {
-  //     step: async (result, parser) => {
-  //       parser.pause();
-  //       let processedData = processAuthorsAndWorks(result.data);
-  //       let workData = extractedWork(processedData);
+  // update all Works with work Data
+  await processData(
+    {
+      step: async (result, parser) => {
+        parser.pause();
+        let processedData = processAuthorsAndWorks(result.data);
+        let workData = extractedWork(processedData);
 
-  //       await prisma.work.update({
-  //         where: {
-  //           fileId: workData.fileId,
-  //         },
-  //         data: {
-  //           ...workData
-  //         }
-  //       }).then(() => {
-  //         if (countWorks % 1000 == 0) {
-  //           console.log(
-  //             `Total works insert percentage complete: ${
-  //               (countWorks / sizeWorks) * 100
-  //             }`
-  //             );
-  //           }
-  //         countWorks++;
-  //         parser.resume();
-  //       });
+        await prisma.work.update({
+          where: {
+            fileId: workData.fileId,
+          },
+          data: {
+            ...workData
+          }
+        }).then(() => {
+          if (countWorks % 1000 == 0) {
+            console.log(
+              `Total works insert percentage complete: ${
+                (countWorks / sizeWorks) * 100
+              }`
+              );
+            }
+          countWorks++;
+          parser.resume();
+        });
 
-  //     },
-  //     transformHeader: (header, index) => {
-  //       switch (index) {
-  //         case 0:
-  //           return "Author_y";
-  //         case 1:
-  //           return "fileId";
-  //         case 13:
-  //           return "Author_x";
-  //         case 29:
-  //           return "Region_x";
-  //         case 32:
-  //           return "Genre_x";
-  //         case 38:
-  //           return "completeFlag_x";
-  //         case 39:
-  //           return "Literary_period_x";
-  //         case 54:
-  //           return "Region_y";
-  //         case 55:
-  //           return "Literary_period_y";
-  //         case 63:
-  //           return "Genre_y";
-  //         case 81:
-  //           return "completeFlag_y";
-  //         default:
-  //           return header;
-  //       }
-  //     },
-  //     encoding: "utf8",
-  //     delimiter: ",",
-  //     header: true,
-  //     dynamicTyping: true,
-  //   },
-  //   worksFileName
-  // );
+      },
+      transformHeader: (header, index) => {
+        switch (index) {
+          case 0:
+            return "Author_y";
+          case 1:
+            return "fileId";
+          case 13:
+            return "Author_x";
+          case 29:
+            return "Region_x";
+          case 32:
+            return "Genre_x";
+          case 38:
+            return "completeFlag_x";
+          case 39:
+            return "Literary_period_x";
+          case 54:
+            return "Region_y";
+          case 55:
+            return "Literary_period_y";
+          case 63:
+            return "Genre_y";
+          case 81:
+            return "completeFlag_y";
+          default:
+            return header;
+        }
+      },
+      encoding: "utf8",
+      delimiter: ",",
+      header: true,
+      dynamicTyping: true,
+    },
+    worksFileName
+  );
 
   // Insert all Occurrences
   await processData(
@@ -280,7 +279,7 @@ async function main() {
   }));
 
   const uniqueTaxons = await prisma.taxon.createMany({
-    data: distinctOccurrences,
+    data: distinctTaxons,
     skipDuplicates: true,
   });
 }

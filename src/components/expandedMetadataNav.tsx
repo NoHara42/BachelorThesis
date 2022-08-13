@@ -18,7 +18,7 @@ export default function ExpandedMetadataNav({ data }) {
   }, [data]);
 
   if(data == undefined) {
-    return <RefreshIcon className="text-primary h-20 w-20 animate-spin"></RefreshIcon>;
+    return <RefreshIcon className="text-primary-light h-20 w-20 animate-spin"></RefreshIcon>;
   }
   return (
     <>

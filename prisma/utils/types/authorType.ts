@@ -23,7 +23,6 @@ export const extractedAuthor = (processedData) => {return {
   field: processedData.Field,
   occupation: processedData.Occupation,
   country: processedData.Country,
-  genreY: processedData.Genre_y,
   // works: processedData.Works,
   workCount: processedData.WorkCount,
   vocabCount: processedData.VocabCount,

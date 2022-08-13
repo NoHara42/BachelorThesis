@@ -1,18 +1,34 @@
-import React from 'react';
-
-import { debounceLeading } from "../../utils/debounces";
+import React, { useContext, useEffect, useState } from 'react';
+import { requestDistinctValuesOfColumn } from '../..';
+import { GlobalContext } from '../../app';
 
 function DropDown(props) {
+  const globalData = useContext(GlobalContext);
+
+  const [defaultValue, setDefaultValue] = useState(globalData.getFormValue(props.currentPlotId, props.tableName, props.formId));
+  const [distinctValues, setDistinctValues] = useState([]);
+
+  useEffect(() => {(async() => {
+    setDistinctValues(await requestDistinctValuesOfColumn(props.tableName, props.label)?.then((arr) => arr?.map((obj) => obj[props.label])));
+  })();
+  }, []);
+
   const handleChange = (change) => {
-    props.onChange(change, props.label, props.tableName, props.type);
+    const changeValue = (change.target.value == "No selection") ? undefined : change.target.value; 
+    setDefaultValue(changeValue);
+    props.onChange(changeValue, props.label, props.tableName, props.type);
   }
+  
   return (
-    <div className="form-control">
-      <label className="input-group w-full input-group-sm">
-        <span>{props.label}</span>
-        <input type="text" onChange={debounceLeading(handleChange)} defaultValue={props.defaultValue} placeholder="Type here" className="input w-full input-bordered input-sm" />
-      </label>
-    </div>
+    <>
+      <label className="text-xs italic">{props.label}</label>
+      <select value={defaultValue ?? "No selection"} onChange={handleChange} className="select select-bordered w-full">
+        <option value={undefined}>No selection</option>
+        {distinctValues.length > 0 && distinctValues?.map((value, idx) => value &&
+          <option key={idx} value={value} defaultValue={defaultValue}>{value}</option>
+        )}
+      </select>
+    </>
   );
 }
 

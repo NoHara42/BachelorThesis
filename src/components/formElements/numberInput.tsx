@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../../app";
+import RangeSlider from "./rangeSlider";
 
 export default function NumberInput(props) {
-  const handleChange = (change) => {
-    props.onChange(change, props.label, props.tableName, props.type);
+  const globalData = useContext(GlobalContext);
+
+  const [values, setValues] = useState(globalData.getFormValue(props.currentPlotId, props.tableName, props.formId) ?? props.minMax);
+
+  const handleChange = (changeValue: [number,number]) => {
+    props.onChange(changeValue, props.label, props.tableName, props.type);
+    setValues(globalData.getFormValue(props.currentPlotId, props.tableName, props.formId));
   }
+
   return (
-    <div className="form-control">
-      <label className="input-group w-full input-group-sm">
-        <span>{props.label}</span>
-        <input
-          onChange={handleChange}
-          defaultValue={props.defaultValue}
-          type="number"
-          placeholder="Type here..."
-          className="input w-full input-bordered input-sm"
-        />
-      </label>
+    <div className="pb-8 px-8">
+      <RangeSlider
+        onRangeChange={handleChange}
+        values={values}
+        defaultRangePair={props.minMax}
+      ></RangeSlider>
     </div>
   );
 }
