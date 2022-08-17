@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../app";
+import { debounce, debounceLeading } from "../utils/debounces";
 import { SelectSearch, RangeSlider, ConfigLoader } from "./exports";
 
 
@@ -30,22 +31,6 @@ export default function ExpandedNav(props) {
     <>
       <h5>Configure filtering for: "{props.label}"</h5>
       <div className="divider"></div>
-      <label className="italic text-xs">
-        Filter by author(s)...
-        <SelectSearch
-          labelFunc={(dataValue) => dataValue.authorY}
-          value={configObj?.authors}
-          //filters already selected authors out of the initial dataset
-          data={globalData.allAuthors.filter((author) => !configObj?.authors?.map((author) => author.label)?.includes(author.authorY))}
-          config={{
-            defaultOptions: true,
-            isMulti: true,
-            tabIndex: 0,
-            hideSelectedOptions: true
-          }}
-          onSelectedOptionsChange={handleAuthorsChange}
-        ></SelectSearch>
-      </label>
       <div className="flex flex-col md:flex-row justify-evenly grow my-4">
         <ConfigLoader
           configStateObj={configStateObj}
@@ -80,6 +65,22 @@ export default function ExpandedNav(props) {
           tableName="Work"
         ></ConfigLoader>
       </div>
+      <label className="italic text-xs mb-4">
+        Only include specific author(s)...
+        <SelectSearch
+          labelFunc={(dataValue) => dataValue.authorY}
+          value={configObj?.authors}
+          //filters already selected authors out of the initial dataset
+          data={globalData.allAuthors.filter((author) => !configObj?.authors?.map((author) => author.label)?.includes(author.authorY))}
+          config={{
+            defaultOptions: true,
+            isMulti: true,
+            tabIndex: 0,
+            hideSelectedOptions: true
+          }}
+          onSelectedOptionsChange={handleAuthorsChange}
+        ></SelectSearch>
+      </label>
       <div className="italic text-xs mb-5 mx-2">
         Works published between the years... (inclusive)
         <RangeSlider

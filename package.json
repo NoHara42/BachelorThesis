@@ -36,7 +36,7 @@
     "vite": "^3.0.5"
   },
   "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/debug.ts"
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "scripts": {
     "client": "yarn parcel --dist-dir src/dist",

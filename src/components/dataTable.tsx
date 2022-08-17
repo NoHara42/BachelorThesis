@@ -11,11 +11,6 @@ export function DataTable({ rightNavStateObj, data, ...props }) {
 
   let activeTr = null;
 
-  useEffect(() => {
-    setSelectedListIndex(null);
-    return () => setSelectedListIndex(null);
-  }, [])
-
   return (
     <>
       <div className="navbar bg-secondary">
@@ -23,6 +18,7 @@ export function DataTable({ rightNavStateObj, data, ...props }) {
           onClick={(e) => {
             e.preventDefault();
             setRightNavState(DrawerStateType.Closed);
+            setSelectedListIndex(null);
           }}
           htmlFor="right"
           className="btn btn-square btn-ghost drawer-button"
@@ -47,7 +43,7 @@ export function DataTable({ rightNavStateObj, data, ...props }) {
                 </tr>
               </thead>
               <tbody>
-                {data?.map((dataObj, idx) => (
+                {data?.map((dataObj, idx) => dataObj && (
                   <tr
                     key={idx}
                     className="hover hover:cursor-pointer"

@@ -36,6 +36,7 @@ export default function SelectSearch(props) {
 
   return (
     <WindowedSelect
+      onKeyDown={props.onKeyDown}
       tabIndex={0}
       className="z-10"
       value={props.value}

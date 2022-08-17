@@ -14,6 +14,7 @@ export default function NumberInput(props) {
 
   return (
     <div className="pb-8 px-8">
+      <label className="italic text-xs">{props.label}</label>
       <RangeSlider
         onRangeChange={handleChange}
         values={values}

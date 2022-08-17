@@ -25,7 +25,7 @@ const processAuthorsAndWorks = (result) => {
     // transform semi-colon seperated values into an array... 
     result = objMap(result, (keyValuePair) => {
       if(listOfColumnNamesThatContainCommaSeparatedValues.includes(keyValuePair[0])) {
-          return [keyValuePair[0], keyValuePair[1].split(";")];
+          return [keyValuePair[0], String(keyValuePair[1]).split(";")];
       } else {
           return keyValuePair;
       };

@@ -6,15 +6,11 @@ function deserialize(serializedJavascript) {
 }
 
 export default function ExpandedMetadataNav({ data }) {
-  let dataObjs: { relatedAuthors: any; relatedOccurrences: any } = data?.data;
+  let dataObjs: { relatedAuthors: any; relatedOccurrences: any, relatedWork: any } = data?.data;
   const [configObj, setConfigObj] = useState(null);
-  const [relatedAuthorsState, setRelatedAuthorsState] = useState(null);
-  const [relatedOccurrencesState, setRelatedOccurrencesState] = useState(null);
 
   useEffect(() => {
     setConfigObj(deserialize(data?.config?.data));
-    setRelatedAuthorsState(dataObjs?.relatedAuthors);
-    setRelatedOccurrencesState(dataObjs?.relatedOccurrences);
   }, [data]);
 
   if(data == undefined) {
@@ -25,7 +21,7 @@ export default function ExpandedMetadataNav({ data }) {
       <h5>Related book data: {configObj?.title}</h5>
       <div className="divider"></div>
       <div className="overflow-x-auto">
-        {dataObjs && dataObjs.relatedAuthors.length > 0 && (
+        {dataObjs && dataObjs?.relatedAuthors.length > 0 && (
           <>
           <h5 className="mb-2">Author(s):</h5>
           <table className="table table-compact w-full">
@@ -46,6 +42,29 @@ export default function ExpandedMetadataNav({ data }) {
                   ))}
                 </tr>
               ))}
+            </tbody>
+          </table>
+          </>
+        )}
+        {dataObjs && (
+          <>
+          <h5 className="mb-2">Work:</h5>
+          <table className="table table-compact w-full">
+            <thead>
+              <tr>
+                {Object.keys(dataObjs?.relatedWork).map(
+                  (workKey, idx) => (
+                    <th key={idx}>{workKey}</th>
+                  )
+                )}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {Object.values(dataObjs?.relatedWork).map((workValue, idx) => (
+                  <td key={idx + 100}>{String(workValue)}</td>
+                ))}
+              </tr>
             </tbody>
           </table>
           </>

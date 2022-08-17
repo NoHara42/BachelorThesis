@@ -10,10 +10,10 @@ type Option = { value: string; label: string; type?: string };
 
 export default function ConfigLoader(props) {
   const globalData = useContext(GlobalContext);
-  const excludedMetadata = props.excludedMetadata;
   const excludeFunc = (value) => !excludedMetadata.includes(value.label);
   const includeFunc = (value) => props.supportedMetadata.includes(value.label);
-
+  let excludedMetadata = props.excludedMetadata;
+  
   //A list of available headers to configure before their inputs are filled with values
   const [optionsCache, setOptionsCache] = useState(null);
 
@@ -45,7 +45,6 @@ export default function ConfigLoader(props) {
       value: null,
     });
 
-    excludedMetadata.push(option.label);    
 
     // sets all availableOptions values to the id of the option, 
     // because the searchable select uses "value" as a key for some reason.
@@ -146,13 +145,15 @@ export function FormElement(props) {
   const [minMax, setMinMax] = useState(props.minMax);
 
   useEffect(() => {
-    (async () => {
-      let data: Array<any> = await requestRangeNumberValuesOfColumn(
-        props.tableName,
-        props.label
-      );
-      setMinMax(data);
-    })();
+    if(props.type == "Int") {
+      (async () => {
+        let data: Array<any> = await requestRangeNumberValuesOfColumn(
+          props.tableName,
+          props.label
+          );
+          setMinMax(data);
+        })();
+      }
   }, []);
 
   switch (props.type) {

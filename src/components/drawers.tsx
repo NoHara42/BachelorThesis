@@ -163,7 +163,7 @@ function RightNav(props) {
     useContext(ExpandedMetadataNavContext);
 
   const navTemplate = (
-    <div className="w-full grid grid-cols-2 overflow-y-auto">
+    <div className="w-full h-full grid grid-cols-2 overflow-y-auto">
       <div htmlFor={"right"} className="drawer-button"></div>
       <ul className="menu overflow-y-auto col-span-1 bg-base-100 text-base-content h-screen">
         {props.rightNav}

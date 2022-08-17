@@ -12,7 +12,25 @@ const worksFileName = "/home/nohaha/Git/Bachelor/data/extCompDB.csv";
 const sizeWorks = 13519;
 const sizeOccurrences = 5733516;
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  // log: ["query", "info", "warn", "error"],
+});
+
+async function promisePipe(...asyncTasks) {
+  const starterPromise = Promise.resolve();
+  return await asyncTasks
+    .reduce(
+      (promiseAccumulator, currentTask) =>
+        promiseAccumulator.then((...args) => currentTask(...args)),
+      starterPromise
+    )
+    .catch((err) => {
+      console.log(err);
+      console.log(asyncTasks);
+      throw err;
+    });
+}
+
 const errorBuffer = [];
 let countWorks = 0;
 let countAuthors = 0;
@@ -43,160 +61,81 @@ function processData(papaParseOptions, csvFileName) {
 }
 
 async function main() {
-  // Insert all Authors
-  await processData(
-    {
-      step: (result, parser) => {
-        parser.pause();
-        let processedAuthorsAndWorks = processAuthorsAndWorks(result.data);
-        let worksList = processedAuthorsAndWorks.Works;
-        let authorData = extractedAuthor(processedAuthorsAndWorks);
 
-        Promise.all(
-          worksList.map(async (workId: string) => {
-            return prisma.author.create({
-              data: {
-                ...authorData,
-                works: {
-                  connectOrCreate: {
-                    where: {
-                      fileId: workId,
-                    },
-                    create: {
-                      fileId: workId,
-                    },
-                  },
-                },
-              },
-            });
-          })
-        ).then(() => {
-          if (countAuthors % 1000 == 0) {
-            console.log(
-              `Total author insert percentage complete: ${
-                (countAuthors / sizeWorks) * 100
-              }`
-            );
-          }
-          countAuthors++;
-          parser.resume();
-        });
-      },
-      transformHeader: (header, index) => {
-        switch (index) {
-          case 0:
-            return "Author_y";
-          case 1:
-            return "fileId";
-          case 13:
-            return "Author_x";
-          case 29:
-            return "Region_x";
-          case 32:
-            return "Genre_x";
-          case 38:
-            return "completeFlag_x";
-          case 39:
-            return "Literary_period_x";
-          case 54:
-            return "Region_y";
-          case 55:
-            return "Literary_period_y";
-          case 63:
-            return "Genre_y";
-          case 81:
-            return "completeFlag_y";
-          default:
-            return header;
-        }
-      },
-      encoding: "utf8",
-      delimiter: ",",
-      header: true,
-      dynamicTyping: true,
-    },
-    worksFileName
-  );
-  // get distinct authors
-  const distinctAuthors = await prisma.author.findMany({
-    distinct: ["author", "authorX", "authorY"]
-  });
+  // // Create all Authors while creating empty Works with their PKs
+  // // -after that, update works that were initialized as null
+  // await processData(
+  //   {
+  //     step: async (result, parser) => {
+  //       parser.pause();
+  //       let processedAuthorsAndWorks = processAuthorsAndWorks(result.data);
+  //       let authorData = extractedAuthor(processedAuthorsAndWorks);
+  //       let workData = extractedWork(processedAuthorsAndWorks);
+        
 
-  const distinctIds = distinctAuthors.map((distinctAuthor) => distinctAuthor.id);
+  //       await prisma.author.createMany({
+  //         data: {
+  //           id: (countAuthors + 1),
+  //           ...authorData
+  //         }, skipDuplicates: true,
+  //       })
 
-  //remove duplicate authors
-  await prisma.author.deleteMany({
-    where: {
-      id: {
-        notIn: distinctIds,
-      }
-    }
-  });
-
-  // update all Works with work Data
-  await processData(
-    {
-      step: async (result, parser) => {
-        parser.pause();
-        let processedData = processAuthorsAndWorks(result.data);
-        let workData = extractedWork(processedData);
-
-        await prisma.work.update({
-          where: {
-            fileId: workData.fileId,
-          },
-          data: {
-            ...workData
-          }
-        }).then(() => {
-          if (countWorks % 1000 == 0) {
-            console.log(
-              `Total works insert percentage complete: ${
-                (countWorks / sizeWorks) * 100
-              }`
-              );
-            }
-          countWorks++;
-          parser.resume();
-        });
-
-      },
-      transformHeader: (header, index) => {
-        switch (index) {
-          case 0:
-            return "Author_y";
-          case 1:
-            return "fileId";
-          case 13:
-            return "Author_x";
-          case 29:
-            return "Region_x";
-          case 32:
-            return "Genre_x";
-          case 38:
-            return "completeFlag_x";
-          case 39:
-            return "Literary_period_x";
-          case 54:
-            return "Region_y";
-          case 55:
-            return "Literary_period_y";
-          case 63:
-            return "Genre_y";
-          case 81:
-            return "completeFlag_y";
-          default:
-            return header;
-        }
-      },
-      encoding: "utf8",
-      delimiter: ",",
-      header: true,
-      dynamicTyping: true,
-    },
-    worksFileName
-  );
-
+  //       await prisma.work.create({
+  //         data: {
+  //           authors: {
+  //             connect: {
+  //               id: (countAuthors + 1)
+  //             }
+  //           },
+  //           ...workData,
+  //         }
+  //       }).then(() => {
+  //         if (countAuthors % 1000 == 0) {
+  //           console.log(
+  //             `Total author/work insert percentage complete: ${
+  //               (countAuthors / sizeWorks) * 100
+  //             }`
+  //           );
+  //         }
+  //         countAuthors++;
+  //         parser.resume();
+  //       });
+  //     },
+  //     transformHeader: (header, index) => {
+  //       switch (index) {
+  //         case 0:
+  //           return "Author_y";
+  //         case 1:
+  //           return "fileId";
+  //         case 13:
+  //           return "Author_x";
+  //         case 29:
+  //           return "Region_x";
+  //         case 32:
+  //           return "Genre_x";
+  //         case 38:
+  //           return "completeFlag_x";
+  //         case 39:
+  //           return "Literary_period_x";
+  //         case 54:
+  //           return "Region_y";
+  //         case 55:
+  //           return "Literary_period_y";
+  //         case 63:
+  //           return "Genre_y";
+  //         case 81:
+  //           return "completeFlag_y";
+  //         default:
+  //           return header;
+  //       }
+  //     },
+  //     encoding: "utf8",
+  //     delimiter: ",",
+  //     header: true,
+  //     dynamicTyping: true,
+  //   },
+  //   worksFileName
+  // );
   // Insert all Occurrences
   await processData(
     {
@@ -278,6 +217,7 @@ async function main() {
     term: distinctTaxon.term,
   }));
 
+  //Insert a non-relational table of unique occurrences, to be referenced in the client
   const uniqueTaxons = await prisma.taxon.createMany({
     data: distinctTaxons,
     skipDuplicates: true,

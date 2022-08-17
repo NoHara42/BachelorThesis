@@ -59,6 +59,9 @@ model Author {
   authorX                   String?
   authorY                   String?
   works                     Work[]
+  listOfWorks               String[]
+
+  @@unique([author, authorY, authorX])
 }
 
 model Work {
@@ -93,7 +96,7 @@ model Work {
   originalLanguage  String?
   literatureForm    String[]
   genreX            String[]
-  genreY            String
+  genreY            String?
   origin            String?
   mainSubject       String?
   narrativeLocation String?
@@ -102,7 +105,7 @@ model Work {
   completeFlagX     Int?
   literaryPeriodX   String?
   literatureFormV2  String?
-  occurrences       Occurrence[]
+  occurrences       Occurrence[] @relation("OccurrencesOfWorks")
   authors           Author[]
 }
 
@@ -116,7 +119,7 @@ model Occurrence {
   sentence       String?
   column         Int?
   spalte         Int?
-  work           Work   @relation(fields: [fileId], references: [fileId])
+  work           Work?   @relation(name: "OccurrencesOfWorks", fields: [fileId], references: [fileId], onDelete: NoAction)
 }
 
 model Taxon {

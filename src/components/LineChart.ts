@@ -51,13 +51,6 @@ export default function LineChart(
   const zUnique = Array.from(new Set(Z));
   const O = d3.map(data, (d) => d);
 
-  // color = color ?? ((label) => {
-  //   let sortedZ: Array<number> = Array.from(new Set(Z)).sort((a,b) => a < b);
-  //   let relativeLabelPos = sortedZ.indexOf(label) / sortedZ.length;
-  //   let zColor = d3.interpolateRainbow(relativeLabelPos);
-    
-  //   return zColor;
-  // });
   
   color = d3.scaleOrdinal()
   .domain(zUnique)
@@ -105,6 +98,7 @@ export default function LineChart(
   const svg = outlet
     .html("")
     .insert("svg")
+    .attr("id", "viz-container")
     .attr("viewBox", [0, 0, width, height])
     .style("-webkit-tap-highlight-color", "transparent")
     .on("pointerenter", pointerentered)
