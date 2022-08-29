@@ -1,7 +1,8 @@
 import React, { LegacyRef, useContext, useEffect, useState } from "react";
-import { ChevronRightIcon, RefreshIcon } from "@heroicons/react/solid";
+import { DocumentDownloadIcon, ChevronRightIcon, RefreshIcon } from "@heroicons/react/solid";
 import { DrawerStateType, ExpandedMetadataNavContext } from "./drawers";
 import { requestAssociatedMetadata } from "..";
+import { downloadAsJSON } from "../utils/utils";
 
 export function DataTable({ rightNavStateObj, data, ...props }) {
   const [rightNavState, setRightNavState] = rightNavStateObj;
@@ -9,7 +10,9 @@ export function DataTable({ rightNavStateObj, data, ...props }) {
     useContext(ExpandedMetadataNavContext);
   const [selectedListIndex, setSelectedListIndex] = useState(null);
 
-  let activeTr = null;
+  const handleDownload = () => {
+    downloadAsJSON(data, "workFreq.json");
+  }
 
   return (
     <>
@@ -34,7 +37,10 @@ export function DataTable({ rightNavStateObj, data, ...props }) {
           <RefreshIcon className=" text-primary-light h-20 w-20 animate-spin"></RefreshIcon>
         ) : (
           <>
-            <h5 className="mb-4">{`\"${data?.[0]?.label}\" occurrences in literature in the year ${data?.[0]?.year}:`}</h5>
+            <div className="inline-flex w-full justify-between">
+              <h5 className="mb-4">{`\"${data?.[0]?.label}\" occurrences in literature in the year ${data?.[0]?.year}:`}</h5>
+              <DocumentDownloadIcon onClick={handleDownload} className="h-8 w-8 text-primary animate-pulse cursor-pointer"></DocumentDownloadIcon>
+            </div>
             <table className="table overflow-y-scroll overflow-x-clip">
               <thead>
                 <tr>

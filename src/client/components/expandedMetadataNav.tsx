@@ -1,5 +1,6 @@
-import { RefreshIcon } from "@heroicons/react/solid";
+import { DocumentDownloadIcon, RefreshIcon } from "@heroicons/react/solid";
 import React, { useEffect, useState } from "react";
+import { downloadAsJSON } from "../utils/utils";
 
 function deserialize(serializedJavascript) {
   return eval("(" + serializedJavascript + ")");
@@ -13,12 +14,19 @@ export default function ExpandedMetadataNav({ data }) {
     setConfigObj(deserialize(data?.config?.data));
   }, [data]);
 
+  const handleDownload = () => {
+    downloadAsJSON(data, "author-work_metadata.json");
+  }
+
   if(data == undefined) {
     return <RefreshIcon className="text-primary-light h-20 w-20 animate-spin"></RefreshIcon>;
   }
   return (
     <>
-      <h5>Related book data: {configObj?.title}</h5>
+      <div className="inline-flex w-full justify-between">
+        <h5>Related book data: {configObj?.title}</h5>
+        <DocumentDownloadIcon onClick={handleDownload} className="h-8 w-8 text-primary animate-pulse cursor-pointer"></DocumentDownloadIcon>
+      </div>
       <div className="divider"></div>
       <div className="overflow-x-auto">
         {dataObjs && dataObjs?.relatedAuthors.length > 0 && (

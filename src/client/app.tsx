@@ -26,6 +26,7 @@ export function App(props) {
     isOptionSelected: () => false,
     isMulti: true,
     placeholder: "Select taxa to plot...",
+    noOptionsMessage: () => "Type to search for taxa..."
   };
 
   const [allPlotConfigs, setAllPlotConfigs] = useState(new Map());
@@ -38,7 +39,7 @@ export function App(props) {
     changes,
     { action, name, removedValue }
   ) => {
-
+    
     switch (action) {
       case "remove-value":
         allPlotConfigs.delete(removedValue.id);
@@ -203,7 +204,7 @@ export function App(props) {
     a.click();
   };
 
-  let save = () => {
+  const save = () => {
     let vizContainer = document.querySelector("#viz-container");
     if (vizContainer) {
       let data = new XMLSerializer().serializeToString(vizContainer);
@@ -261,6 +262,9 @@ export function App(props) {
                     dataValue.occId.charAt(0).toUpperCase() +
                     dataValue.occId.slice(1)
                   }
+                  filterFunc={((option, inputValue) =>
+                    inputValue !== "" && (option.label.toLowerCase().includes(inputValue.toLowerCase())) 
+                  )}
                   onKeyDown={handleKeyDown}
                   onSelectedOptionsChange={handleSelectedOptionsChange}
                   config={taxaSearchSelectConfig}
@@ -300,6 +304,8 @@ export function App(props) {
                   this paper
                 </a>
                 .
+                <br />
+                For a complete, unique list of taxons that are available to this app, <a href="https://github.com/NoHara42/BachelorThesis/unique-taxons.csv">click here.</a> 
                 <br />
                 Feel free to contact me{" "}
                 <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x63;&#x6f;&#x6e;&#x74;&#x61;&#x63;&#x74;&#x40;&#x6e;&#x6f;&#x68;&#x61;&#x72;&#x61;&#x2e;&#x6d;&#x65;?subject=Hey! - BiL Explorer">

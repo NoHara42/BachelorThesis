@@ -1,3 +1,4 @@
+import fs from 'fs';
 import { PrismaClient } from "../../prisma/generated/client/index";
 import express from "express";
 import bodyParser from "body-parser";
@@ -260,7 +261,7 @@ expressApp.post("/workfreq", async (req, res) => {
   )?.[1];
 
   let authorTableFormPairs;
-  if (associatedPlotConfig.Author) {
+  if (associatedPlotConfig?.Author !== undefined) {
     authorTableFormPairs = new Map(
       Array.from(associatedPlotConfig.Author).map(
         (tableKey: [string, DynamicFormEntry]) => [
@@ -272,7 +273,7 @@ expressApp.post("/workfreq", async (req, res) => {
   } else authorTableFormPairs = new Map();
 
   let workTableFormPairs;
-  if (associatedPlotConfig.Work) {
+  if (associatedPlotConfig?.Work !== undefined) {
     workTableFormPairs = new Map(
       Array.from(associatedPlotConfig.Work).map(
         (tableKey: [string, DynamicFormEntry]) => [
@@ -344,9 +345,7 @@ expressApp.post("/workfreq", async (req, res) => {
     params.isSortedAscending ?? false
       ? bookFreqData.sort((objA, objB) => objA.count - objB.count)
       : bookFreqData.sort((objA, objB) => objB.count - objA.count);
-
-  bookFreqData.splice(100);
-
+      
   res.send(bookFreqData ?? null);
 });
 
@@ -399,9 +398,25 @@ expressApp.post("/associatedmetadata", async (req, res) => {
   res.send({ relatedOccurrences, relatedAuthors, relatedWork });
 });
 
+
+function convertToCSV(arr) {
+  const array = [Object.keys(arr[0])].concat(arr)
+
+  return array.map(it => {
+    return Object.values(it).toString()
+  }).join('\n')
+}
+
 expressApp.get("/taxons", async (req, res) => {
   const allTaxons = await prisma.taxon.findMany();
 
+  // updates local file whenever this is run, so that the file that 
+  // -includes metadata shared on github is alawys up-to-date
+  fs.writeFile("unique-taxons.csv", convertToCSV(allTaxons), (err) => {
+    if (err) {
+      console.error(err);
+    }
+  });
   // // dummy data for demo without local db
   // const allTaxons = [{
   //     occId: "dog",

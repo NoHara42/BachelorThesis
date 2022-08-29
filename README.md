@@ -16,6 +16,8 @@ Feel free to contact me
 </a>
 .
 <br />
+For a complete, unique list of taxons that are available to this app, click here.
+<br />
 <span className="italic">
 ~ Ned O'Hara
 </span>

@@ -6,8 +6,5 @@ export default defineConfig({
   plugins: [react()],
   build: {
     minify: false,
-  },
-  server: {
-    host: "0.0.0.0",
   }
 });

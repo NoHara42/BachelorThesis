@@ -72,6 +72,7 @@ export default function ExpandedNav(props) {
           //filters already selected authors out of the initial dataset
           data={globalData.allAuthors.filter((author) => !configObj?.authors?.map((author) => author.label)?.includes(author.authorY))}
           config={{
+            menuPlacement: "top",
             defaultOptions: true,
             isMulti: true,
             tabIndex: 0,

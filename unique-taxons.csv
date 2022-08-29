@@ -1,0 +1,2824 @@
+occId,term,scientificName
+dog,Canidae,organism
+screamer,Anhimidae,organism
+beast,Animalia,organism
+oak,Quercus,organism
+animal,Animalia,organism
+bird,Aves,organism
+coffee,Coffea arabica,organism
+parrot,Psittaciformes,organism
+horse,Equus ferus caballus,organism
+nightingale,Luscinia,organism
+grass,Agrostis capillaris,organism
+paw,Mammalia,body
+tree,Tracheophyta,organism
+maple,Acer,organism
+elm,Ulmus,organism
+plant,Plantae,organism
+cat,Felis,organism
+marten,Martes,organism
+fir,Abies,organism
+poplar,Populus,organism
+rose,Rosa,organism
+yew,Taxus,organism
+apple,Malus domestica,organism
+ivy,Hedera helix,organism
+beech,Fagus,organism
+honeysuckle,Lonicera periclymenum,organism
+hare,Lepus,organism
+tiger,Puma concolor,organism
+elephant,Proboscidea,organism
+wasp,Vespidae,organism
+strawberry,Fragaria,organism
+squirrel,Sciuridae,organism
+ash,Fraxinus,organism
+heath,Erica (Ericaceae),organism
+camel,Camelus,organism
+antelope,Alcelaphinae,organism
+fly,Diptera,organism
+leech,Hirudinea,organism
+walnut,Juglans,organism
+wolf,Canis lupus,organism
+tang,Zebrasoma,organism
+crocodile,Crocodylinae,organism
+alder,Alnus,organism
+sparrow,Passer,organism
+willow,Salix,organism
+cuckoo,Cuculidae,organism
+finch,Sicalis,organism
+canary,Serinus canaria,organism
+lilac,Syringa vulgaris,organism
+almond,Prunus triloba,organism
+palm,Arecaceae,organism
+potato,Solanum tuberosum,organism
+deer,Cervidae,organism
+ant,Formicidae,organism
+insect,Insecta,organism
+rail,Rallidae,organism
+bush,Viburnum plicatum,organism
+owl,Strigiformes,organism
+moss,Bryophyta,organism
+beetle,Coleoptera,organism
+butterfly,Pieris (Pieridae),organism
+spider,Araneae,organism
+rabbit,Lagomorpha,organism
+crow,Euploea,organism
+lily,Lilium,organism
+immortelle,Xeranthemum,organism
+corn,Zea mays,organism
+quail,Perdicinae,organism
+snake,Serpentes,organism
+earthworm,Lumbricina,organism
+rosebud,Cercis,organism
+frog,Anura,organism
+hamlet,Hypoplectrus,organism
+sprite,Arielulus,organism
+mayflower,Epigaea repens,organism
+cotton,Gossypium,organism
+thyme,Thymus (Lamiaceae),organism
+fox,Vulpes,organism
+hau,Talipariti tiliaceum,organism
+thistle,Carduus,organism
+ferret,Mustela putorius furo,organism
+sponge,Porifera,organism
+blackbird,Curaeus curaeus,organism
+linnet,Linaria (Animalia),organism
+magpie,Pica,organism
+duck,Anatidae,organism
+bear,Ursidae,organism
+perch,Percinae,organism
+claw,Amniota,body
+banana,Musa,organism
+ape,Hominidae,organism
+diadem,Hypolimnas,organism
+trumpeter,Latridae,organism
+whau,Entelea arborescens,organism
+sleeper,Eleotridae,organism
+lizard,Sauria,organism
+mignonette,Reseda,organism
+lion,Panthera leo,organism
+humpback,Oncorhynchus gorbuscha,organism
+measles,Paramyxoviridae,organism
+mourner,Rhytipterna,organism
+snowdrop,Galanthus nivalis,organism
+cricket,Gryllidae,organism
+weasel,Mustela,organism
+alexander,Smyrnium olusatrum,organism
+sheep,Ovis aries,organism
+weaver,Ploceidae,organism
+cattle,Bos taurus,organism
+pig,Sus,organism
+gourds,Cucurbitaceae,organism
+valerian,Valeriana,organism
+goose,Anserinae,organism
+martin,Hirundinidae,organism
+mule,Equus mulus,organism
+sloth,Folivora,organism
+friar,Atherina,organism
+falcon,Falco,organism
+sage,Salvia patens,organism
+starling,Sturnus,organism
+drill,Mandrillus leucophaeus,organism
+mustard,Sinapis,organism
+swallow,Hirundinidae,organism
+rattan,Calameae,organism
+flea,Siphonaptera,organism
+whites,Pieris (Pieridae),organism
+oats,Avena,organism
+leopard,Panthera pardus,organism
+shark,Selachimorpha,organism
+hawk,Accipiter,organism
+hornbeam,Carpinus,organism
+carp,Carassius,organism
+mint,Mentha,organism
+ray,Rajomorphii,organism
+wheat,Triticum urartu,organism
+lettuce,Lactuca sativa,organism
+springbok,Antidorcas marsupialis,organism
+golden,Kyphosus vaigiensis,organism
+whitehead,Mohoua albicilla,organism
+erica,Erica (Araneae),organism
+turkey,Meleagridinae,organism
+edelweiss,Leontopodium nivale,organism
+crane,Grus,organism
+rat,Rattus,organism
+torpedo,Torpedo,organism
+raspberry,Rubus idaeus,organism
+zulu,Neoromicia zuluensis,organism
+gull,Larus,organism
+hyena,Hyaeninae,organism
+pear,Pyrus,organism
+jack,Esox lucius,organism
+mahogany,Swietenia,organism
+argonaut,Argonauta,organism
+rhinoceros,Rhinoceros,organism
+cowrie,Cypraeidae,organism
+mosquito,Culicidae,organism
+acacia,Albizia saman,organism
+mimosa,Mimosa pigra,organism
+fang,Carnivora,body
+runner,Elagatis,organism
+panther,Puma concolor,organism
+quagga,Equus quagga quagga,organism
+gooseberry,Ribes uva-crispa,organism
+hartebeest,Alcelaphus buselaphus,organism
+gnu,Connochaetes,organism
+brick,Thunbergia mysorensis,organism
+grunt,Haemulon,organism
+hedgehog,Erinaceinae,organism
+salmon,Oncorhynchus,organism
+hippopotamus,Hippopotamus amphibius,organism
+baboon,Papio,organism
+arnica,Arnica montana,organism
+giraffe,Giraffa,organism
+blackberry,Rubus,organism
+maize,Zea mays,organism
+snout,Mammalia,body
+alligator,Alligator,organism
+goat,Capra hircus,organism
+diver,Gavia,organism
+gourd,Cucurbita,organism
+heron,Ardea,organism
+reptile,Reptilia,organism
+kingfisher,Alcedinidae,organism
+caracal,Caracal caracal,organism
+manioc,Manihot esculenta,organism
+livingstone,Lithops,organism
+pomegranate,Punica granatum,organism
+mango,Mangifera indica,organism
+plantain,Musa × paradisiaca,organism
+bat,Chiroptera,organism
+chestnut,Castanea,organism
+jasmine,Jasminum,organism
+tamarind,Tamarindus indica,organism
+guava,Psidium guajava,organism
+nightshade,Solanum,organism
+pigeon,Columba,organism
+olive,Ipimorpha subtusa,organism
+sombrero,Ratibida columnifera,organism
+porpoise,Phocoenidae,organism
+miner,Geositta,organism
+firefly,Lampyridae,organism
+caiman,Caimaninae,organism
+rice,Oryza sativa,organism
+kite,Milvus,organism
+albatross,Diomedeidae,organism
+bugle,Ajuga reptans,organism
+ram,Ovis aries,organism
+bamboo,Bambuseae,organism
+clover,Trifolium,organism
+rust,Pucciniales,organism
+yam,Dioscorea,organism
+festoon,Apoda limacodes,organism
+orchid,Orchidaceae,organism
+bramble,Rubus plicatus,organism
+fern,Polypodiopsida,organism
+swift,Apodidae,organism
+pepper,Capsicum frutescens,organism
+hornet,Vespa,organism
+fluke,Trematoda,organism
+commodore,Junonia,organism
+rattlesnake,Crotalus,organism
+bluejacket,Tradescantia ohiensis,organism
+bracken,Pteridium aquilinum,organism
+wattle,Taxandria juniperina,organism
+fusiliers,Pterocaesio,organism
+fusilier,Pterocaesio,organism
+ermine,Mustela erminea,organism
+krantz,Aloe arborescens,organism
+python,Pythoninae,organism
+mamba,Dendroaspis,organism
+quince,Cydonia oblonga,organism
+duiker,Cephalophinae,organism
+ostrich,Struthio,organism
+peach,Prunus persica,organism
+jay,Garrulus,organism
+centipede,Scolopendra,organism
+hornbill,Bucerotidae,organism
+thrush,Turdus falcklandii,organism
+robin,Erithacus,organism
+ewe,Ovis aries,organism
+adder,Bitis,organism
+noddy,Anous,organism
+congo,Cinnyris congensis,organism
+toros,Isothrix,organism
+nightjar,Caprimulgidae,organism
+cockroach,Periplaneta,organism
+pioneer,Belenois aurota,organism
+fisher,Martes pennanti,organism
+rifleman,Acanthisitta chloris,organism
+beira,Dorcatragus megalotis,organism
+donkey,Equus asinus,organism
+teak,Tectona,organism
+tomato,Lycopersicum esculentum,organism
+miners,Geositta,organism
+lime,Tilia,organism
+plumbago,Plumbago,organism
+plum,Prunus domestica,organism
+pelican,Pelecanus,organism
+partridge,Perdix perdix,organism
+klipspringer,Oreotragus oreotragus,organism
+birds,Aves,organism
+flicker,Colaptes,organism
+calabash,Crescentia cujete,organism
+gemsbok,Oryx gazella,organism
+arrowhead,Sagittaria cuneata,organism
+tortoiseshell,Nymphalis,organism
+melon,Cucurbitaceae,organism
+stork,Ciconia,organism
+flamingo,Phoenicopterus,organism
+jacana,Jacanidae,organism
+teal,Anas crecca,organism
+onion,Allium cepa,organism
+sandpiper,Calidris,organism
+avocet,Recurvirostra,organism
+francolin,Francolinus,organism
+wildebeest,Connochaetes,organism
+breda,Breda,organism
+bully,Sideroxylon,organism
+banjo,Aspredo aspredo,organism
+cinnamon,Cinnamomum,organism
+coyote,Canis latrans,organism
+coot,Fulica,organism
+tarantula,Theraphosidae,organism
+cobra,Naja,organism
+roundhead,Plesiopidae,organism
+impala,Aepyceros melampus,organism
+windmill,Allionia,organism
+kinglet,Regulus,organism
+baobab,Adansonia,organism
+mink,Neovison,organism
+heather,Calluna vulgaris,organism
+gorse,Ulex europaeus,organism
+tit,Paridae,organism
+duffer,Faunis,organism
+basil,Ocimum,organism
+clove,Syzygium aromaticum,organism
+matchwood,Schefflera morototoni,organism
+cactus,Cactaceae,organism
+gibbon,Hylobatidae,organism
+columbine,Aquilegia,organism
+sharpshooter,Proconiini,organism
+millet,Panicoideae,organism
+apricot,Prunus armeniaca,organism
+geranium,Pelargonium,organism
+herring,Herklotsichthys,organism
+glassy,Ambassis,organism
+fig,Ficus,organism
+hoopoe,Upupa epops,organism
+sunflower,Helianthus annuus,organism
+scorpion,Scorpiones,organism
+wormwood,Artemisia absinthium,organism
+grasshopper,Acrididae,organism
+bumper,Chloroscombrus,organism
+edith,Nesophontes edithae,organism
+sesame,Sesamum (ICBN),organism
+caraway,Carum carvi,organism
+harebell,Mertensia maritima,organism
+trembler,Cinclocerthia,organism
+crab,Pthirus,organism
+barley,Hordeum,organism
+buttercup,Ranunculus,organism
+lavender,Lavandula angustifolia,organism
+asparagus,Asparagus,organism
+hazel,Corylus,organism
+dipper,Cinclidae,organism
+oyster,Ostreidae,organism
+meerkat,Suricata suricatta suricatta,organism
+beak,Bilateria,body
+cicada,Cicadidae,organism
+damsel,Pomachromis richardsoni,organism
+thrasher,Toxostoma,organism
+banyan,Ficus benghalensis,organism
+citron,Citrus medica,organism
+bulbul,Pycnonotus,organism
+sable,Martes zibellina,organism
+lotus,Nelumbo,organism
+sycamore,Acer pseudoplatanus,organism
+cherry,Prunus,organism
+sorghum,Sorghum bicolor,organism
+beet,Beta vulgaris,organism
+sedge,Scirpus,organism
+sole,Paraplagusia,organism
+etc,Psoroptidia,organism
+lentil,Lens culinaris,organism
+morula,Sclerocarya birrea,organism
+mouse,Mus,organism
+mammal,Mammalia,organism
+cucumber,Cucumis sativus,organism
+pumpkin,Cucurbita,organism
+squash,Lagenaria,organism
+termite,Isoptera,organism
+bullfrog,Lithobates catesbeiana,organism
+mangrove,Conocarpus,organism
+buzzard,Buteo,organism
+puma,Puma concolor,organism
+dewdrop,Leucojum vernum,organism
+marula,Sclerocarya birrea,organism
+alligators,Alligatoridae,organism
+amanita,Amanita,organism
+bullfinch,Pyrrhula,organism
+bulrush,Typha orientalis,organism
+wheatear,Oenanthe (Muscicapidae),organism
+rook,Corvus frugilegus,organism
+jackdaw,Coloeus,organism
+birch,Betula,organism
+bulldog,Marcusenius macrolepidotus,organism
+cuttlefish,Sepia,organism
+tamarisk,Tamarix,organism
+toad,Bufo,organism
+mackerel,Scombridae,organism
+hyacinth,Hyacinthus,organism
+grouse,Lagopus,organism
+banksia,Banksia,organism
+emu,Dromaius novaehollandiae novaehollandiae,organism
+minnow,Xenopoecilus,organism
+thrift,Armeria maritima,organism
+foxglove,Digitalis,organism
+carnation,Dianthus caryophyllus,organism
+loon,Gavia,organism
+garibaldi,Stegastinae,organism
+nettle,Urtica,organism
+turnip,Brassica rapa,organism
+harrier,Circus,organism
+booby,Sula,organism
+bunting,Emberiza,organism
+viper,Viperidae,organism
+hop,Humulus lupulus,organism
+stubble,Calicium,organism
+boa,Boidae,organism
+tansy,Tanacetum vulgare,organism
+beetroot,Beta vulgaris,organism
+angelica,Angelica,organism
+chard,Beta vulgaris,organism
+dill,Anethum,organism
+otter,Lutra,organism
+holly,Ilex,organism
+mistletoe,Phoradendron,organism
+coney,Cephalopholis fulva,organism
+gimlet,Eucalyptus salubris,organism
+pine,Pinus,organism
+sorrel,Rumex,organism
+barberry,Berberis,organism
+pug,Eupithecia,organism
+hollyhock,Alcea,organism
+singleton,Una,organism
+comma,Polygonia c-album,organism
+mammoth,Mammuthus,organism
+nance,Byrsonima crassifolia,organism
+alpaca,Vicugna pacos,organism
+cockleshell,Lecideaceae,organism
+friars,Atherina,organism
+mendoza,Mendoza,organism
+zuniga,Zuniga,organism
+toro,Isothrix,organism
+courser,Cursorius,organism
+padilla,Padilla,organism
+mitre,Mitrinae,organism
+palms,Arecaceae,organism
+mulberry,Morus (Moraceae),organism
+melic,Melica,organism
+beaver,Castor,organism
+calamus,Acorus calamus,organism
+shad,Alosa,organism
+spruce,Picea,organism
+wren,Xenicus,organism
+demoiselle,Chromis dispila,organism
+woodpecker,Picidae,organism
+allen,Bassaricyon alleni,organism
+molly,Poecilia gillii,organism
+garlic,Allium,organism
+savory,Satureja,organism
+goldenrod,Solidago virgaurea,organism
+aster,Symphyotrichum,organism
+pansy,Junonia,organism
+truffle,Tuber,organism
+canvasback,Aythya valisineria,organism
+peanut,Arachis hypogaea,organism
+hemp,Cannabis sativa,organism
+skate,Bathyraja,organism
+yate,Eucalyptus cornuta,organism
+hai,Sesbania tomentosa,organism
+oat,Avena sativa,organism
+rye,Secale cereale,organism
+gar,Lepisosteidae,organism
+timothy,Phleum,organism
+raja,Charaxes,organism
+parakeet,Enicognathus ferrugineus,organism
+cockatoo,Cacatuidae,organism
+nighthawk,Chordeiles,organism
+coconut,Cocos,organism
+ringlet,Aphantopus hyperantus,organism
+faun,Faunis,organism
+breadfruit,Artocarpus,organism
+sugarcane,Saccharum,organism
+catfish,Pterobunocephalus,organism
+barbel,Barbus barbus,organism
+ramp,Allium tricoccum,organism
+tick,Ixodida,organism
+shrimp,Caridea,organism
+barb,Laubuca,organism
+gregory,Stegastinae,organism
+dragonfly,Anisoptera,organism
+gladiator,Mantophasmatidae,organism
+stilt,Himantopus,organism
+ginger,Zingiber officinale,organism
+eggplant,Solanum melongena,organism
+talon,Amniota,body
+jellyfish,Scyphozoa,organism
+butternut,Juglans cinerea,organism
+pawpaw,Asimina,organism
+anchovy,Stolephorus,organism
+ironwood,Olneya tesota,organism
+benzoin,Styrax benzoin,organism
+grapevine,Vitis,organism
+wildcat,Felis silvestris,organism
+lorikeet,Trichoglossus,organism
+jester,Symbrenthia,organism
+boxwood,Buxus sempervirens,organism
+siren,Hestina persimilis,organism
+samphire,Crithmum maritimum,organism
+pasha,Herona marathus,organism
+palmetto,Sabal,organism
+osprey,Pandion,organism
+pennant,Celithemis,organism
+burros,Pomadasys,organism
+burro,Pomadasys,organism
+moccasin,Agkistrodon,organism
+wader,Charadrii,organism
+moose,Alces americanus,organism
+moccasins,Agkistrodon,organism
+fitch,Mustela putorius,organism
+pennyroyal,Mentha pulegium,organism
+flies,Diptera,organism
+balsam,Myroxylon,organism
+flapjack,Kalanchoe thyrsiflora,organism
+buckwheat,Fagopyrum,organism
+nutmeg,Myristica fragrans,organism
+florida,Roystonea regia,organism
+watermelon,Citrullus lanatus,organism
+holywood,Guaiacum sanctum,organism
+chaffinch,Fringillinae,organism
+hawthorn,Rhaphiolepis,organism
+daisy,Bellis,organism
+merlin,Falco columbarius,organism
+sleepers,Eleotridae,organism
+cockle,Cardiidae,organism
+redbreast,Papilio (Menelaides) alcmenor,organism
+peony,Paeonia,organism
+swan,Labiostrombus epidromis,organism
+cowslip,Primula veris,organism
+juniper,Juniperus,organism
+brimstone,Gonepteryx rhamni,organism
+bonito,Sarda,organism
+llama,Lama glama,organism
+senorita,Oxyjulis californica,organism
+cornflower,Centaurea cyanus,organism
+biddy,Cordulegastridae,organism
+mourners,Rhytipterna,organism
+poppy,Papaver,organism
+daffodil,Narcissus,organism
+amaranth,Amaranthus,organism
+cypress,Chamaecyparis,organism
+silvery,Autographa gamma,organism
+elfin,Callophrys,organism
+rosemary,Rosmarinus officinalis,organism
+ruff,Gymnocephalus cernua,organism
+haddock,Melanogrammus aeglefinus,organism
+wisteria,Wisteria,organism
+grapefruit,Citrus paradisi,organism
+cory,Corydoras,organism
+bumblebee,Bombus ardens,organism
+turtle,Testudines,organism
+peppermint,Mentha × piperita,organism
+marshmallow,Althaea officinalis,organism
+feline,Felinae,organism
+dogwood,Jacksonia scoparia,organism
+chipmunk,Tamias,organism
+bears,Ursidae,organism
+blueberry,Vaccinium myrtillus,organism
+rhubarb,Rheum rhabarbarum,organism
+rowan,Sorbus,organism
+goa,Procapra picticaudata,organism
+henna,Lawsonia inermis,organism
+cisco,Coregonus artedi,organism
+jordan,Karusasaurus jordani,organism
+cicely,Myrrhis odorata,organism
+membrane,Hylaeus,organism
+glowworm,Lampyris,organism
+anthrax,Bacillus anthracis,organism
+virus,Virus,organism
+ormer,Haliotis tuberculata,organism
+silkworm,Bombyx mori,organism
+char,Salvelinus,organism
+brome,Bromus,organism
+jamaica,Aristelliger praesignis praesignis,organism
+dunbar,Cosmia trapezina,organism
+hemlock,Conium maculatum,organism
+brier,Erica arborea,organism
+pomfret,Pampus,organism
+tench,Tinca tinca,organism
+willet,Tringa semipalmata,organism
+saratoga,Scleropages leichardti,organism
+elk,Alces alces,organism
+speedwell,Veronica,organism
+whiting,Merlangius merlangus,organism
+gentian,Gentiana,organism
+cougar,Puma concolor,organism
+petunia,Petunia × atkinsiana,organism
+goldfish,Carassius auratus,organism
+rosewood,Vauquelinia,organism
+scallop,Pectinidae,organism
+tung,Vernicia,organism
+raccoon,Procyon lotor,organism
+woodchuck,Marmota monax,organism
+insects,Insecta,organism
+plants,Plantae,organism
+animals,Animalia,organism
+tulip,Tulipa,organism
+darter,Anhingidae,organism
+commodores,Junonia,organism
+oleander,Nerium,organism
+conch,Strombus,organism
+shoofly,Caesalpinia decapetala,organism
+takin,Budorcas taxicolor,organism
+fungus,Fungi,organism
+louse,Phthiraptera,organism
+molokai,Moho bishopi,organism
+maui,Myadestes oahensis,organism
+kauai,Moho braccatus,organism
+mullet,Mugil,organism
+pigeons,Columba,organism
+millets,Panicoideae,organism
+sichel,Pelecus cultratus,organism
+chamois,Rupicapra,organism
+yellowhammer,Emberiza citrinella,organism
+croaker,Sciaenidae,organism
+cono,Conophytum,organism
+titus,Cyrilla racemiflora,organism
+chicory,Cichorium intybus,organism
+elderberry,Sambucus,organism
+groundsel,Senecio vulgaris,organism
+walrus,Odobenus rosmarus,organism
+nasturtium,Tropaeolum,organism
+bluebell,Hyacinthoides,organism
+yak,Bos grunniens,organism
+dahlia,Dahlia (Asteraceae),organism
+dormouse,Gliridae,organism
+patchouli,Pogostemon cablin,organism
+cassowary,Casuarius,organism
+primrose,Primula farinosa,organism
+pineapple,Ananas comosus,organism
+horsehair,Bryoria cervinula,organism
+mayfly,Ephemeroptera,organism
+robins,Erithacus,organism
+primavera,Tabebuia donnell-smithii,organism
+sparrows,Ammodramus,organism
+weever,Trachinidae,organism
+blackthorn,Prunus spinosa,organism
+moorhen,Gallinula,organism
+spurge,Euphorbia,organism
+stonechat,Saxicola,organism
+whinchat,Saxicola rubetra,organism
+larch,Larix,organism
+laurustinus,Viburnum tinus,organism
+bluebells,Polemonium reptans,organism
+burnet,Sanguisorba,organism
+mothmullein,Verbascum blattaria,organism
+scabious,Knautia,organism
+pipit,Anthus,organism
+woodlouse,Oniscidea,organism
+hummingbird,Trochilidae,organism
+curlew,Numenius,organism
+greenfinch,Chloris (Cuvier),organism
+sweetpea,Lathyrus odoratus,organism
+lapwing,Vanellus,organism
+tigers,Parantica,organism
+spikenard,Nardostachys grandiflora,organism
+dogs,Canidae,organism
+cockscomb,Rhinanthus minor,organism
+woad,Isatis tinctoria,organism
+trefoil,Lotus,organism
+primate,Primates,organism
+ruffe,Gymnocephalus cernua,organism
+bergamot,Monarda (Lamiaceae),organism
+hortensia,Hydrangea,organism
+snipe,Gallinago,organism
+woodbine,Lonicera periclymenum,organism
+snapdragon,Antirrhinum majus,organism
+nightingales,Luscinia,organism
+eider,Somateria,organism
+reindeer,Rangifer tarandus,organism
+conifer,Pinales,organism
+lobelia,Lobelia,organism
+roach,Rutilus,organism
+butterwort,Pinguicula,organism
+bilberry,Vaccinium myrtillus,organism
+magpies,Pica,organism
+ptarmigan,Lagopus muta,organism
+saxifrage,Saxifraga,organism
+lucerne,Medicago sativa,organism
+barnacle,Balanus,organism
+dory,Pseudocyttus maculatus,organism
+grebe,Podicipedidae,organism
+auk,Alcidae,organism
+petrel,Procellariidae,organism
+cormorant,Phalacrocorax,organism
+woodcock,Scolopax rusticola,organism
+capote,Xanthosoma robustum,organism
+flax,Linum usitatissimum,organism
+mesquite,Prosopis,organism
+blacksnake,Pseudechis,organism
+skunks,Mephitidae,organism
+pimpernel,Anagallis,organism
+snakes,Serpentes,organism
+octopus,Octopus,organism
+privet,Ligustrum,organism
+crocus,Crocus,organism
+dandelion,Taraxacum,organism
+twite,Linaria flavirostris,organism
+marigold,Tagetes,organism
+bluebird,Sialia,organism
+pennants,Celithemis,organism
+hickory,Carya,organism
+katydid,Tettigoniidae,organism
+pandora,Pagellus erythrinus,organism
+partridges,Perdicinae,organism
+inconnu,Stenodus,organism
+morel,Morchella,organism
+prion,Pachyptila,organism
+bavia,Bavia,organism
+divers,Gavia,organism
+roselle,Hibiscus sabdariffa,organism
+yarrow,Achillea millefolium,organism
+wolverine,Gulo gulo,organism
+woodruff,Asperula,organism
+whitefish,Coregonus,organism
+muskrat,Ondatra zibethicus,organism
+sturgeon,Acipenser,organism
+fantail,Rhipidura,organism
+foxes,Vulpes,organism
+racer,Platyceps,organism
+mallow,Malvaceae,organism
+stargazer,Uranoscopus,organism
+rape,Brassica napus,organism
+watercress,Nasturtium officinale,organism
+anaconda,Eunectes murinus,organism
+lemon,Citrus × limon,organism
+meadowsweet,Spiraea cantoniensis,organism
+macaw,Ara,organism
+dodder,Cuscuta epithymum,organism
+ooray,Davidsonia pruriens,organism
+copperhead,Agkistrodon contortrix,organism
+penguin,Megadyptes,organism
+bittersweet,Solanum dulcamara,organism
+campion,Silene (Plantae),organism
+ducks,Anatidae,organism
+redhead,Aythya americana,organism
+begonia,Begonia,organism
+kangaroo,Macropus,organism
+caveman,Homo erectus,organism
+spirea,Spiraea,organism
+chameleon,Chamaeleo,organism
+catnip,Nepeta cataria,organism
+ironweed,Vernonia galamensis,organism
+milkweed,Euphorbia peplus,organism
+hydrangea,Hydrangea,organism
+crawfish,Astacoidea,organism
+horseradish,Armoracia rusticana,organism
+flier,Centrarchus macropterus,organism
+poinsettia,Euphorbia pulcherrima,organism
+scat,Scatophagidae,organism
+radish,Raphanus sativus,organism
+moonflower,Lomelosia stellata,organism
+sarsaparilla,Smilax officinalis,organism
+scabies,Sarcoptes,organism
+aroid,Araceae,organism
+quetzal,Pharomachrus,organism
+sisal,Agave sisalana,organism
+yuca,Manihot esculenta,organism
+guano,Coccothrinax borhidiana,organism
+maguey,Agave deserti,organism
+agave,Agave,organism
+arana,Schoepfia arenaria,organism
+cochineal,Dactylopius coccus,organism
+achiote,Bixa orellana,organism
+comber,Serranus cabrilla,organism
+tinamou,Tinamus,organism
+flycatcher,Myiozetetes,organism
+anise,Pimpinella anisum,organism
+pati,Luciopimelodus pati,organism
+storax,Styrax japonicus,organism
+mallard,Anas platyrhynchos,organism
+gadwall,Anas strepera,organism
+godwit,Limosa,organism
+toucan,Ramphastidae,organism
+motmot,Momotidae,organism
+ani,Crotophaga,organism
+coucal,Centropus,organism
+manakin,Lepidothrix Bonaparte,organism
+tanager,Chlorochrysa,organism
+shrike,Laniidae,organism
+taka,Tacca leontopetaloides,organism
+crossbill,Loxia,organism
+junco,Junco,organism
+chickadee,Paridae,organism
+canis,Canis,organism
+sweetlips,Plectorhinchus,organism
+swallows,Hirundinidae,organism
+bellwort,Uvularia,organism
+periwinkle,Vinca,organism
+vireo,Vireo,organism
+gorilla,Gorilla,organism
+nuthatch,Sitta,organism
+bluejay,Cyanocitta cristata,organism
+redwing,Pterolobium stellatum,organism
+tupelo,Nyssa,organism
+redstart,Phoenicurus,organism
+turtledove,Streptopelia turtur,organism
+dickcissel,Spiza americana,organism
+kingbird,Tyrannus,organism
+phoebe,Sayornis,organism
+tern,Sterna,organism
+snapper,Lutjanidae,organism
+vertebrate,Vertebrata,organism
+dogfish,Centroscyllium,organism
+smilax,Smilax officinalis,organism
+bobolink,Dolichonyx oryzivorus,organism
+manatee,Trichechus,organism
+sola,Aeschynomene aspera,organism
+blackfish,Globicephala,organism
+butterfish,Odax,organism
+sawfish,Pristiformes,organism
+penguins,Megadyptes,organism
+jaguar,Panthera onca onca,organism
+sweeper,Pempheris,organism
+pollock,Pollachius virens,organism
+smiler,Opistognathidae,organism
+hydra,Hydra,organism
+hellebore,Helleborus,organism
+ladybird,Coccinellidae,organism
+bobcat,Lynx rufus,organism
+buckeye,Junonia,organism
+roedeer,Capreolus capreolus,organism
+martins,Hirundinidae,organism
+shiner,Notropis,organism
+kohl,Brassica,organism
+shaddock,Citrus maxima,organism
+grasses,Poaceae,organism
+boneset,Symphytum officinale,organism
+cottonmouth,Agkistrodon piscivorus,organism
+chiton,Polyplacophora,organism
+crabapple,Malus sylvestris,organism
+cantaloupe,Cucumis melo,organism
+opossum,Didelphimorphia,organism
+hawks,Accipitrinae,organism
+filbert,Corylus maxima,organism
+hooligan,Thaleichthys pacificus,organism
+crustacean,Crustacea,organism
+auroch,Bos primigenius,organism
+wrack,Fucus,organism
+rhea,Rheidae,organism
+halfmoon,Scorpidinae,organism
+greasewood,Sarcobatus,organism
+bluebottle,Physalia physalis,organism
+fritillary,Fritillaria meleagris,organism
+dibbler,Parantechinus apicalis,organism
+comfrey,Symphytum,organism
+watermint,Mentha aquatica,organism
+figwort,Scrophularia nodosa,organism
+chub,Squalius cephalus,organism
+parsley,Petroselinum crispum,organism
+cavalla,Caranx,organism
+dromedary,Camelus dromedarius,organism
+elkhorn,Euphorbia lactea,organism
+arrowroot,Tacca,organism
+sharpshooters,Proconiini,organism
+ide,Leuciscus idus,organism
+rails,Rallidae,organism
+buckeyes,Junonia,organism
+dewberry,Rubus caesius,organism
+pelicans,Pelecanus,organism
+nutcracker,Nucifraga,organism
+dulse,Palmaria palmata,organism
+fuentes,Fuentes Peckham,organism
+footballer,Microcanthinae,organism
+footballers,Microcanthinae,organism
+skullcap,Scutellaria,organism
+vanga,Vangidae,organism
+spurfowl,Galloperdix,organism
+catamount,Puma concolor,organism
+mongoose,Herpestidae,organism
+ero,Ero,organism
+fennel,Foeniculum vulgare,organism
+zorilla,Ictonyx striatus,organism
+serin,Serinus,organism
+onofre,Onofre,organism
+megalosaurus,Megalosaurus,organism
+dodo,Raphus cucullatus,organism
+spinach,Spinacia oleracea,organism
+ling,Calluna vulgaris,organism
+jackdaws,Coloeus,organism
+docks,Rumex,organism
+camphor,Cinnamomum,organism
+earwig,Dermaptera,organism
+coltsfoot,Tussilago farfara,organism
+stitchwort,Stellaria,organism
+puffin,Fratercula,organism
+tomtit,Petroica macrocephala,organism
+southernwood,Artemisia abrotanum,organism
+sumac,Rhus,organism
+celery,Apium,organism
+nuda,Nuda,organism
+weld,Reseda luteola,organism
+grisons,Galictis,organism
+herrings,Herklotsichthys,organism
+rodent,Rodentia,organism
+asp,Aspius aspius,organism
+chimpanzee,Pan,organism
+frogs,Anura,organism
+fauns,Faunis,organism
+lemur,Lemuroidea,organism
+discus,Symphysodon (Cichlidae),organism
+vetch,Anthyllis,organism
+seaeagle,Haliaeetus,organism
+healall,Prunella vulgaris,organism
+marlin,Tetrapturus,organism
+runners,Elagatis,organism
+carps,Carassius,organism
+starlings,Sturnus,organism
+pouting,Trisopterus luscus,organism
+medlar,Crataegus germanica,organism
+canaries,Serinus,organism
+mantis,Mantodea,organism
+ocelot,Leopardus pardalis,organism
+mangel,Beta vulgaris,organism
+corncrake,Crex crex,organism
+tapeworm,Cestoda,organism
+nutmegs,Myristica,organism
+nonesuch,Medicago lupulina,organism
+islay,Prunus ilicifolia,organism
+bogue,Boops boops,organism
+balsa,Ochroma pyramidale,organism
+variable,Cinnyris venustus,organism
+turkeys,Meleagridinae,organism
+wintergreen,Pyrola,organism
+spearmint,Mentha spicata,organism
+melons,Cucurbitaceae,organism
+taro,Colocasia esculenta,organism
+kauri,Agathis (ICBN),organism
+totara,Podocarpus totara,organism
+pewee,Contopus,organism
+puriri,Vitex lucens,organism
+pecan,Carya illinoinensis,organism
+whelk,Buccinum,organism
+storks,Ciconiiformes,organism
+burdock,Arctium,organism
+cowbird,Molothrus,organism
+beetles,Coleoptera,organism
+pansies,Junonia,organism
+bivalve,Bivalvia,organism
+oysters,Ostreidae,organism
+weakfish,Cynoscion,organism
+flounder,Pseudorhombus,organism
+toadfish,Batrachomoeus,organism
+sculpin,Cottus,organism
+flagroot,Acorus calamus,organism
+alewife,Alosa pseudoharengus,organism
+chickweed,Stellaria,organism
+gannet,Morus (Sulidae),organism
+linnets,Linaria (Animalia),organism
+scads,Alepes,organism
+mosses,Bryophyta,organism
+pigs,Suidae,organism
+cistus,Cistus,organism
+papaya,Carica papaya,organism
+elephants,Proboscidea,organism
+lamprey,Ichthyomyzon,organism
+nautilus,Nautilus,organism
+amphibian,Lissamphibia,organism
+franciscana,Pontoporia blainvillei,organism
+zona,Bedotia geayi,organism
+cachalot,Physeter macrocephalus,organism
+dinosaur,Dinosauria,organism
+marma,Marma,organism
+brooklime,Veronica beccabunga,organism
+cinquefoil,Potentilla,organism
+honeybee,Apis,organism
+lilies,Lilium,organism
+fumitory,Fumaria,organism
+chimaphila,Chimaphila,organism
+bedstraw,Galium,organism
+bellflower,Portlandia grandiflora,organism
+tapegrass,Vallisneria spiralis,organism
+orchids,Orchidaceae,organism
+mandrake,Mandragora officinarum,organism
+cassava,Manihot esculenta,organism
+statice,Limonium,organism
+pignut,Simmondsia chinensis,organism
+ceanothus,Ceanothus,organism
+chervil,Anthriscus,organism
+hogweed,Heracleum,organism
+clarkia,Clarkia,organism
+mullein,Verbascum densiflorum,organism
+horsechestnut,Aesculus hippocastanum,organism
+jesters,Symbrenthia,organism
+vicuna,Vicugna vicugna,organism
+coca,Erythroxylum coca,organism
+armadillo,Cingulata,organism
+rhino,Rhinoceros,organism
+lizards,Sauria,organism
+tijuca,Tijuca,organism
+cobras,Naja,organism
+henbane,Hyoscyamus niger,organism
+puya,Puya chilensis,organism
+coleus,Plectranthus scutellarioides,organism
+grig,Prophalangopsidae,organism
+cyclamen,Cyclamen,organism
+dionysia,Dionysia,organism
+oxeye,Buphthalmum salicifolium,organism
+mistflower,Ageratina riparia,organism
+teasel,Dipsacus,organism
+gulls,Larinae,organism
+godetia,Clarkia,organism
+muskmelon,Cucumis melo,organism
+beata,Beata,organism
+halibut,Hippoglossus,organism
+cunner,Tautogolabrus brandaonis,organism
+freshwater,Corbicula,organism
+snakeweed,Bistorta officinalis,organism
+grasshoppers,Acrididae,organism
+fieldfare,Turdus pilaris,organism
+woodlark,Lullula arborea,organism
+impatiens,Impatiens walleriana,organism
+taran,Rutilus caspicus,organism
+goggler,Selar,organism
+nard,Nardostachys grandiflora,organism
+weevil,Curculionoidea,organism
+popple,Populus tremuloides,organism
+schizanthus,Schizanthus,organism
+anu,Tropaeolum tuberosum,organism
+whelks,Buccinum,organism
+snooks,Centropomus,organism
+tra,Puntius tra,organism
+turmeric,Curcuma longa,organism
+charlock,Sinapis arvensis,organism
+caribou,Rangifer tarandus,organism
+turbot,Scophthalmus maximus,organism
+avocado,Persea americana,organism
+santonica,Seriphidium cinum,organism
+stoat,Mustela erminea,organism
+roundheads,Plesiopidae,organism
+darnel,Lolium temulentum,organism
+wagtail,Motacilla,organism
+tur,Capra caucasica,organism
+ballyhoo,Hemiramphus brasiliensis,organism
+marmoset,Callithrix,organism
+pashas,Charaxes,organism
+oha,Delissea subcordata,organism
+galgal,Gundelia tournefortii,organism
+madder,Rubia,organism
+sweetbriar,Rosa rubiginosa,organism
+flickers,Colaptes,organism
+tarpon,Megalops,organism
+siskin,Spinus,organism
+frangipani,Plumeria,organism
+blackhawk,Buteogallus,organism
+gambier,Uncaria,organism
+crayfish,Astacoidea,organism
+devilfish,Mobula mobular,organism
+kapok,Bombax ceiba,organism
+ahuru,Auchenoceros punctatus,organism
+myna,Gracula,organism
+pipefish,Syngnathidae,organism
+pompano,Trachinotus ovatus,organism
+camphorwood,Cinnamomum camphora,organism
+manini,Acanthurus triostegus,organism
+narwhal,Monodon monoceros,organism
+shearwater,Procellariidae,organism
+gudgeon,Gobio gobio,organism
+grunter,Pomadasys,organism
+crummock,Sium sisarum,organism
+cleaver,Galium aparine,organism
+jordans,Karusasaurus jordani,organism
+candytuft,Iberis,organism
+dimorphanthus,Aralia chinensis,organism
+osmanthus,Osmanthus,organism
+skimmia,Skimmia laureola,organism
+viburnum,Viburnum,organism
+auricula,Primula × pubescens,organism
+montbretia,Tritonia crocata,organism
+okra,Abelmoschus esculentus,organism
+chinquapin,Castanopsis,organism
+walkingstick,Phasmatidae,organism
+fossa,Cryptoprocta ferox,organism
+rajahs,Charaxes,organism
+chokecherry,Prunus virginiana,organism
+flapjacks,Kalanchoe thyrsiflora,organism
+cocklebur,Xanthium,organism
+sirens,Siren,organism
+capelin,Mallotus villosus,organism
+algarrobo,Prosopis chilensis,organism
+fuente,Fuentes Peckham,organism
+esparto,Stipa tenacissima,organism
+branchy,Gasterosteus wheatlandi,organism
+keck,Heracleum sphondylium,organism
+mammals,Mammalia,organism
+reptiles,Reptilia,organism
+fallowdeer,Dama dama,organism
+sunfish,Tetraodontiformes,organism
+walleye,Sander vitreus vitreus,organism
+alfalfa,Medicago sativa,organism
+butterbur,Petasites,organism
+bloater,Coregonus hoyi,organism
+balsams,Impatiens,organism
+hemlocks,Tsuga,organism
+scallops,Pectinidae,organism
+thrushes,Turdidae,organism
+allspice,Pimenta dioica,organism
+legume,Fabaceae,organism
+skimmer,Rynchopidae,organism
+grigs,Prophalangopsidae,organism
+allens,Bassaricyon alleni,organism
+maga,Thespesia grandiflora,organism
+topi,Damaliscus korrigum,organism
+stickleback,Gasterosteidae,organism
+chia,Salvia columbariae,organism
+flatheads,Rogadius,organism
+llamas,Lama,organism
+millipede,Diplopoda,organism
+pitahaya,Hylocereus undatus,organism
+ladino,Trifolium repens,organism
+tapir,Tapirus,organism
+coua,Coua,organism
+bream,Chilotilapia rhoadesii,organism
+snook,Centropomus,organism
+cranes,Grus,organism
+tiro,Skiffia francesae,organism
+guttapercha,Palaquium,organism
+gudgeons,Squalidus,organism
+greenbrier,Smilax aspera,organism
+crickets,Gryllidae,organism
+laver,Ulva,organism
+ito,Hucho perryi,organism
+echidna,Tachyglossidae,organism
+ragbag,Platismatia glauca,organism
+bats,Chiroptera,organism
+poinciana,Caesalpinia pulcherrima,organism
+hookworm,Ancylostoma,organism
+mojarras,Eucinostomus,organism
+quinoa,Chenopodium quinoa,organism
+sangai,Rucervus eldii eldii,organism
+costero,Sotalia guianensis,organism
+guanaco,Lama guanicoe,organism
+coati,Nasua,organism
+guarana,Paullinia cupana,organism
+finner,Balaenoptera physalus,organism
+witchhazel,Hamamelis,organism
+mero,Epinephelus,organism
+tras,Puntius tras,organism
+dingo,Canis lupus dingo,organism
+loquat,Eriobotrya japonica,organism
+waratah,Telopea,organism
+koala,Phascolarctos cinereus,organism
+boab,Adansonia gregori,organism
+bullseye,Pempheris,organism
+blackbutt,Eucalyptus pilularis,organism
+waders,Charadrii,organism
+galah,Eolophus roseicapilla,organism
+mopoke,Ninox novaeseelandiae novaeseelandiae,organism
+staghorn,Platycerium,organism
+veery,Catharus fuscescens,organism
+redpoll,Acanthis,organism
+mistlethrush,Turdus viscivorus viscivorus,organism
+gyrfalcon,Falco rusticolus,organism
+squeaker,Euchilichthys,organism
+gurnard,Pterygotrigla (Pterygotrigla),organism
+gibbons,Hylobatidae,organism
+olona,Touchardia latifolia,organism
+toads,Bufo,organism
+weavers,Ploceidae,organism
+jays,Cyanocorax,organism
+beaks,Libythea,organism
+shrikes,Lanius,organism
+flounders,Psettodes erumei,organism
+duckweed,Wolffia,organism
+rabbits,Lagomorpha,organism
+geese,Anserinae,organism
+coriander,Coriandrum sativum,organism
+cockles,Cardiidae,organism
+grayling,Hipparchia semele,organism
+vipers,Viperidae,organism
+brill,Scophthalmus rhombus,organism
+groper,Achoerodus,organism
+saltbush,Atriplex halimus,organism
+alexanders,Smyrnium olusatrum,organism
+housefly,Musca domestica,organism
+buzzards,Buteo,organism
+swordfish,Xiphias gladius,organism
+porpoises,Phocoenidae,organism
+groundhog,Marmota monax,organism
+simson,Senecio vulgaris,organism
+stonecrop,Sedum,organism
+ferns,Polypodiopsida,organism
+tyria,Tyria jacobaeae,organism
+terebinth,Pistacia terebinthus,organism
+acha,Digitaria exilis,organism
+crocodiles,Crocodylinae,organism
+gladiators,Mantophasmatidae,organism
+brassy,Kyphosus vaigiensis,organism
+marmot,Marmota,organism
+mice,Muridae,organism
+moa,Dinornithidae,organism
+mollusc,Mollusca,organism
+remora,Echeneidae,organism
+peccary,Tayassuidae,organism
+squid,Teuthida,organism
+crowberry,Empetrum nigrum,organism
+sundance,Gaillardia pulchella,organism
+sorrels,Rumex,organism
+mangold,Beta vulgaris,organism
+wapiti,Cervus canadensis,organism
+aniseed,Pimpinella anisum,organism
+camels,Camelidae,organism
+lucanus,Lucanus,organism
+moundbuilder,Megapodiidae,organism
+whiteoak,Quercus alba,organism
+oxheart,Annona reticulata,organism
+lovage,Levisticum officinale,organism
+hawfinch,Coccothraustes coccothraustes,organism
+rays,Rajomorphii,organism
+nara,Acanthosicyos,organism
+trumpets,Acleisanthes,organism
+munia,Lonchura,organism
+nibbler,Girellinae,organism
+sprites,Arielulus,organism
+ragweed,Senecio aureus,organism
+germander,Teucrium,organism
+foxgloves,Digitalis,organism
+fireflies,Lampyridae,organism
+lysiteles,Lysiteles,organism
+lysitele,Lysiteles,organism
+pusley,Portulaca oleracea,organism
+pineapples,Ananas,organism
+lemonwood,Xymalos monospora,organism
+corkwood,Duboisia myoporoides,organism
+oxlip,Primula elatior,organism
+sweepers,Pempheris,organism
+kiang,Equus kiang,organism
+mooseberry,Viburnum edule,organism
+saskatoon,Amelanchier,organism
+boas,Boidae,organism
+glider,Petauridae,organism
+damsels,Dischistodus,organism
+hornets,Vespa,organism
+grison,Galictis,organism
+termites,Isoptera,organism
+wasps,Hymenoptera,organism
+leeches,Hirudinea,organism
+demoiselles,Neopomacentrus,organism
+nere,Parkia biglobosa,organism
+greenhead,Morone saxatilis,organism
+maybush,Spiraea cantoniensis,organism
+tumbleweed,Kali (Amaranthaceae),organism
+cattail,Typha,organism
+gastropod,Gastropoda,organism
+eyebright,Euphrasia officinalis,organism
+agrimony,Agrimonia eupatoria,organism
+harriers,Circus,organism
+gaur,Bos gaurus,organism
+purslane,Portulaca,organism
+hexapod,Hexapoda,organism
+fryingpan,Eschscholzia lobbii,organism
+endive,Cichorium endivia,organism
+parsnip,Pastinaca,organism
+killdeer,Charadrius vociferus,organism
+haa,Antidesma platyphyllum,organism
+kala,Rubus hawaiensis,organism
+tarpan,Equus ferus ferus,organism
+whitebeam,Sorbus,organism
+sainfoin,Onobrychis viciifolia,organism
+bryony,Bryonia,organism
+monkshood,Aconitum ferox,organism
+kestrel,Falco tinnunculus,organism
+kittiwake,Rissa,organism
+capercaillie,Tetrao,organism
+pembina,Viburnum edule,organism
+blackfoot,Melampodium,organism
+chars,Salvelinus,organism
+karoo,Pedioplanis laticeps,organism
+carambola,Averrhoa carambola,organism
+paha,Sicyos pachycarpus,organism
+zebu,Bos indicus,organism
+cheetah,Acinonyx jubatus,organism
+chough,Pyrrhocorax pyrrhocorax,organism
+horsefly,Tabanidae,organism
+houseleek,Sempervivum,organism
+chamomile,Anthemis,organism
+brassica,Brassica,organism
+redshank,Persicaria maculosa,organism
+sugi,Cryptomeria (Cupressaceae),organism
+fuki,Petasites japonicus,organism
+sanderling,Calidris alba,organism
+gobo,Arctium lappa,organism
+hardhack,Spiraea tomentosa,organism
+cavy,Cavia intermedia,organism
+jamal,Rhinecanthus aculeatus,organism
+duffers,Faunis,organism
+eucalypt,Eucalyptus,organism
+tegus,Tupinambis,organism
+cumin,Cuminum cyminum,organism
+cubeb,Piper cubeba,organism
+hackberry,Celtis,organism
+leatherwood,Cyrilla racemiflora,organism
+singletons,Una,organism
+champac,Magnolia champaca,organism
+tusca,Vachellia macracantha,organism
+charr,Salvelinus,organism
+tarragon,Artemisia dracunculus,organism
+chive,Allium angulosum,organism
+cardoon,Cynara cardunculus,organism
+beakhead,Sphenodon punctatus,organism
+angelfish,Enoplosus,organism
+triggerfish,Balistidae,organism
+barracuda,Sphyraena,organism
+naseberry,Pouteria sapota,organism
+hamster,Cricetinae,organism
+tomatillo,Physalis philadelphica,organism
+moonie,Monodactylus,organism
+stingray,Dasyatidae,organism
+oregano,Origanum vulgare,organism
+katsura,Cercidiphyllum,organism
+wasabi,Wasabia japonica,organism
+neanderthal,Homo neanderthalensis,organism
+ginkgo,Ginkgophyta,organism
+cardamom,Elettaria cardamomum,organism
+neem,Azadirachta indica,organism
+sweetpotato,Ipomoea batatas,organism
+soybean,Glycine max,organism
+piranha,Serrasalmus,organism
+suzuki,Lateolabrax japonicus,organism
+threefold,Trixis,organism
+kanna,Sceletium tortuosum,organism
+wiregrass,Ventenata,organism
+waterlily,Nymphaeaceae,organism
+cep,Boletus edulis,organism
+cassina,Ilex vomitoria,organism
+beargrass,Xerophyllum tenax,organism
+anacondas,Eunectes,organism
+firebug,Pyrrhocoris apterus,organism
+liverwort,Anemone hepatica,organism
+pompom,Ptilotus manglesii,organism
+skates,Bathyraja,organism
+spiderwort,Tradescantia ohiensis,organism
+consound,Symphytum officinale,organism
+betony,Stachys,organism
+bugloss,Anchusa arvensis,organism
+bladderwort,Utricularia bifida,organism
+crucifer,Brassicaceae,organism
+soapwort,Gypsophila,organism
+catmint,Nepeta cataria,organism
+seakale,Crambe maritima,organism
+featherfoil,Hottonia palustris,organism
+burmarigold,Bidens tripartita,organism
+spearwort,Ranunculus flammula,organism
+pepperwort,Lepidium latifolium,organism
+toadflax,Linaria,organism
+hawkweed,Hieracium,organism
+horehound,Marrubium,organism
+mayweed,Tripleurospermum,organism
+ramson,Allium ursinum,organism
+goutweed,Aegopodium podagraria,organism
+bindweed,Calystegia,organism
+milkwort,Polygala,organism
+dropwort,Filipendula vulgaris,organism
+silverweed,Potentilla anserina,organism
+rampion,Phyteuma,organism
+twayblade,Neottia ovata,organism
+tutsan,Hypericum androsaemum,organism
+buckthorn,Rhamnus cathartica,organism
+vetchling,Lathyrus,organism
+centaury,Sabatia campestris,organism
+fleabane,Erigeron chrysopsidis,organism
+madwort,Alyssum montanum,organism
+tormentil,Potentilla erecta,organism
+agaricus,Agaricus,organism
+cudweed,Galium triflorum,organism
+orpine,Hylotelephium telephium,organism
+spurrey,Spergula,organism
+knawel,Scleranthus,organism
+moschatel,Adoxa moschatellina,organism
+sundew,Drosera,organism
+umbellifer,Apiaceae,organism
+sandwort,Moehringia,organism
+avens,Geum,organism
+cloudberry,Rubus chamaemorus,organism
+lungwort,Pulmonaria officinalis,organism
+alkanet,Anchusa officinalis,organism
+baneberry,Actaea spicata,organism
+toothwort,Lathraea squamaria,organism
+cowbane,Cicuta virosa,organism
+bistort,Bistorta,organism
+muskmallow,Malva moschata,organism
+spearfish,Tetrapturus,organism
+pochard,Aythya ferina,organism
+broomsedge,Andropogon,organism
+flatfish,Pleuronectiformes,organism
+meadowlark,Sturnella,organism
+bluefish,Pomatomus saltatrix,organism
+yulan,Magnolia denudata,organism
+tamandua,Tamandua,organism
+bisnaga,Ammi visnaga,organism
+beluga,Delphinapterus leucas,organism
+malbrouck,Chlorocebus cynosuros,organism
+chickenpox,Echinocereus reichenbachii,organism
+bedbug,Cimex lectularius,organism
+manzanitas,Arctostaphylos,organism
+hummingbirds,Trochilidae,organism
+polypody,Polypodium,organism
+weevils,Curculionoidea,organism
+earthworms,Lumbricina,organism
+guineafowl,Hamanumida daedalus,organism
+stinkwood,Jacksonia sternbergiana,organism
+huchen,Hucho hucho,organism
+gerardia,Stenandrium,organism
+ratan,Calamus (Arecaceae),organism
+mackenzy,Falsistrellus mackenziei,organism
+tui,Prosthemadera novaeseelandiae novaeseelandiae,organism
+martens,Martes,organism
+kohls,Brassica,organism
+ainus,Artocarpus hirsutus,organism
+flathead,Rogadius,organism
+brocket,Mazama,organism
+horsetail,Hippuris vulgaris,organism
+fireweed,Chamerion angustifolium,organism
+thimbleberry,Rubus parviflorus,organism
+orca,Orcinus orca,organism
+snakeroot,Sanicula arctopoides,organism
+steelhead,Oncorhynchus mykiss,organism
+kea,Nestor notabilis,organism
+araucaria,Araucaria,organism
+cliver,Galium aparine,organism
+jujube,Ziziphus nummularia,organism
+paride,Pharmacophagus,organism
+sora,Porzana carolina,organism
+sander,Sander lucioperca,organism
+bilby,Macrotis,organism
+mallee,Eucalyptus,organism
+yabby,Cherax destructor,organism
+beefwood,Casuarinaceae,organism
+coolibah,Eucalyptus victrix,organism
+marsupial,Marsupialia,organism
+alala,Corvus hawaiiensis,organism
+slimy,Leiognathidae,organism
+raptor,Accipitridae,organism
+tetra,Characidae,organism
+cockatoos,Cacatuidae,organism
+auri,Acacia auriculiformis,organism
+mackerels,Scombridae,organism
+hilsa,Tenualosa,organism
+croakers,Sciaenidae,organism
+talapoin,Miopithecus,organism
+cephalopod,Cephalopoda,organism
+puffer,Tetraodontiformes,organism
+barnswallow,Hirundo rustica,organism
+blenny,Parablennius,organism
+margay,Leopardus wiedii,organism
+jerboa,Dipodidae,organism
+onager,Equus hemionus,organism
+shrimps,Pandalus,organism
+capybara,Hydrochoerus hydrochaeris,organism
+platypus,Ornithorhynchus,organism
+dugong,Dugong dugon,organism
+glowworms,Lampyris,organism
+packrat,Neotoma cinerea,organism
+dippers,Cinclidae,organism
+peafowl,Pavo,organism
+cuckoos,Cuculidae,organism
+silverside,Alestes baremoze,organism
+streber,Zingel,organism
+thuja,Thuja,organism
+striped,Nucras tessellata,organism
+cetacean,Cetacea,organism
+protozoa,Protista,organism
+thicklips,Hemigymnus,organism
+hardhead,Aythya australis,organism
+brigalow,Acacia harpophylla,organism
+gumtree,Sapium glandulosum,organism
+stringybark,Eucalyptus oblonga,organism
+yellowwood,Cladrastis,organism
+nonus,Morinda citrifolia,organism
+echinoderm,Echinodermata,organism
+amphioxus,Branchiostoma lanceolatum,organism
+aphid,Aphidoidea,organism
+ifrit,Ifrita kowaldi,organism
+brinjal,Solanum melongena,organism
+gharial,Gavialis,organism
+chira,Chira,organism
+tusitala,Tusitala,organism
+woodsias,Woodsia (Woodsiaceae),organism
+woodsia,Woodsia (Woodsiaceae),organism
+deathadder,Acanthophis,organism
+hooknose,Agonus cataphractus,organism
+foxtail,Setaria,organism
+bluebush,Dysphania ambrosioides,organism
+chickpea,Cicer arietinum,organism
+seahorse,Hippocampus,organism
+treefrog,Leptopelis,organism
+woodlice,Isopoda,organism
+titi,Cyrilla racemiflora,organism
+sergeantmajor,Abudefduf saxatilis,organism
+perilla,Perilla (Araneae),organism
+lancehead,Bothrops,organism
+rolypoly,Oniscidea,organism
+congereel,Bathycongrus parviporus,organism
+woodanemone,Anemone quinquefolia,organism
+sneezewort,Achillea ptarmica,organism
+yellowtail,Ptilotus nobilis,organism
+ragwort,Jacobaea,organism
+rockfish,Morone saxatilis,organism
+budgerigar,Melopsittacus undulatus,organism
+nipplewort,Lapsana communis,organism
+hawkbit,Leontodon,organism
+medick,Medicago,organism
+mahseer,Neolissochilus,organism
+gipsywort,Lycopus europaeus,organism
+durian,Durio zibethinus,organism
+escuerzo,Odontophrynus,organism
+aji,Capsicum baccatum,organism
+jaybird,Garrulus,organism
+citrus,Citrus,organism
+paua,Haliotis,organism
+aurochs,Bos primigenius,organism
+annelid,Annelida,organism
+manicou,Didelphis marsupialis,organism
+graine,Annona chrysophylla,organism
+macaque,Macaca,organism
+cranesbill,Geranium,organism
+wryneck,Jynx,organism
+pennycress,Thlaspi,organism
+catchfly,Silene (Plantae),organism
+starwort,Stellaria,organism
+circaea,Circaea,organism
+pennywort,Anemone hepatica,organism
+sanicle,Sanicula,organism
+mugwort,Tanacetum vulgare,organism
+crosswort,Cruciata laevipes,organism
+yellowwort,Blackstonia,organism
+bogbean,Menyanthes trifoliata,organism
+moneywort,Sibthorpia,organism
+motherwort,Leonurus cardiaca,organism
+echium,Echium,organism
+broomrape,Orobanche,organism
+nepeta,Nepeta,organism
+goosefoot,Chenopodium,organism
+knotgrass,Koenigia,organism
+reedmace,Typha domingensis,organism
+tamus,Tamus,organism
+bogrush,Schoenus calostachyus,organism
+fescue,Vulpia,organism
+woodthrush,Hylocichla mustelina,organism
+brownthrasher,Toxostoma rufum,organism
+bloodroot,Sanguinaria canadensis,organism
+thrips,Thysanoptera,organism
+mossrose,Portulaca oleracea,organism
+bluebonnet,Northiella haematogaster,organism
+sweetwilliam,Dianthus barbatus,organism
+eightyeight,Diaethria,organism
+kinnikinnick,Arctostaphylos uva-ursi,organism
+dittany,Lepidium latifolium,organism
+ammonite,Ammonoidea,organism
+euphonia,Euphonia,organism
+mackenzies,Falsistrellus mackenziei,organism
+hamlets,Hypoplectrus,organism
+charcoalburner,Russula cyanoxantha,organism
+hoarhound,Marrubium,organism
+swans,Anserinae,organism
+cucurbit,Cucurbitaceae,organism
+scorpions,Scorpiones,organism
+woold,Reseda luteola,organism
+protist,Protista,organism
+costmary,Tanacetum balsamita,organism
+kadam,Neolamarckia,organism
+amniote,Amniota,organism
+tulsi,Ocimum tenuiflorum,organism
+bluewing,Torenia fournieri,organism
+sparkleberry,Vaccinium arboreum,organism
+fulmar,Fulmarus glacialis,organism
+isopod,Isopoda,organism
+ciruela,Spondias purpurea,organism
+negrito,Lessonia rufa,organism
+ipil,Intsia bijuga,organism
+mudfish,Clarias anguillaris,organism
+mabolo,Diospyros blancoi,organism
+candlenut,Aleurites moluccana,organism
+treefern,Cyatheales,organism
+maile,Alyxia stellata,organism
+ohelo,Vaccinium dentatum,organism
+mamane,Sophora chrysophylla,organism
+passionflower,Passiflora,organism
+sowthistle,Sonchus,organism
+silversword,Argyroxiphium,organism
+mamo,Drepanis,organism
+guppy,Poecilia reticulata,organism
+sweetlip,Plectorhinchus,organism
+gunnel,Pholis gunnellus,organism
+sheat,Silurus glanis,organism
+loons,Gavia,organism
+weasels,Mustela,organism
+rattlesnakes,Crotalus,organism
+moosewood,Viburnum lantanoides,organism
+woodpeckers,Veniliornis,organism
+mezereon,Daphne mezereum,organism
+mitchella,Mitchella (Rubiaceae),organism
+sugarbush,Rhus ovata,organism
+katydids,Tettigoniidae,organism
+gerkin,Cucumis,organism
+pythons,Python,organism
+kiyi,Coregonus kiyi,organism
+chaffinches,Fringillinae,organism
+bullies,Eleotridae,organism
+cormorants,Phalacrocorax,organism
+swifts,Apodidae,organism
+imbu,Spondias tuberosa,organism
+figs,Ficus,organism
+stertinius,Stertinius,organism
+bumpers,Chloroscombrus,organism
+coursers,Cursorius,organism
+trumpeters,Latridae,organism
+ants,Formicidae,organism
+finback,Balaenoptera physalus,organism
+bryozoan,Bryozoa,organism
+capucin,Bostrichus capucinus,organism
+cuckoopint,Arum maculatum,organism
+rosebuds,Cercis,organism
+cicadas,Cicadomorpha,organism
+albacore,Thunnus,organism
+chenet,Meliococcus bijugatus,organism
+jackpine,Pinus banksiana,organism
+abalone,Haliotis tuberculata,organism
+sweetgrass,Hierochloe,organism
+encina,Quercus oleoides,organism
+adders,Bitis,organism
+diadems,Hypolimnas,organism
+bumblebees,Bombini,organism
+silvertail,Ptilotus obovatus,organism
+sipo,Chironius carinatus carinatus,organism
+heaths,Erica (Ericaceae),organism
+majoram,Origanum,organism
+stapelia,Stapelia,organism
+geraniums,Geranium,organism
+waterweed,Elodea,organism
+waterflag,Iris pseudacorus,organism
+bluegum,Eucalyptus globulus,organism
+flamingos,Phoenicopteridae,organism
+copey,Clusia major,organism
+zamia,Macrozamia riedlei,organism
+legumes,Fabaceae,organism
+tautog,Tautoga onitis,organism
+camas,Camassia quamash,organism
+cama,Camassia quamash,organism
+bearberry,Arctostaphylos uva-ursi,organism
+peppergrass,Lepidium latifolium,organism
+tody,Todus,organism
+negritos,Lessonia Swainson,organism
+rhamphorhynchus,Rhamphorhynchus (Rhamphorhynchidae),organism
+abaca,Musa textilis,organism
+waianae,Schiedea obovata,organism
+allgood,Blitum bonus-henricus,organism
+spatterdock,Nuphar advena,organism
+pipewort,Eriocaulon,organism
+junebug,Cotinis nitida,organism
+guar,Cyamopsis tetragonoloba,organism
+pokeweed,Phytolacca,organism
+christmastree,Nuytsia floribunda,organism
+postoak,Quercus stellata,organism
+skirret,Sium sisarum,organism
+keyaki,Zelkova serrata,organism
+datepalm,Phoenix dactylifera,organism
+cassowaries,Casuarius,organism
+tarwood,Ceratopetalum apetalum,organism
+chives,Allium angulosum,organism
+burbot,Lota lota,organism
+razorbill,Alca torda,organism
+windmills,Allionia,organism
+cassena,Ilex cassine,organism
+dragonflies,Anisoptera,organism
+ironwort,Sideritis,organism
+ladybug,Coccinellidae,organism
+eelgrass,Vallisneria spiralis,organism
+dragonet,Callionymidae,organism
+jacamar,Galbulidae,organism
+stonepine,Pinus pinea,organism
+soloman,Homo erectus soloensis,organism
+chigger,Trombiculidae,organism
+garfish,Belone belone,organism
+livingstones,Lithops,organism
+raccoons,Procyon,organism
+petrels,Procellariidae,organism
+milkweeds,Asclepias,organism
+merganser,Mergus,organism
+foxsparrow,Passerella,organism
+bowhead,Balaena,organism
+rorquals,Balaenoptera,organism
+meadowgrass,Poa,organism
+screechowl,Megascops,organism
+pandoras,Cycliophora,organism
+sandbur,Cenchrus,organism
+guineapig,Cavia porcellus,organism
+seseli,Seseli,organism
+styrax,Styrax benzoin,organism
+selloum,Philodendron bipinnatifidum,organism
+shanny,Lipophrys pholis,organism
+dogrose,Rosa canina,organism
+orangutan,Pongo,organism
+crustaceans,Crustacea,organism
+mandi,Synodontis schall,organism
+watermelons,Citrullus,organism
+jacksnipe,Lymnocryptes minimus,organism
+ephedra,Ephedra,organism
+snowberry,Gaultheria hispida,organism
+grouper,Epinephelinae,organism
+rosepink,Sabatia angularis,organism
+reedgrass,Calamagrostis,organism
+kinglets,Regulus,organism
+blackcherry,Prunus serotina,organism
+durra,Sorghum bicolor,organism
+spiders,Araneae,organism
+currawong,Strepera,organism
+takahe,Porphyrio mantelli,organism
+botfly,Oestridae,organism
+roadrunner,Geococcyx,organism
+tremblers,Cinclocerthia,organism
+golddust,Aurinia saxatilis,organism
+razorback,Balaenoptera physalus,organism
+geebung,Persoonia,organism
+soursop,Annona muricata,organism
+cholla,Cylindropuntia,organism
+waxwing,Bombycilla,organism
+airplant,Kalanchoe pinnata,organism
+bearcat,Ailurus fulgens,organism
+snowplant,Sarcodes sanguinea,organism
+snowbush,Breynia disticha,organism
+shags,Phalacrocoracidae,organism
+piha,Lipaugus,organism
+finches,Sicalis,organism
+stockdove,Columba oenas,organism
+mandrill,Mandrillus sphinx,organism
+mocambo,Theobroma bicolor,organism
+flasher,Paracheilinus walton,organism
+gecko,Tarentola,organism
+camelthorn,Vachellia erioloba,organism
+bontebok,Damaliscus pygargus,organism
+rhinoceroses,Rhinocerotidae,organism
+chinaroot,Smilax glabra,organism
+cacti,Cactaceae,organism
+bromeliad,Bromeliaceae,organism
+cockscombs,Celosia,organism
+macrothele,Macrothele,organism
+vestia,Vestia foetida,organism
+quenda,Isoodon obesulus,organism
+fenugreek,Trigonella,organism
+quails,Perdicinae,organism
+blackspruce,Picea mariana,organism
+supplejack,Ventilago viminalis,organism
+albatrosses,Diomedeidae,organism
+eelpout,Lota lota,organism
+bluetit,Cyanistes caeruleus caeruleus,organism
+mao,Gossypium tomentosum,organism
+skink,Leiolopisma,organism
+simian,Simiiformes,organism
+whipsnake,Hierophis,organism
+hyrax,Procaviidae,organism
+safflower,Carthamus tinctorius,organism
+warrah,Dusicyon australis,organism
+salsify,Tragopogon porrifolius,organism
+seaanemone,Octophellia,organism
+corktree,Sonneratia caseolaris,organism
+songsparrow,Melospiza melodia,organism
+ladyfern,Athyrium,organism
+corncockle,Agrostemma githago,organism
+pitchpine,Pinus rigida,organism
+arrach,Chenopodium vulvaria,organism
+kerer,Hemiphaga novaeseelandiae,organism
+sandgrouse,Pteroclididae,organism
+zilla,Zilla (Araneae),organism
+stinkhorn,Phallaceae,organism
+anthia,Anthiinae,organism
+boggabri,Dysphania pumilio,organism
+merkel,Morchella,organism
+thornscrub,Gyalopion quadrangulare,organism
+auks,Alcidae,organism
+numbat,Myrmecobius fasciatus,organism
+eryngo,Eryngium agavifolium,organism
+milfoil,Achillea millefolium,organism
+blackbuck,Antilope cervicapra,organism
+snowcap,Microchera albocoronata,organism
+speargrass,Aciphylla colensoi,organism
+ringtail,Bassariscus astutus,organism
+cashew,Anacardium occidentale,organism
+boga,Inermia,organism
+goldcrest,Regulus regulus,organism
+roker,Raja clavata,organism
+pinkroot,Spigelia,organism
+sicarius,Sicarius (Araneae),organism
+mugga,Eucalyptus sideroxylon,organism
+dilsk,Palmaria palmata,organism
+goby,Gobiidae,organism
+malagasy,Monticolomys koopmani,organism
+nematode,Oncholaimida,organism
+bananas,Musaceae,organism
+sedges,Scirpus,organism
+pinesap,Monotropa hypopitys,organism
+melolontha,Melolontha,organism
+primates,Primates,organism
+bullsnake,Pituophis catenifer sayi,organism
+channa,Sceletium tortuosum,organism
+snipes,Gallinago,organism
+potho,Epipremnum aureum,organism
+loach,Botiidae,organism
+pellitory,Parietaria,organism
+hairstreak,Theclinae,organism
+skypilot,Polemonium eximium,organism
+honeysweet,Tidestromia,organism
+chipmunks,Tamias,organism
+otters,Lutrinae,organism
+hyenas,Hyaeninae,organism
+bluecap,Ifrita kowaldi,organism
+chank,Turbinella pyrum,organism
+torpedoes,Torpedo,organism
+nibblers,Girellinae,organism
+groundnut,Conopodium majus,organism
+lyrebird,Menura,organism
+fliers,Centrarchus,organism
+eruca,Eruca sativa,organism
+kingfishers,Alcedinidae,organism
+tits,Paridae,organism
+wrens,Odontorchilus,organism
+pitta,Pittidae,organism
+absinthium,Artemisia absinthium,organism
+terciopelo,Bothrops asper,organism
+mollymawk,Thalassarche,organism
+loaches,Botiidae,organism
+spath,Spathiphyllum,organism
+scammony,Convolvulus scammonia,organism
+koura,Paranephrops,organism
+osha,Ligusticum porteri,organism
+kowari,Dasyuroides byrnei,organism
+arar,Tetraclinis articulata,organism
+coffeebean,Sesbania emerus,organism
+kites,Milvus,organism
+sunbird,Nectariniinae,organism
+serviceberry,Amelanchier,organism
+scoter,Melanitta,organism
+perches,Percinae,organism
+indri,Indri indri,organism
+ursulas,Cinnyris ursulae,organism
+kumquat,Citrus japonica,organism
+iceplant,Mesembryanthemum crystallinum,organism
+ocotillo,Fouquieria splendens,organism
+tardigrade,Tardigrada,organism
+lapwings,Vanellinae,organism
+drongo,Dicrurus,organism
+restharrow,Ononis,organism
+gregories,Stegastinae,organism
+sapsucker,Sphyrapicus,organism
+natta,Natta,organism
+mamey,Mammea americana,organism
+sweetpeas,Lathyrus,organism
+tejocote,Crataegus pubescens,organism
+goldthread,Coptis,organism
+groundpine,Ajuga chamaepitys,organism
+pomfrets,Bramidae,organism
+tullibee,Coregonus artedi,organism
+honeycup,Zenobia pulverulenta,organism
+rapeseed,Brassica napus,organism
+foxgrape,Vitis vulpina,organism
+mamon,Meliococcus bijugatus,organism
+simians,Simiiformes,organism
+waterbuck,Kobus ellipsiprymnus,organism
+bael,Aegle (Rutaceae),organism
+boomslang,Dispholidus typus typus,organism
+buchu,Agathosma betulina,organism
+markhor,Capra falconeri,organism
+locoweed,Astragalus berterianus,organism
+mescal,Agave deserti,organism
+ambatch,Aeschynomene elaphroxylon,organism
+anteater,Vermilingua,organism
+masterwort,Peucedanum ostruthium,organism
+bateleur,Terathopius ecaudatus,organism
+sipos,Chironius,organism
+wapato,Sagittaria cuneata,organism
+blowfly,Calliphoridae,organism
+ironbark,Eucalyptus indurata,organism
+gamebird,Galliformes,organism
+yellowthroat,Geothlypis,organism
+tawa,Beilschmiedia tawa,organism
+aardvark,Orycteropus afer,organism
+steenbok,Raphicerus campestris,organism
+gobies,Cotylopus,organism
+quackgrass,Elymus repens,organism
+cycad,Cycadophyta,organism
+woodmouse,Apodemus sylvaticus,organism
+whimbrel,Numenius phaeopus,organism
+shads,Alosinae,organism
+bloodworm,Glycera,organism
+fritillaries,Argynnini,organism
+tortoiseshells,Nymphalis,organism
+reedbuck,Redunca,organism
+guaya,Meliococcus bijugatus,organism
+brachiopod,Brachiopoda,organism
+powderpuff,Mimosa strigillosa,organism
+minivet,Pericrocotus,organism
+suni,Neotragus moschatus,organism
+rapa,Brassica napus,organism
+percher,Libellula,organism
+sapodilla,Manilkara zapota,organism
+chinkara,Gazella bennettii,organism
+nilgai,Boselaphus tragocamelus,organism
+chital,Axis axis,organism
+guelderrose,Viburnum opulus,organism
+bufflehead,Bucephala albeola,organism
+sponges,Porifera,organism
+scaup,Aythya,organism
+diatom,Bacillariophyceae,organism
+anhinga,Anhinga anhinga,organism
+chickadees,Paridae,organism
+woodnymph,Cercyonis,organism
+mitres,Mitrinae,organism
+cleavers,Galium aparine,organism
+turtlehead,Chelonopsis,organism
+goosegrass,Galium aparine,organism
+catbells,Baptisia perfoliata,organism
+catbell,Baptisia perfoliata,organism
+mouflon,Ovis orientalis,organism
+oysterplant,Tragopogon porrifolius,organism
+argali,Ovis ammon,organism
+uakari,Cacajao,organism
+loofah,Luffa,organism
+karee,Rhus lancea,organism
+chromis,Chromis planesi,organism
+saltwort,Batis (Bataceae),organism
+kingfish,Lampris guttatus,organism
+wineberry,Aristotelia serrata,organism
+sika,Cervus nippon,organism
+coypu,Myocastor coypus,organism
+mudturtle,Kinosternon,organism
+taimen,Hucho taimen,organism
+saxaul,Haloxylon ammodendron,organism
+wahoo,Acanthocybium solandri,organism
+tardigrades,Tardigrada,organism
+saury,Saurida,organism
+tinamous,Tinamiformes,organism
+morepork,Ninox novaeseelandiae novaeseelandiae,organism
+kiwi,Apteryx,organism
+kahikatea,Dacrycarpus dacrydioides,organism
+monotreme,Monotremata,organism
+orthrus,Orthrus,organism
+phlegra,Phlegra,organism
+hogfish,Lachnolaimus maximus,organism
+heatherbell,Erica cinerea,organism
+wolfsbane,Aconitum vulparia,organism
+peyote,Lophophora williamsii,organism
+curlyhead,Clematis coactilis,organism
+oarfish,Regalecidae,organism
+diatoms,Bacillariophyceae,organism
+paddlefish,Polyodon spathula,organism
+sailfish,Istiophorus,organism
+goosefish,Lophiidae,organism
+crows,Euploea,organism
+flyingfish,Exocoetidae,organism
+huemul,Hippocamelus bisulcus,organism
+jarrah,Eucalyptus marginata,organism
+terns,Sterninae,organism
+jackfruit,Artocarpus heterophyllus,organism
+wrymouth,Cryptacanthodidae,organism
+puku,Kobus vardonii,organism
+gerenuk,Litocranius walleri,organism
+chevrotain,Tragulidae,organism
+ostriches,Struthio,organism
+addax,Addax nasomaculatus,organism
+wattles,Acacia,organism
+bamboos,Bambusoideae,organism
+harvestman,Opiliones,organism
+elephantfish,Callorhinchus callorynchus,organism
+parrotfish,Sparisoma griseorubrum,organism
+sheoak,Casuarinaceae,organism
+matweed,Amaranthus blitoides,organism
+sealion,Zalophus,organism
+orangetip,Anthocharis cardamines,organism
+spleenwort,Asplenium cuneifolium,organism
+seagrass,Limnobium,organism
+gwyniad,Coregonus pennantii,organism
+fluellin,Kickxia,organism
+yaupon,Ilex vomitoria,organism
+cupa,Cupa,organism
+waitabit,Caesalpinia decapetala,organism
+araucarian,Araucariaceae,organism
+pugs,Eupithecia,organism
+moonvine,Ipomoea alba,organism
+twinflower,Linnaea borealis,organism
+longbill,Toxorhamphus,organism
+pacu,Piaractus mesopotamicus,organism
+seacow,Sirenia,organism
+rattlebox,Sesbania punicea,organism
+crosne,Stachys affinis,organism
+caperspurge,Euphorbia lathyris,organism
+bunchberry,Cornus suecica,organism
+lychee,Litchi chinensis,organism
+alpenrose,Rhododendron ferrugineum,organism
+vetches,Anthyllis,organism
+cowpea,Vigna unguiculata,organism
+disa,Puntius disa,organism
+stilts,Himantopus,organism
+willowherb,Epilobium,organism
+guenon,Cercopithecus,organism
+dillisk,Palmaria palmata,organism
+wrass,Wetmorella,organism
+cravo,Lampris guttatus,organism
+brahmi,Bacopa monnieri,organism
+sargo,Diplodus sargus,organism
+kelk,Sinapis arvensis,organism
+woodwren,Henicorhina,organism
+coaltit,Periparus ater,organism
+nightjars,Uropsalis,organism
+frogbit,Hydrocharis morsus-ranae,organism
+dunlin,Calidris alpina,organism
+sticky,Diplacus aurantiacus,organism
+spiketail,Cordulegastridae,organism
+sady,Sadies,organism
+arthropod,Arthropoda,organism
+redwings,Pterolobium,organism
+blackcurrant,Ribes nigrum,organism
+lechwe,Kobus leche,organism
+smartweed,Persicaria,organism
+buttonbush,Cephalanthus occidentalis,organism
+grebes,Podicipedidae,organism
+goldenseal,Hydrastis canadensis,organism
+wormseed,Dysphania anthelmintica,organism
+coneflower,Rudbeckia (Asteraceae),organism
+ladybirds,Coccinellidae,organism
+pronghorn,Antilocapra americana,organism
+muntjac,Muntiacus,organism
+goldeye,Hiodon alosoides,organism
+mayflies,Ephemeroptera,organism
+kamu,Carex uncinata,organism
+ryegrass,Lolium,organism
+lycosa,Lycosa,organism
+teff,Eragrostis tef,organism
+kantuffa,Pterolobium stellatum,organism
+tapirs,Tapiridae,organism
+pigweed,Polygonum aviculare,organism
+garpike,Lepisosteidae,organism
+greenlets,Pachysylvia,organism
+moundbuilders,Megapodiidae,organism
+becard,Pachyramphus,organism
+loganberry,Rubus loganobaccus,organism
+pondweed,Potamogeton,organism
+breadtree,Encephalartos,organism
+lampreys,Petromyzontiformes,organism
+crabgrass,Digitaria (Poaceae),organism
+forgetmenot,Myosotis,organism
+hakka,Hakka,organism
+amphibians,Lissamphibia,organism
+kawau,Zanthoxylum dipetalum,organism
+pangolin,Manis,organism
+colocolo,Leopardus colocolo,organism
+quebracho,Schinopsis balansae,organism
+alerce,Fitzroya cupressoides,organism
+wandoo,Eucalyptus wandoo,organism
+karri,Eucalyptus diversicolor,organism
+tuart,Eucalyptus gomphocephala,organism
+sheoaks,Allocasuarina,organism
+copepod,Copepoda,organism
+badis,Badis badis,organism
+bullfrogs,Sphaerotheca (Ranidae),organism
+prickleback,Stichaeidae,organism
+bunya,Araucaria bidwillii,organism
+cypresspine,Callitris,organism
+labiate,Lamiaceae,organism
+acmena,Syzygium smithii,organism
+tyrannosaurus,Tyrannosaurus,organism
+kiskadee,Pitangus,organism
+redshanks,Adenostoma sparsifolium,organism
+goosander,Mergus merganser,organism
+brambling,Fringilla montifringilla,organism
+greenfinches,Chloris (Cuvier),organism
+whitebark,Eucalyptus apodophylla,organism
+woodfern,Dryopteris,organism
+treetoad,Hylodes,organism
+birdwing,Ornithoptera,organism
+octopuses,Octopoda,organism
+gurnards,Pterygotrigla (Pterygotrigla),organism
+serval,Leptailurus serval,organism
+potto,Perodicticus potto,organism
+kookaburra,Dacelo,organism
+sloths,Folivora,organism
+arborvitae,Thuja,organism
+beachplum,Prunus maritima,organism
+ediths,Nesophontes edithae,organism
+pitviper,Crotalinae,organism
+tarbush,Eremophila glabra,organism
+curara,Acacia tetragonophylla,organism
+mountaingoat,Oreamnos americanus,organism
+mountainlion,Puma concolor,organism
+passengerpigeon,Ectopistes migratorius,organism
+buffalograss,Stenotaphrum secundatum,organism
+bacterium,Bacteria,organism
+muskrose,Rosa moschata,organism
+buckbrush,Ceanothus cuneatus,organism
+zander,Sander lucioperca,organism
+thylacine,Thylacinus cynocephalus,organism
+raptors,Accipitridae,organism
+biddies,Cordulegastridae,organism
+dunnock,Prunella modularis,organism
+sundews,Drosera,organism
+bushmaster,Lachesis,organism
+woodrail,Canirallus,organism
+beachgrass,Ammophila (Poaceae),organism
+jand,Prosopis cineraria,organism
+harmal,Peganum harmala,organism
+crucifers,Brassicaceae,organism
+dhaman,Ptyas mucosa,organism
+androsace,Androsace,organism
+lousewort,Pedicularis sylvatica,organism
+hogdeer,Axis porcinus,organism
+rohu,Labeo rohita,organism
+bharal,Pseudois nayaur,organism
+goral,Naemorhedus goral,organism
+serow,Capricornis,organism
+barasingha,Cervus duvaucelii,organism
+fonio,Digitaria exilis,organism
+scad,Priacanthus hamrur,organism
+silverfish,Ctenolepisma quadriseriata,organism
+rimu,Dacrydium cupressinum,organism
+nikau,Rhopalostylis sapida,organism
+kiekie,Freycinetia banksii,organism
+mahoe,Talipariti tiliaceum,organism
+toetoe,Austroderia,organism
+weka,Gallirallus australis,organism
+cocksfoot,Dactylis,organism
+kitfox,Vulpes macrotis,organism
+accentor,Prunella (ICZN),organism
+bellbird,Procnias,organism
+turnstone,Arenaria (Scolopacidae),organism
+bullant,Myrmecia,organism
+winterhazel,Corylopsis,organism
+salmonberry,Rubus chamaemorus,organism
+yareta,Azorella compacta,organism
+shiners,Notropis,organism
+capibara,Hydrochoerus hydrochaeris,organism
+chiffchaff,Phylloscopus collybita,organism
+siskins,Spinus,organism
+flycatchers,Leptopogon,organism
+buntings,Emberizidae,organism
+scoters,Melanitta,organism
+bullfinches,Pyrrhula,organism
+moorhens,Gallinula,organism
+shearwaters,Procellariidae,organism
+godwits,Limosa,organism
+swallowwort,Vincetoxicum,organism
+lignumvita,Guaiacum sanctum,organism
+goldeneye,Viguiera,organism
+watercock,Gallicrex cinerea,organism
+pilea,Pilea,organism
+santamaria,Vernonia albicaulis,organism
+oolichan,Thaleichthys pacificus,organism
+salal,Gaultheria shallon,organism
+centipedes,Chilopoda,organism
+sawfishes,Pristidae,organism
+khella,Ammi visnaga,organism
+kiwis,Apterygiformes,organism
+vertebrates,Vertebrata,organism
+arachnid,Arachnida,organism
+crocodilian,Crocodylomorpha,organism
+wildboar,Sus scrofa,organism
+goatfish,Pseudupeneus,organism
+axolotl,Ambystoma mexicanum,organism
+hagfish,Hyperotreti,organism
+spadefish,Chaetodipterus,organism
+oarweed,Laminaria hyperborea,organism
+eulachon,Thaleichthys pacificus,organism
+testudinaria,Testudinaria,organism
+chuckwalla,Sauromalus,organism
+dovekie,Alle alle,organism
+caecilians,Caeciliidae,organism
+caecilian,Caeciliidae,organism
+waxberry,Symphoricarpos,organism
+tawari,Ixerbaceae,organism
+screamers,Anhimidae,organism
+lancelet,Branchiostoma lanceolatum,organism
+filefish,Monacanthidae,organism
+tilefish,Lopholatilus chamaeleonticeps,organism
+clingfish,Gobiesocidae,organism
+hogfishes,Bodianus,organism
+monkfish,Lophiidae,organism
+trunkfishes,Ostracion,organism
+chordate,Chordata,organism
+tunicate,Tunicata,organism
+tunicates,Tunicata,organism
+ascidiacea,Ascidiacea,organism
+lancelets,Cephalochordata,organism
+hagfishes,Myxinidae,organism
+cladoselache,Cladoselache,organism
+bichir,Polypterus bichir lapradei,organism
+bowfin,Amia calva,organism
+threadfin,Polynemidae,organism
+cavefish,Amblyopsidae,organism
+ladyfish,Elops saurus,organism
+numbfish,Typhlonarke tarakea,organism
+lumpfish,Cyclopterus lumpus,organism
+ayu,Plecoglossus altivelis altivelis,organism
+surmullet,Mullus surmuletus,organism
+moonfish,Lampris guttatus,organism
+opah,Lampris guttatus,organism
+trunkfish,Ostracion,organism
+hybodus,Hybodus,organism
+helicoprion,Helicoprion,organism
+serranidae,Serranidae,organism
+rosefish,Sebastes norvegicus,organism
+gnathostomata,Gnathostomata (Vertebrata),organism
+killifish,Aplocheilidae,organism
+bonefish,Albula vulpes,organism
+cottidae,Cottidae,organism
+mooneye,Hiodon tergisus,organism
+characin,Alestes dentex,organism
+gregarine,Gregarinasina,organism
+flatworm,Platyhelminthes,organism
+cetaceans,Cetacea,organism
+acanthopterygii,Acanthopterygii,organism
+wrasse,Thalassoma nigrofasciatum,organism
+hemichordata,Hemichordata,organism
+chordates,Chordata,organism
+agnatha,Agnatha,organism
+conodont,Conodonta,organism
+porbeagle,Lamna nasus,organism
+megalodon,Otodus (Megaselachus) megalodon,organism
+sawshark,Pristiophoriformes,organism
+ratfish,Chimaera monstrosa,organism
+holostei,Holostei,organism
+aini,Artocarpus hirsutus,organism
+brackens,Pteridium,organism
+seaslug,Nudibranchia,organism
+marsupials,Marsupialia,organism
+bitterroot,Lewisia rediviva,organism
+siler,Siler (Simon),organism
+navelwort,Umbilicus rupestris,organism
+ivybush,Kalmia latifolia,organism
+glasswort,Salicornia,organism
+redroot,Ceanothus velutinus,organism
+pumpkinseed,Lepomis gibbosus,organism
+racers,Platyceps,organism
+crinoid,Articulata (Crinoidea),organism
+garganey,Anas querquedula,organism
+smew,Mergellus albellus,organism
+bulbuls,Pycnonotidae,organism
+damiana,Turnera calyptrocarpa,organism
+pehuen,Araucaria araucana,organism
+ergane,Ergane,organism
+crottle,Parmelia saxatilis,organism
+beets,Beta (Betoideae),organism
+pipistrelle,Eptesicus (Rhinopterus),organism
+pronous,Pronous,organism
+warthog,Phacochoerus africanus,organism
+broomcorn,Sorghum bicolor,organism
+watersnake,Nerodia,organism
+scampi,Nephrops norvegicus,organism
+redthroat,Pyrrholaemus brunneus,organism
+grasstree,Xanthorrhoea,organism
+gumarabic,Senegalia senegal,organism
+shoebill,Balaeniceps rex,organism
+oia,Oia,organism
+orach,Atriplex,organism
+pogge,Agonus cataphractus,organism
+soapberry,Sapindus,organism
+minnows,Xenopoecilus,organism
+pomelo,Citrus maxima,organism
+woodrat,Neotoma cinerea,organism
+kakapo,Strigops habroptila,organism
+ovenbird,Seiurus aurocapilla,organism
+shorelark,Eremophila alpestris flava,organism
+crappie,Pomoxis,organism
+zucchini,Cucurbita pepo,organism
+woodswallow,Artamus,organism
+deadnettle,Lamium,organism
+mamoncillo,Meliococcus bijugatus,organism
+groundsquirrel,Marmotini,organism
+masoa,Tacca leontopetaloides,organism
+caerulean,Jamides,organism
+kaira,Kaira,organism
+elfins,Callophrys,organism
+wildbean,Phaseolus,organism
+oleaster,Elaeagnus angustifolia,organism
+longspur,Calcarius,organism
+nailwort,Paronychia,organism
+birdweed,Polygonum aviculare,organism
+cowwheat,Melampyrum,organism
+marimo,Aegagropila linnaei,organism
+rambai,Baccaurea motleyana,organism
+ooligan,Thaleichthys pacificus,organism
+pollan,Coregonus pollan,organism
+phainopepla,Phainopepla nitens,organism
+towhee,Pipilo,organism
+greenlet,Pachysylvia,organism
+tanagers,Chlorochrysa,organism
+epigaea,Epigaea,organism
+greensnake,Opheodrys,organism
+hutia,Capromyidae,organism
+nudibranch,Nudibranchia,organism
+protophyta,Protista,organism
+echinoderms,Echinodermata,organism
+roundworm,Ascaris lumbricoides,organism
+hexapods,Hexapoda,organism
+tetragnatha,Tetragnatha,organism
+spiderling,Boerhavia,organism
+gastropods,Gastropoda,organism
+pulmonata,Pulmonata,organism
+cephalopods,Cephalopoda,organism
+octopi,Octopoda,organism
+hellbender,Cryptobranchus alleganiensis,organism
+monotremes,Monotremata,organism
+stoneworts,Charales,organism
+darters,Etheostomatinae,organism
+rheas,Rheidae,organism
+springtail,Collembola,organism
+ptarmigans,Lagopus,organism
+maqui,Aristotelia chilensis,organism
+kowhai,Sophora microphylla,organism
+snakehead,Channidae,organism
+plainmartin,Riparia paludicola,organism
+tinderwood,Volkameria glabra,organism
+sawfly,Symphyta,organism
+squeakers,Euchilichthys,organism
+liferoot,Senecio aureus,organism
+sourwood,Oxydendrum arboreum,organism
+arky,Arkys,organism
+mangelwurzel,Beta vulgaris,organism
+mallows,Malvaceae,organism
+pirai,Piaractus mesopotamicus,organism
+cotinga,Xipholena,organism
+paramecium,Paramecium,organism
+singa,Singa,organism
+whiteweed,Ageratum,organism
+sandlark,Calandrella raytal,organism
+kima,Kima,organism
+doubleheader,Coris bulbifrons,organism
+tarsier,Tarsiidae,organism
+potoo,Nyctibius,organism
+sweetfern,Comptonia,organism
+yerbabuena,Satureja douglasii,organism
+horseweed,Conyza,organism
+horsemint,Monarda punctata,organism
+sheatfish,Silurus glanis,organism
+snowbunting,Plectrophenax nivalis,organism
+sandsnake,Chilomeniscus,organism
+markery,Blitum bonus-henricus,organism
+snappingturtle,Chelydridae,organism
+marang,Artocarpus odoratissimus,organism
+cudbear,Ochrolechia,organism
+sowbug,Isopoda,organism
+alehoof,Glechoma hederacea,organism
+witchgrass,Panicum capillare,organism
+hairstreaks,Theclinae,organism
+holmoak,Quercus ilex,organism
+blueboy,Stirlingia,organism
+wagneriana,Wagneriana,organism
+cocoatree,Theobroma cacao,organism
+woodsorrel,Oxyria digyna,organism
+nighthawks,Chordeiles,organism
+warmouth,Lepomis gulosus,organism
+gartersnake,Thamnophis,organism
+skimmers,Rynchopidae,organism
+snappers,Lutjanus,organism
+parvu,Kalanchoe pinnata,organism
+pika,Ochotonidae,organism
+spidermonkey,Ateles,organism
+marshmarigold,Caltha palustris,organism
+brockets,Mazama,organism
+saurel,Trachurus,organism
+dibatag,Ammodorcas clarkei,organism
+haddocks,Melanogrammus,organism
+sention,Senecio vulgaris,organism
+snouts,Libythea,organism
+asarabacca,Asarum europaeum,organism
+bugbane,Trautvetteria,organism
+anil,Indigofera suffruticosa,organism
+stonefly,Plecoptera,organism
+salema,Sarpa salpa,organism
+chachalaca,Ortalis,organism
+chowchilla,Orthonyx spaldingii,organism
+lignumvitae,Guaiacum sanctum,organism
+peccaries,Tayassuidae,organism
+fireblight,Erwinia amylovora,organism
+cottonbush,Maireana aphylla,organism
+ackee,Blighia sapida,organism
+pichi,Zaedyus pichiy,organism
+catarrhini,Catarrhini,organism
+blackgum,Eucalyptus aggregata,organism
+chinaberry,Melia azedarach,organism
+peatmoss,Sphagnum,organism
+knotweed,Koenigia,organism
+catbrier,Smilax aspera,organism
+saiya,Amoreuxia gonzalezii,organism
+turpeth,Operculina turpethum,organism
+coachwhip,Masticophis flagellum,organism
+mossberry,Empetrum nigrum,organism
+chayote,Sechium edule,organism
+birthwort,Aristolochia,organism
+noni,Morinda citrifolia,organism
+heathers,Erica (Ericaceae),organism
+housewren,Troglodytes aedon,organism
+peppertree,Schinus,organism
+asperita,Asperitas,organism
+redthorn,Acacia gerrardii,organism
+pothos,Epipremnum aureum,organism
+wildcherry,Prunus avium,organism
+kinkajou,Potos flavus,organism
+chinaaster,Callistephus chinensis,organism
+bullich,Eucalyptus megacarpa,organism
+stonewort,Nitella,organism
+waterdock,Rumex verticillatus,organism
+tuliptree,Liriodendron tulipifera,organism
+trahira,Hoplias malabaricus,organism
+archaea,Archaea,organism
+snowbell,Styrax,organism
+fishercat,Martes pennanti,organism
+petronia,Petronia,organism
+tmarus,Tmarus,organism
+browntitus,Callicebus brunneus,organism
+jocote,Spondias purpurea,organism
+bluedevil,Eryngium ovinum,organism
+sagina,Sagina apetala,organism
+biara,Rhaphiodon vulpinus,organism
+sunberry,Solanum retroflexum,organism
+dolphinfish,Coryphaenidae,organism
+winterapple,Eremophila debilis,organism
+pikas,Ochotona,organism
+rosechafer,Cetonia aurata,organism
+bifurcated,Dicraeosaurus,organism
+redlegs,Bistorta officinalis,organism
+buckwheats,Fagopyrum,organism
+hairworm,Nematomorpha,organism
+azarole,Crataegus azarolus,organism
+rattleweed,Senna covesii,organism
+backswimmer,Notonectidae,organism
+goatsbeard,Tragopogon,organism
+marshbird,Pseudoleistes,organism
+longmoss,Tillandsia usneoides,organism
+deergrass,Trichophorum,organism
+trumpethoneysuckle,Lonicera sempervirens,organism
+landcress,Barbarea verna,organism
+mayapple,Podophyllum peltatum,organism
+blackfly,Simuliidae,organism
+rorqual,Balaenoptera,organism
+nutcrackers,Nucifraga,organism
+papagayo,Sesbania sericea,organism
+molluscs,Mollusca,organism
+boldo,Peumus boldus,organism
+woodsnipe,Gallinago nemoricola,organism
+sandmartin,Riparia riparia,organism
+broadbill,Eurylaimidae,organism
+tuatara,Sphenodon punctatus,organism
+finfoot,Heliornithidae,organism
+anoles,Polychrotidae,organism
+glastum,Isatis tinctoria,organism
+sweetclover,Melilotus indicus,organism
+lightningbug,Lampyridae,organism
+seapink,Armeria maritima,organism
+saguaro,Carnegiea gigantea,organism
+hiba,Thujopsis dolabrata,organism
+perchers,Libellula,organism
+pait,Puntius amarus,organism
+woodspurge,Euphorbia amygdaloides,organism
+matamata,Chelus fimbriata,organism
+blueberries,Vaccinium,organism
+sandshark,Bagarius bagarius,organism
+gymnocephalus,Gymnocephalus,organism
+brimstones,Gonepteryx,organism
+cuckooflower,Cardamine pratensis,organism
+dindle,Sonchus arvensis,organism
+barbs,Laubuca,organism
+waxflower,Hoya,organism
+yellowroot,Xanthorhiza simplicissima,organism
+lemonverbena,Aloysia citrodora,organism
+pteranodon,Pteranodon,organism
+wisent,Bison bonasus,organism
+slowworm,Anguis fragilis,organism
+nargis,Narcissus poeticus,organism
+mesohippus,Mesohippus,organism
+corie,Corydoras,organism
+greenling,Hexagrammidae,organism
+fennec,Vulpes zerda,organism
+bluebuck,Hippotragus leucophaeus,organism
+longclaw,Macronyx,organism
+tockus,Tockus,organism
+dragonwort,Bistorta officinalis,organism
+earwigs,Dermaptera,organism
+sadies,Sadies,organism
+sauco,Sambucus palmensis,organism
+yerbamate,Ilex paraquariensis,organism
+mudwort,Limosella,organism
+restio,Restionaceae,organism
+starflower,Lysimachia borealis,organism
+cottongrass,Eriophorum,organism
+alisander,Smyrnium olusatrum,organism
+arrowshaft,Fistularia commersonii,organism
+redfox,Vulpes vulpes,organism
+snakeberry,Maianthemum dilatatum,organism
+physicnut,Jatropha curcas,organism
+koonti,Zamia integrifolia,organism
+horsetails,Equisetum,organism
+coontie,Zamia integrifolia,organism
+housesparrow,Passer domesticus,organism
+gac,Momordica cochinchinensis,organism
+canafistula,Peltophorum dubium,organism
+blueeyed,Spilocuscus wilsoni,organism
+glassies,Ambassis,organism
+jequirity,Abrus precatorius,organism
+tanekaha,Phyllocladus trichomanoides,organism
+piripiriwhata,Carpodetus serratus,organism
+ngaio,Myoporum laetum,organism
+houhere,Hoheria populnea,organism
+kapuka,Griselinia littoralis,organism
+seaswallow,Glaucus atlanticus,organism
+fruitfly,Tephritidae,organism
+trefoils,Lotus,organism
+pommelo,Citrus maxima,organism
+degu,Octodon degus,organism
+cunners,Tautogolabrus,organism
+medfly,Ceratitis capitata,organism
+kingfishes,Menticirrhus,organism
+leatherjacket,Scomberoides,organism
+touchmenot,Impatiens noli-tangere,organism
+bloodfish,Phractolaemus ansorgii,organism
+chiggers,Trombiculidae,organism
+burweed,Arctium minus,organism
+dogbane,Apocynum,organism
+partridgeberry,Mitchella repens,organism
+dromaius,Dromaius,organism
+zarte,Vimba vimba,organism
+doctorfish,Garra rufa,organism
+squirrelfish,Holocentrinae,organism
+gypsophilia,Gypsophila muralis,organism
+coelacanth,Latimeria,organism
+ilima,Sida cordifolia,organism
+waterlilies,Nymphaeaceae,organism
+waterberry,Syzygium guineense,organism
+smilers,Opistognathidae,organism
+fantails,Rhipidura,organism
+screwpine,Pandanus,organism
+moonies,Monodactylus,organism
+sandgrass,Mibora,organism
+stingrays,Dasyatidae,organism
+mamushi,Gloydius blomhoffi,organism
+sakaki,Cleyera japonica,organism
+tanuki,Nyctereutes procyonoides viverrinus,organism
+cotingas,Xipholena,organism
+seagrape,Coccoloba uvifera,organism
+hispo,Hispo,organism
+poecilia,Poecilia,organism
+salticus,Salticus,organism
+thomisus,Thomisus,organism
+orchardoriole,Icterus spurius,organism
+calamusroot,Acorus calamus,organism
+fathen,Atriplex calotheca,organism
+gibbose,Gibberulus gibberulus gibbosus,organism
+whitecedar,Tabebuia pallida,organism
+greensword,Argyroxiphium virescens,organism
+kudzu,Pueraria lobata,organism
+dwarfpine,Diselma archeri,organism
+araneus,Araneus,organism
+shoebutton,Ardisia elliptica,organism
+kaki,Diospyros kaki,organism
+teaplant,Camellia sinensis,organism
+redleg,Persicaria maculosa,organism
+yellowjackets,Vespula,organism
+blacksnakes,Pseudechis,organism
+beefly,Bombyliidae,organism
+toloache,Datura inoxia,organism
+flukes,Trematoda,organism
+wakerobin,Arum maculatum,organism
+pearlwort,Sagina apetala,organism
+radiolarian,Radiolaria,organism
+cowberry,Vaccinium vitis-idaea,organism
+bladderwrack,Fucus vesiculosus,organism
+rodents,Rodentia,organism
+dammar,Agathis (ICBN),organism
+thunbergia,Thunbergia,organism
+siamang,Symphalangus syndactylus,organism
+ninebark,Physocarpus,organism
+dhole,Cuon alpinus,organism
+europeana,Vipera aspis,organism
+luffa,Luffa,organism
+cunninghamia,Cunninghamia,organism
+goldenglow,Rudbeckia laciniata,organism
+camelina,Camelina sativa,organism
+brachinus,Brachinus,organism
+antlion,Myrmeleontidae,organism
+froghopper,Cercopidae,organism
+pilosa,Pilosa,organism
+fenestratus,Protomelas fenestratus,organism
+tribulus,Tribulus,organism
+banteng,Bos javanicus,organism
+bivalves,Bivalvia,organism
+smyrnium,Smyrnium olusatrum,organism
+lacebark,Hoheria populnea,organism
+radiolarians,Radiolaria,organism
+nandus,Nandidae,organism
+wakame,Undaria pinnatifida,organism
+sibbaldia,Sibbaldia,organism
+grivet,Chlorocebus aethiops,organism
+yellowjacket,Vespula,organism
+greatauk,Pinguinus impennis,organism
+flameberry,Urera caracasana,organism
+prairiedog,Cynomys,organism
+gingko,Ginkgo biloba,organism
+teaberry,Gaultheria procumbens,organism
+pistachionut,Staphylea colchica,organism
+chokeberry,Aronia,organism
+littlecrow,Corvus bennetti,organism
+splitrock,Pleiospilos,organism
+whirlabout,Polites vibex,organism
+jird,Meriones,organism
+amaryllid,Amaryllidaceae,organism
+nonesopretty,Atocion armeria,organism
+jambul,Syzygium cumini,organism
+woundwort,Solidago virgaurea,organism
+frogfish,Batrachomoeus,organism
+kelpfish,Chironemidae,organism
+barramundi,Lates calcarifer,organism
+piripiri,Bulbophyllum pygmaeum,organism
+pekapeka,Dendrobium cunninghamii,organism
+pinfish,Lagodon,organism
+moort,Eucalyptus platypus,organism
+alisanders,Smyrnium olusatrum,organism
+snapdragons,Antirrhinum,organism
+seasnake,Hydrophiinae,organism
+gambooge,Garcinia gummi-gutta,organism
+huemuls,Hippocamelus,organism
+bluegill,Lepomis macrochirus,organism
+rotan,Perccottus glenii,organism
+roseapple,Angophora costata,organism
+ylangylang,Cananga odorata,organism
+wychelm,Ulmus glabra,organism
+clusterrose,Rosa pisocarpa,organism
+whitetop,Lepidium draba,organism
+ayahuasca,Banisteriopsis caapi,organism
+seaturtle,Cheloniidae,organism
+candiru,Vandellia cirrhosa,organism
+blackwattle,Callicoma serratifolia,organism
+potatobug,Oniscidea,organism
+siafu,Dorylus,organism
+sauger,Sander canadensis,organism
+mussurana,Clelia,organism
+octodon,Octodon,organism
+pacay,Inga feuilleei,organism
+mashua,Tropaeolum tuberosum,organism
+magnirostris,Magnirostris,organism
+daddylonglegs,Opiliones,organism
+dunegrass,Swallenia,organism
+basilosaurus,Basilosaurus,organism
+browntop,Eucalyptus obliqua,organism
+munias,Lonchura,organism
+taipan,Oxyuranus,organism
+rockmartin,Ptyonoprogne fuligula,organism
+berode,Kleinia neriifolia,organism
+dexippus,Dexippus,organism
+kandar,Puntius lanaoensis,organism
+powan,Coregonus clupeoides,organism
+globeflower,Trollius europaeus,organism
+cowparsley,Anthriscus sylvestris,organism
+gundi,Ctenodactylus,organism
+pincherry,Prunus pensylvanica,organism
+vaquita,Phocoena sinus,organism
+butcherbird,Cracticus,organism
+allheal,Valeriana officinalis,organism
+chameleons,Chamaeleo,organism
+maleo,Macrocephalon maleo,organism
+hassar,Callichthys callichthys,organism
+annelids,Annelida,organism
+redbug,Pyrrhocoridae,organism
+boubous,Laniarius,organism
+korintje,Cinnamomum burmanni,organism
+songthrush,Turdus philomelos,organism
+snipefish,Macroramphosus,organism
+sailfishes,Istiophorus,organism
+cavallas,Caranx,organism
+sunfishes,Centrarchidae,organism
+grunts,Haemulon,organism
+picarel,Spicara australis,organism
+goatfishes,Pseudupeneus,organism
+jawfishes,Opistognathus,organism
+bandfish,Cepolidae,organism
+sandfish,Scincus scincus,organism
+boarfish,Pentacerotidae,organism
+skilfish,Erilepis zonifer,organism
+dealfish,Trachipterus,organism
+weevers,Pinguipedidae,organism
+dragonets,Callionymidae,organism
+blennies,Parablennius,organism
+quillfish,Ptilichthyidae,organism
+arapaima,Arapaima gigas,organism
+duckbill,Percophidae,organism
+milkfish,Chanos chanos,organism
+muksun,Coregonus muksun,organism
+vendace,Coregonus vandesius,organism
+icefish,Champsocephalus gunnari,organism
+galliwasp,Celestus,organism
+halfbeak,Hemiramphidae,organism
+silversides,Alestes baremoze,organism
+barracudas,Sphyraena,organism
+snipefishes,Macroramphosus,organism
+pipefishes,Syngnathinae,organism
+knightfish,Cleidopus gloriamaris,organism
+bluefishes,Pomatomus (Lacepède),organism
+cobia,Rachycentron canadum,organism
+ragfish,Icosteidae,organism
+schraetzer,Gymnocephalus schraetser,organism
+percarina,Percarina,organism
+anthias,Anthiinae,organism
+soapfish,Rypticus,organism
+flashers,Paracheilinus,organism
+bigeye,Priacanthus,organism
+porkfish,Anisotremus virginicus,organism
+pigfish,Orthopristis,organism
+picarels,Centracanthus,organism
+greenfish,Thalassoma ascensionis,organism
+queenfish,Seriphus,organism
+jawfish,Opistognathus,organism
+salmonid,Salmonidae,organism
+gourami,Osphronemidae,organism
+tilapia,Tilapia,organism
+oldwife,Enoplosus armatus,organism
+boarfishes,Pentacerotidae,organism
+spadefishes,Chaetodipterus,organism
+greenlings,Hexagrammidae,organism
+dealfishes,Trachipterus,organism
+ronquil,Bathymasteridae,organism
+ampe,Lophosoria quadripinnata,organism
+seaelephant,Pterotracheoidea,organism
+coffeeberry,Simmondsia chinensis,organism
+toebiter,Belostomatidae,organism
+ringouzel,Turdus torquatus,organism
+pterosaur,Pterosauria,organism
+parides,Pharmacophagus,organism
+clapperrail,Rallus crepitans,organism
+irregularia,Irregularia,organism
+cichlid,Cichlidae,organism
+honeyeater,Meliphagidae,organism
+ballus,Ballus,organism
+lampshell,Lingula anatina,organism
+hartwort,Tordylium maximum,organism
+cowitch,Mucuna pruriens,organism
+arame,Ecklonia bicyclis,organism
+gropers,Achoerodus,organism
+muskellunge,Esox masquinongy,organism
+raintree,Albizia saman,organism
+sandcat,Felis margarita,organism
+daddylongleg,Opiliones,organism
+jewelweed,Impatiens noli-tangere,organism
+restharrows,Ononis,organism
+wooddove,Turtur,organism
+sunspurge,Euphorbia helioscopia,organism
+liberica,Coffea liberica,organism
+anhanguera,Anhanguera,organism
+jatoba,Hymenaea courbaril,organism
+angico,Parapiptadenia rigida,organism
+jurubeba,Solanum paniculatum,organism
+pirarucu,Arapaima gigas,organism
+acrocomia,Acrocomia aculeata,organism
+genciana,Gentiana lutea,organism
+urutu,Bothrops alternatus,organism
+cotiara,Bothrops cotiara,organism
+silverleaf,Stillingia sylvatica,organism
+caperbush,Capparis spinosa,organism
+arachnids,Arachnida,organism
+witica,Witica,organism
+juneberry,Amelanchier alnifolia,organism
+summersavory,Satureja hortensis,organism
+monaeses,Monaeses,organism
+zebrawood,Microberlinia brazzavillensis,organism
+seapig,Scotoplanes,organism
+earshell,Haliotis tuberculata,organism
+deerberry,Vaccinium stamineum,organism
+honeylocust,Gleditsia triacanthos,organism
+muledeer,Odocoileus hemionus,organism
+amberjack,Seriola,organism
+lungfish,Dipnoi,organism
+moas,Dinornithidae,organism
+anoa,Bubalus depressicornis,organism
+colugo,Cynocephalus (Boddaert),organism
+megapodes,Megapodiidae,organism
+kingia,Kingia australis,organism
+megapode,Megapodiidae,organism
+sphenodon,Sphenodon punctatus,organism
+sheathbill,Chionis,organism
+awlwort,Subularia,organism
+dittander,Lepidium latifolium,organism
+sowbread,Cyclamen,organism
+orache,Atriplex,organism
+gayal,Bos gaurus,organism
+thamin,Cervus eldii,organism
+jurema,Mimosa tenuiflora,organism
+omul,Coregonus migratorius,organism
+isopods,Isopoda,organism
+oystercatcher,Haematopodidae,organism
+seathrift,Armeria maritima,organism
+polty,Poltys,organism
+mooneyes,Hiodon,organism
+whipray,Himantura,organism
+brazilwood,Caesalpinia echinata,organism
+mesites,Mesitornithidae,organism
+tunhoof,Glechoma hederacea,organism
+sauropod,Sauropoda,organism
+bittervetch,Lathyrus linifolius,organism
+houting,Coregonus oxyrinchus,organism
+dikdik,Madoqua,organism
+sugarbeet,Beta vulgaris,organism
+rockrose,Tuberaria,organism
+muskox,Ovibos moschatus,organism
+pinkwood,Eucryphia moorei,organism
+threadworm,Strongyloides stercoralis,organism
+serotine,Eptesicus (Eptesicus) serotinus,organism
+pudu,Pudu,organism
+lemongrass,Cymbopogon citratus,organism
+housefinch,Haemorhous mexicanus,organism
+pinweed,Erodium cicutarium,organism
+steeplebush,Spiraea tomentosa,organism
+aardwolf,Proteles cristata,organism
+honeyguide,Indicatoridae,organism
+matsutake,Tricholoma matsutake,organism
+araucarians,Araucariaceae,organism
+pilotfish,Naucrates ductor,organism
+birdcherry,Prunus padus,organism
+lambkill,Kalmia latifolia,organism
+watervole,Arvicola amphibius,organism
+sedgewarbler,Acrocephalus schoenobaenus,organism
+fanpalm,Chamaerops,organism
+welwitschia,Welwitschia mirabilis,organism
+whiteash,Fraxinus americana,organism
+butterworts,Pinguicula,organism
+astrantia,Astrantia major,organism
+felwort,Swertia perennis,organism
+vinetree,Ventilago viminalis,organism
+limpkin,Aramus guarauna,organism
+asterid,Asterids,organism
+yautia,Xanthosoma,organism
+stargazers,Leptoscopidae,organism
+brolga,Grus rubicunda,organism
+nelma,Stenodus nelma,organism
+seastar,Asteroidea,organism
+blackhaw,Viburnum prunifolium,organism
+greywolf,Canis lupus,organism
+hornero,Furnarius,organism
+cupuassu,Theobroma grandiflorum,organism
+columnaria,Columnaria,organism
+ostracod,Ostracoda,organism
+lasiandra,Tibouchina semidecandra,organism
+soapnut,Sapindus,organism
+redsquirrel,Tamiasciurus hudsonicus,organism
+flyingsquirrel,Pteromyini,organism
+lingonberry,Vaccinium vitis-idaea,organism
+agrigas,Agrias,organism
+rhizophyllum,Rhizophyllum,organism
+cowries,Cypraeidae,organism
