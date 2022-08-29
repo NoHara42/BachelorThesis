@@ -110,7 +110,6 @@ exports.Prisma.AuthorScalarFieldEnum = makeEnum({
   field: 'field',
   occupation: 'occupation',
   country: 'country',
-  genreY: 'genreY',
   workCount: 'workCount',
   vocabCount: 'vocabCount',
   wordCount: 'wordCount',
@@ -137,7 +136,8 @@ exports.Prisma.AuthorScalarFieldEnum = makeEnum({
   mainResidence: 'mainResidence',
   id: 'id',
   authorX: 'authorX',
-  authorY: 'authorY'
+  authorY: 'authorY',
+  listOfWorks: 'listOfWorks'
 });
 
 exports.Prisma.WorkScalarFieldEnum = makeEnum({
@@ -172,6 +172,7 @@ exports.Prisma.WorkScalarFieldEnum = makeEnum({
   originalLanguage: 'originalLanguage',
   literatureForm: 'literatureForm',
   genreX: 'genreX',
+  genreY: 'genreY',
   origin: 'origin',
   mainSubject: 'mainSubject',
   narrativeLocation: 'narrativeLocation',

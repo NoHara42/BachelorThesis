@@ -1,31 +1,48 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "module": "ES2022",
+    "moduleResolution": "Node",
+    "target": "ES2017",
+    "isolatedModules": true,
+    "useDefineForClassFields": true,
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
+    "jsx": "react-jsxdev",
     "esModuleInterop": true,
-    "module": "ES2022",
-    "moduleResolution": "Node",
+    "declaration": true,
+    "declarationMap": true,
     "resolveJsonModule": true,
     "incremental": true,
-    "types": ["node"],
-    "typeRoots": [
-      "@types/react",
-      "@types/react-dom",
-      "@types/tailwindcss",
-      "/node_modules/@types",
-    ]
+    "outDir": "dist",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "sourceMap": true,
+    "types": ["node", "vite", "vite/client"],
+    "typeRoots": ["/node_modules/@types"]
   },
   "plugins": ["react-hooks"],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   },
-  "include": ["./**/*.tsx", "./**/*.ts"],
-  "exclude": ["node_modules", "./dist"],
-  "validators": {
-    "*.{ts,tsx,js,jsx}": ["@parcel/validator-typescript"]
+  "paths": {
+    "baseUrl": "./",
+    "src/*": [
+      "./src/*"
+    ],
+    "prisma/*": [
+      "./prisma/*"
+    ],
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "./dist", "src/client/styles.css", "src/client/client.ts"],
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "incremental": true,
+      "module": "NodeNext",
+      "moduleResolution": "Node",
+      "types": ["@types/express"]
+    }
   }
 }

@@ -39,7 +39,6 @@ export type Author = {
   field: string | null
   occupation: string | null
   country: string | null
-  genreY: string | null
   workCount: number | null
   vocabCount: number | null
   wordCount: number | null
@@ -67,6 +66,7 @@ export type Author = {
   id: number
   authorX: string | null
   authorY: string | null
+  listOfWorks: string[]
 }
 
 /**
@@ -103,8 +103,9 @@ export type Work = {
   split: number | null
   regionX: string | null
   originalLanguage: string | null
-  literatureForm: string | null
-  genreX: string | null
+  literatureForm: string[]
+  genreX: string[]
+  genreY: string | null
   origin: string | null
   mainSubject: string | null
   narrativeLocation: string | null
@@ -1125,7 +1126,6 @@ export namespace Prisma {
     field: string | null
     occupation: string | null
     country: string | null
-    genreY: string | null
     workCount: number | null
     vocabCount: number | null
     wordCount: number | null
@@ -1178,7 +1178,6 @@ export namespace Prisma {
     field: string | null
     occupation: string | null
     country: string | null
-    genreY: string | null
     workCount: number | null
     vocabCount: number | null
     wordCount: number | null
@@ -1231,7 +1230,6 @@ export namespace Prisma {
     field: number
     occupation: number
     country: number
-    genreY: number
     workCount: number
     vocabCount: number
     wordCount: number
@@ -1259,6 +1257,7 @@ export namespace Prisma {
     id: number
     authorX: number
     authorY: number
+    listOfWorks: number
     _all: number
   }
 
@@ -1320,7 +1319,6 @@ export namespace Prisma {
     field?: true
     occupation?: true
     country?: true
-    genreY?: true
     workCount?: true
     vocabCount?: true
     wordCount?: true
@@ -1373,7 +1371,6 @@ export namespace Prisma {
     field?: true
     occupation?: true
     country?: true
-    genreY?: true
     workCount?: true
     vocabCount?: true
     wordCount?: true
@@ -1426,7 +1423,6 @@ export namespace Prisma {
     field?: true
     occupation?: true
     country?: true
-    genreY?: true
     workCount?: true
     vocabCount?: true
     wordCount?: true
@@ -1454,6 +1450,7 @@ export namespace Prisma {
     id?: true
     authorX?: true
     authorY?: true
+    listOfWorks?: true
     _all?: true
   }
 
@@ -1572,7 +1569,6 @@ export namespace Prisma {
     field: string | null
     occupation: string | null
     country: string | null
-    genreY: string | null
     workCount: number | null
     vocabCount: number | null
     wordCount: number | null
@@ -1600,6 +1596,7 @@ export namespace Prisma {
     id: number
     authorX: string | null
     authorY: string | null
+    listOfWorks: string[]
     _count: AuthorCountAggregateOutputType | null
     _avg: AuthorAvgAggregateOutputType | null
     _sum: AuthorSumAggregateOutputType | null
@@ -1644,7 +1641,6 @@ export namespace Prisma {
     field?: boolean
     occupation?: boolean
     country?: boolean
-    genreY?: boolean
     workCount?: boolean
     vocabCount?: boolean
     wordCount?: boolean
@@ -1673,6 +1669,7 @@ export namespace Prisma {
     authorX?: boolean
     authorY?: boolean
     works?: boolean | WorkFindManyArgs
+    listOfWorks?: boolean
     _count?: boolean | AuthorCountOutputTypeArgs
   }
 
@@ -2530,8 +2527,7 @@ export namespace Prisma {
     split: number | null
     regionX: string | null
     originalLanguage: string | null
-    literatureForm: string | null
-    genreX: string | null
+    genreY: string | null
     origin: string | null
     mainSubject: string | null
     narrativeLocation: string | null
@@ -2572,8 +2568,7 @@ export namespace Prisma {
     split: number | null
     regionX: string | null
     originalLanguage: string | null
-    literatureForm: string | null
-    genreX: string | null
+    genreY: string | null
     origin: string | null
     mainSubject: string | null
     narrativeLocation: string | null
@@ -2616,6 +2611,7 @@ export namespace Prisma {
     originalLanguage: number
     literatureForm: number
     genreX: number
+    genreY: number
     origin: number
     mainSubject: number
     narrativeLocation: number
@@ -2718,8 +2714,7 @@ export namespace Prisma {
     split?: true
     regionX?: true
     originalLanguage?: true
-    literatureForm?: true
-    genreX?: true
+    genreY?: true
     origin?: true
     mainSubject?: true
     narrativeLocation?: true
@@ -2760,8 +2755,7 @@ export namespace Prisma {
     split?: true
     regionX?: true
     originalLanguage?: true
-    literatureForm?: true
-    genreX?: true
+    genreY?: true
     origin?: true
     mainSubject?: true
     narrativeLocation?: true
@@ -2804,6 +2798,7 @@ export namespace Prisma {
     originalLanguage?: true
     literatureForm?: true
     genreX?: true
+    genreY?: true
     origin?: true
     mainSubject?: true
     narrativeLocation?: true
@@ -2937,8 +2932,9 @@ export namespace Prisma {
     split: number | null
     regionX: string | null
     originalLanguage: string | null
-    literatureForm: string | null
-    genreX: string | null
+    literatureForm: string[]
+    genreX: string[]
+    genreY: string | null
     origin: string | null
     mainSubject: string | null
     narrativeLocation: string | null
@@ -3000,6 +2996,7 @@ export namespace Prisma {
     originalLanguage?: boolean
     literatureForm?: boolean
     genreX?: boolean
+    genreY?: boolean
     origin?: boolean
     mainSubject?: boolean
     narrativeLocation?: boolean
@@ -4036,12 +4033,12 @@ export namespace Prisma {
     ?'include' extends U
     ? Occurrence  & {
     [P in TrueKeys<S['include']>]:
-        P extends 'work' ? WorkGetPayload<S['include'][P]> :  never
+        P extends 'work' ? WorkGetPayload<S['include'][P]> | null :  never
   } 
     : 'select' extends U
     ? {
     [P in TrueKeys<S['select']>]:
-        P extends 'work' ? WorkGetPayload<S['select'][P]> :  P extends keyof Occurrence ? Occurrence[P] : never
+        P extends 'work' ? WorkGetPayload<S['select'][P]> | null :  P extends keyof Occurrence ? Occurrence[P] : never
   } 
     : Occurrence
   : Occurrence
@@ -5656,7 +5653,6 @@ export namespace Prisma {
     field: 'field',
     occupation: 'occupation',
     country: 'country',
-    genreY: 'genreY',
     workCount: 'workCount',
     vocabCount: 'vocabCount',
     wordCount: 'wordCount',
@@ -5683,7 +5679,8 @@ export namespace Prisma {
     mainResidence: 'mainResidence',
     id: 'id',
     authorX: 'authorX',
-    authorY: 'authorY'
+    authorY: 'authorY',
+    listOfWorks: 'listOfWorks'
   };
 
   export type AuthorScalarFieldEnum = (typeof AuthorScalarFieldEnum)[keyof typeof AuthorScalarFieldEnum]
@@ -5721,6 +5718,7 @@ export namespace Prisma {
     originalLanguage: 'originalLanguage',
     literatureForm: 'literatureForm',
     genreX: 'genreX',
+    genreY: 'genreY',
     origin: 'origin',
     mainSubject: 'mainSubject',
     narrativeLocation: 'narrativeLocation',
@@ -5805,7 +5803,6 @@ export namespace Prisma {
     field?: StringNullableFilter | string | null
     occupation?: StringNullableFilter | string | null
     country?: StringNullableFilter | string | null
-    genreY?: StringNullableFilter | string | null
     workCount?: IntNullableFilter | number | null
     vocabCount?: IntNullableFilter | number | null
     wordCount?: IntNullableFilter | number | null
@@ -5834,6 +5831,7 @@ export namespace Prisma {
     authorX?: StringNullableFilter | string | null
     authorY?: StringNullableFilter | string | null
     works?: WorkListRelationFilter
+    listOfWorks?: StringNullableListFilter
   }
 
   export type AuthorOrderByWithRelationInput = {
@@ -5859,7 +5857,6 @@ export namespace Prisma {
     field?: SortOrder
     occupation?: SortOrder
     country?: SortOrder
-    genreY?: SortOrder
     workCount?: SortOrder
     vocabCount?: SortOrder
     wordCount?: SortOrder
@@ -5888,10 +5885,12 @@ export namespace Prisma {
     authorX?: SortOrder
     authorY?: SortOrder
     works?: WorkOrderByRelationAggregateInput
+    listOfWorks?: SortOrder
   }
 
   export type AuthorWhereUniqueInput = {
     id?: number
+    author_authorY_authorX?: AuthorAuthorAuthorYAuthorXCompoundUniqueInput
   }
 
   export type AuthorOrderByWithAggregationInput = {
@@ -5917,7 +5916,6 @@ export namespace Prisma {
     field?: SortOrder
     occupation?: SortOrder
     country?: SortOrder
-    genreY?: SortOrder
     workCount?: SortOrder
     vocabCount?: SortOrder
     wordCount?: SortOrder
@@ -5945,6 +5943,7 @@ export namespace Prisma {
     id?: SortOrder
     authorX?: SortOrder
     authorY?: SortOrder
+    listOfWorks?: SortOrder
     _count?: AuthorCountOrderByAggregateInput
     _avg?: AuthorAvgOrderByAggregateInput
     _max?: AuthorMaxOrderByAggregateInput
@@ -5978,7 +5977,6 @@ export namespace Prisma {
     field?: StringNullableWithAggregatesFilter | string | null
     occupation?: StringNullableWithAggregatesFilter | string | null
     country?: StringNullableWithAggregatesFilter | string | null
-    genreY?: StringNullableWithAggregatesFilter | string | null
     workCount?: IntNullableWithAggregatesFilter | number | null
     vocabCount?: IntNullableWithAggregatesFilter | number | null
     wordCount?: IntNullableWithAggregatesFilter | number | null
@@ -6006,6 +6004,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter | number
     authorX?: StringNullableWithAggregatesFilter | string | null
     authorY?: StringNullableWithAggregatesFilter | string | null
+    listOfWorks?: StringNullableListFilter
   }
 
   export type WorkWhereInput = {
@@ -6041,8 +6040,9 @@ export namespace Prisma {
     split?: IntNullableFilter | number | null
     regionX?: StringNullableFilter | string | null
     originalLanguage?: StringNullableFilter | string | null
-    literatureForm?: StringNullableFilter | string | null
-    genreX?: StringNullableFilter | string | null
+    literatureForm?: StringNullableListFilter
+    genreX?: StringNullableListFilter
+    genreY?: StringNullableFilter | string | null
     origin?: StringNullableFilter | string | null
     mainSubject?: StringNullableFilter | string | null
     narrativeLocation?: StringNullableFilter | string | null
@@ -6087,6 +6087,7 @@ export namespace Prisma {
     originalLanguage?: SortOrder
     literatureForm?: SortOrder
     genreX?: SortOrder
+    genreY?: SortOrder
     origin?: SortOrder
     mainSubject?: SortOrder
     narrativeLocation?: SortOrder
@@ -6135,6 +6136,7 @@ export namespace Prisma {
     originalLanguage?: SortOrder
     literatureForm?: SortOrder
     genreX?: SortOrder
+    genreY?: SortOrder
     origin?: SortOrder
     mainSubject?: SortOrder
     narrativeLocation?: SortOrder
@@ -6183,8 +6185,9 @@ export namespace Prisma {
     split?: IntNullableWithAggregatesFilter | number | null
     regionX?: StringNullableWithAggregatesFilter | string | null
     originalLanguage?: StringNullableWithAggregatesFilter | string | null
-    literatureForm?: StringNullableWithAggregatesFilter | string | null
-    genreX?: StringNullableWithAggregatesFilter | string | null
+    literatureForm?: StringNullableListFilter
+    genreX?: StringNullableListFilter
+    genreY?: StringNullableWithAggregatesFilter | string | null
     origin?: StringNullableWithAggregatesFilter | string | null
     mainSubject?: StringNullableWithAggregatesFilter | string | null
     narrativeLocation?: StringNullableWithAggregatesFilter | string | null
@@ -6208,7 +6211,7 @@ export namespace Prisma {
     sentence?: StringNullableFilter | string | null
     column?: IntNullableFilter | number | null
     spalte?: IntNullableFilter | number | null
-    work?: XOR<WorkRelationFilter, WorkWhereInput>
+    work?: XOR<WorkRelationFilter, WorkWhereInput> | null
   }
 
   export type OccurrenceOrderByWithRelationInput = {
@@ -6320,7 +6323,6 @@ export namespace Prisma {
     field?: string | null
     occupation?: string | null
     country?: string | null
-    genreY?: string | null
     workCount?: number | null
     vocabCount?: number | null
     wordCount?: number | null
@@ -6348,6 +6350,7 @@ export namespace Prisma {
     authorX?: string | null
     authorY?: string | null
     works?: WorkCreateNestedManyWithoutAuthorsInput
+    listOfWorks?: AuthorCreatelistOfWorksInput | Enumerable<string>
   }
 
   export type AuthorUncheckedCreateInput = {
@@ -6373,7 +6376,6 @@ export namespace Prisma {
     field?: string | null
     occupation?: string | null
     country?: string | null
-    genreY?: string | null
     workCount?: number | null
     vocabCount?: number | null
     wordCount?: number | null
@@ -6402,6 +6404,7 @@ export namespace Prisma {
     authorX?: string | null
     authorY?: string | null
     works?: WorkUncheckedCreateNestedManyWithoutAuthorsInput
+    listOfWorks?: AuthorCreatelistOfWorksInput | Enumerable<string>
   }
 
   export type AuthorUpdateInput = {
@@ -6427,7 +6430,6 @@ export namespace Prisma {
     field?: NullableStringFieldUpdateOperationsInput | string | null
     occupation?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
-    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     workCount?: NullableIntFieldUpdateOperationsInput | number | null
     vocabCount?: NullableIntFieldUpdateOperationsInput | number | null
     wordCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -6455,6 +6457,7 @@ export namespace Prisma {
     authorX?: NullableStringFieldUpdateOperationsInput | string | null
     authorY?: NullableStringFieldUpdateOperationsInput | string | null
     works?: WorkUpdateManyWithoutAuthorsNestedInput
+    listOfWorks?: AuthorUpdatelistOfWorksInput | Enumerable<string>
   }
 
   export type AuthorUncheckedUpdateInput = {
@@ -6480,7 +6483,6 @@ export namespace Prisma {
     field?: NullableStringFieldUpdateOperationsInput | string | null
     occupation?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
-    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     workCount?: NullableIntFieldUpdateOperationsInput | number | null
     vocabCount?: NullableIntFieldUpdateOperationsInput | number | null
     wordCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -6509,6 +6511,7 @@ export namespace Prisma {
     authorX?: NullableStringFieldUpdateOperationsInput | string | null
     authorY?: NullableStringFieldUpdateOperationsInput | string | null
     works?: WorkUncheckedUpdateManyWithoutAuthorsNestedInput
+    listOfWorks?: AuthorUpdatelistOfWorksInput | Enumerable<string>
   }
 
   export type AuthorCreateManyInput = {
@@ -6534,7 +6537,6 @@ export namespace Prisma {
     field?: string | null
     occupation?: string | null
     country?: string | null
-    genreY?: string | null
     workCount?: number | null
     vocabCount?: number | null
     wordCount?: number | null
@@ -6562,6 +6564,7 @@ export namespace Prisma {
     id?: number
     authorX?: string | null
     authorY?: string | null
+    listOfWorks?: AuthorCreatelistOfWorksInput | Enumerable<string>
   }
 
   export type AuthorUpdateManyMutationInput = {
@@ -6587,7 +6590,6 @@ export namespace Prisma {
     field?: NullableStringFieldUpdateOperationsInput | string | null
     occupation?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
-    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     workCount?: NullableIntFieldUpdateOperationsInput | number | null
     vocabCount?: NullableIntFieldUpdateOperationsInput | number | null
     wordCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -6614,6 +6616,7 @@ export namespace Prisma {
     mainResidence?: NullableStringFieldUpdateOperationsInput | string | null
     authorX?: NullableStringFieldUpdateOperationsInput | string | null
     authorY?: NullableStringFieldUpdateOperationsInput | string | null
+    listOfWorks?: AuthorUpdatelistOfWorksInput | Enumerable<string>
   }
 
   export type AuthorUncheckedUpdateManyInput = {
@@ -6639,7 +6642,6 @@ export namespace Prisma {
     field?: NullableStringFieldUpdateOperationsInput | string | null
     occupation?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
-    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     workCount?: NullableIntFieldUpdateOperationsInput | number | null
     vocabCount?: NullableIntFieldUpdateOperationsInput | number | null
     wordCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -6667,6 +6669,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     authorX?: NullableStringFieldUpdateOperationsInput | string | null
     authorY?: NullableStringFieldUpdateOperationsInput | string | null
+    listOfWorks?: AuthorUpdatelistOfWorksInput | Enumerable<string>
   }
 
   export type WorkCreateInput = {
@@ -6699,8 +6702,9 @@ export namespace Prisma {
     split?: number | null
     regionX?: string | null
     originalLanguage?: string | null
-    literatureForm?: string | null
-    genreX?: string | null
+    literatureForm?: WorkCreateliteratureFormInput | Enumerable<string>
+    genreX?: WorkCreategenreXInput | Enumerable<string>
+    genreY?: string | null
     origin?: string | null
     mainSubject?: string | null
     narrativeLocation?: string | null
@@ -6743,8 +6747,9 @@ export namespace Prisma {
     split?: number | null
     regionX?: string | null
     originalLanguage?: string | null
-    literatureForm?: string | null
-    genreX?: string | null
+    literatureForm?: WorkCreateliteratureFormInput | Enumerable<string>
+    genreX?: WorkCreategenreXInput | Enumerable<string>
+    genreY?: string | null
     origin?: string | null
     mainSubject?: string | null
     narrativeLocation?: string | null
@@ -6787,8 +6792,9 @@ export namespace Prisma {
     split?: NullableIntFieldUpdateOperationsInput | number | null
     regionX?: NullableStringFieldUpdateOperationsInput | string | null
     originalLanguage?: NullableStringFieldUpdateOperationsInput | string | null
-    literatureForm?: NullableStringFieldUpdateOperationsInput | string | null
-    genreX?: NullableStringFieldUpdateOperationsInput | string | null
+    literatureForm?: WorkUpdateliteratureFormInput | Enumerable<string>
+    genreX?: WorkUpdategenreXInput | Enumerable<string>
+    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     origin?: NullableStringFieldUpdateOperationsInput | string | null
     mainSubject?: NullableStringFieldUpdateOperationsInput | string | null
     narrativeLocation?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6831,8 +6837,9 @@ export namespace Prisma {
     split?: NullableIntFieldUpdateOperationsInput | number | null
     regionX?: NullableStringFieldUpdateOperationsInput | string | null
     originalLanguage?: NullableStringFieldUpdateOperationsInput | string | null
-    literatureForm?: NullableStringFieldUpdateOperationsInput | string | null
-    genreX?: NullableStringFieldUpdateOperationsInput | string | null
+    literatureForm?: WorkUpdateliteratureFormInput | Enumerable<string>
+    genreX?: WorkUpdategenreXInput | Enumerable<string>
+    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     origin?: NullableStringFieldUpdateOperationsInput | string | null
     mainSubject?: NullableStringFieldUpdateOperationsInput | string | null
     narrativeLocation?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6875,8 +6882,9 @@ export namespace Prisma {
     split?: number | null
     regionX?: string | null
     originalLanguage?: string | null
-    literatureForm?: string | null
-    genreX?: string | null
+    literatureForm?: WorkCreateliteratureFormInput | Enumerable<string>
+    genreX?: WorkCreategenreXInput | Enumerable<string>
+    genreY?: string | null
     origin?: string | null
     mainSubject?: string | null
     narrativeLocation?: string | null
@@ -6917,8 +6925,9 @@ export namespace Prisma {
     split?: NullableIntFieldUpdateOperationsInput | number | null
     regionX?: NullableStringFieldUpdateOperationsInput | string | null
     originalLanguage?: NullableStringFieldUpdateOperationsInput | string | null
-    literatureForm?: NullableStringFieldUpdateOperationsInput | string | null
-    genreX?: NullableStringFieldUpdateOperationsInput | string | null
+    literatureForm?: WorkUpdateliteratureFormInput | Enumerable<string>
+    genreX?: WorkUpdategenreXInput | Enumerable<string>
+    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     origin?: NullableStringFieldUpdateOperationsInput | string | null
     mainSubject?: NullableStringFieldUpdateOperationsInput | string | null
     narrativeLocation?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6959,8 +6968,9 @@ export namespace Prisma {
     split?: NullableIntFieldUpdateOperationsInput | number | null
     regionX?: NullableStringFieldUpdateOperationsInput | string | null
     originalLanguage?: NullableStringFieldUpdateOperationsInput | string | null
-    literatureForm?: NullableStringFieldUpdateOperationsInput | string | null
-    genreX?: NullableStringFieldUpdateOperationsInput | string | null
+    literatureForm?: WorkUpdateliteratureFormInput | Enumerable<string>
+    genreX?: WorkUpdategenreXInput | Enumerable<string>
+    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     origin?: NullableStringFieldUpdateOperationsInput | string | null
     mainSubject?: NullableStringFieldUpdateOperationsInput | string | null
     narrativeLocation?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6980,7 +6990,7 @@ export namespace Prisma {
     sentence?: string | null
     column?: number | null
     spalte?: number | null
-    work: WorkCreateNestedOneWithoutOccurrencesInput
+    work?: WorkCreateNestedOneWithoutOccurrencesInput
   }
 
   export type OccurrenceUncheckedCreateInput = {
@@ -7004,7 +7014,7 @@ export namespace Prisma {
     sentence?: NullableStringFieldUpdateOperationsInput | string | null
     column?: NullableIntFieldUpdateOperationsInput | number | null
     spalte?: NullableIntFieldUpdateOperationsInput | number | null
-    work?: WorkUpdateOneRequiredWithoutOccurrencesNestedInput
+    work?: WorkUpdateOneWithoutOccurrencesNestedInput
   }
 
   export type OccurrenceUncheckedUpdateInput = {
@@ -7139,8 +7149,22 @@ export namespace Prisma {
     none?: WorkWhereInput
   }
 
+  export type StringNullableListFilter = {
+    equals?: Enumerable<string> | null
+    has?: string | null
+    hasEvery?: Enumerable<string>
+    hasSome?: Enumerable<string>
+    isEmpty?: boolean
+  }
+
   export type WorkOrderByRelationAggregateInput = {
     _count?: SortOrder
+  }
+
+  export type AuthorAuthorAuthorYAuthorXCompoundUniqueInput = {
+    author: string
+    authorY: string
+    authorX: string
   }
 
   export type AuthorCountOrderByAggregateInput = {
@@ -7166,7 +7190,6 @@ export namespace Prisma {
     field?: SortOrder
     occupation?: SortOrder
     country?: SortOrder
-    genreY?: SortOrder
     workCount?: SortOrder
     vocabCount?: SortOrder
     wordCount?: SortOrder
@@ -7194,6 +7217,7 @@ export namespace Prisma {
     id?: SortOrder
     authorX?: SortOrder
     authorY?: SortOrder
+    listOfWorks?: SortOrder
   }
 
   export type AuthorAvgOrderByAggregateInput = {
@@ -7236,7 +7260,6 @@ export namespace Prisma {
     field?: SortOrder
     occupation?: SortOrder
     country?: SortOrder
-    genreY?: SortOrder
     workCount?: SortOrder
     vocabCount?: SortOrder
     wordCount?: SortOrder
@@ -7289,7 +7312,6 @@ export namespace Prisma {
     field?: SortOrder
     occupation?: SortOrder
     country?: SortOrder
-    genreY?: SortOrder
     workCount?: SortOrder
     vocabCount?: SortOrder
     wordCount?: SortOrder
@@ -7464,6 +7486,7 @@ export namespace Prisma {
     originalLanguage?: SortOrder
     literatureForm?: SortOrder
     genreX?: SortOrder
+    genreY?: SortOrder
     origin?: SortOrder
     mainSubject?: SortOrder
     narrativeLocation?: SortOrder
@@ -7534,8 +7557,7 @@ export namespace Prisma {
     split?: SortOrder
     regionX?: SortOrder
     originalLanguage?: SortOrder
-    literatureForm?: SortOrder
-    genreX?: SortOrder
+    genreY?: SortOrder
     origin?: SortOrder
     mainSubject?: SortOrder
     narrativeLocation?: SortOrder
@@ -7576,8 +7598,7 @@ export namespace Prisma {
     split?: SortOrder
     regionX?: SortOrder
     originalLanguage?: SortOrder
-    literatureForm?: SortOrder
-    genreX?: SortOrder
+    genreY?: SortOrder
     origin?: SortOrder
     mainSubject?: SortOrder
     narrativeLocation?: SortOrder
@@ -7653,8 +7674,8 @@ export namespace Prisma {
   }
 
   export type WorkRelationFilter = {
-    is?: WorkWhereInput
-    isNot?: WorkWhereInput
+    is?: WorkWhereInput | null
+    isNot?: WorkWhereInput | null
   }
 
   export type OccurrenceCountOrderByAggregateInput = {
@@ -7731,6 +7752,10 @@ export namespace Prisma {
     connect?: Enumerable<WorkWhereUniqueInput>
   }
 
+  export type AuthorCreatelistOfWorksInput = {
+    set: Enumerable<string>
+  }
+
   export type WorkUncheckedCreateNestedManyWithoutAuthorsInput = {
     create?: XOR<Enumerable<WorkCreateWithoutAuthorsInput>, Enumerable<WorkUncheckedCreateWithoutAuthorsInput>>
     connectOrCreate?: Enumerable<WorkCreateOrConnectWithoutAuthorsInput>
@@ -7762,6 +7787,11 @@ export namespace Prisma {
     deleteMany?: Enumerable<WorkScalarWhereInput>
   }
 
+  export type AuthorUpdatelistOfWorksInput = {
+    set?: Enumerable<string>
+    push?: string | Enumerable<string>
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -7781,6 +7811,14 @@ export namespace Prisma {
     update?: Enumerable<WorkUpdateWithWhereUniqueWithoutAuthorsInput>
     updateMany?: Enumerable<WorkUpdateManyWithWhereWithoutAuthorsInput>
     deleteMany?: Enumerable<WorkScalarWhereInput>
+  }
+
+  export type WorkCreateliteratureFormInput = {
+    set: Enumerable<string>
+  }
+
+  export type WorkCreategenreXInput = {
+    set: Enumerable<string>
   }
 
   export type OccurrenceCreateNestedManyWithoutWorkInput = {
@@ -7819,6 +7857,16 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type WorkUpdateliteratureFormInput = {
+    set?: Enumerable<string>
+    push?: string | Enumerable<string>
+  }
+
+  export type WorkUpdategenreXInput = {
+    set?: Enumerable<string>
+    push?: string | Enumerable<string>
   }
 
   export type OccurrenceUpdateManyWithoutWorkNestedInput = {
@@ -7881,10 +7929,12 @@ export namespace Prisma {
     connect?: WorkWhereUniqueInput
   }
 
-  export type WorkUpdateOneRequiredWithoutOccurrencesNestedInput = {
+  export type WorkUpdateOneWithoutOccurrencesNestedInput = {
     create?: XOR<WorkCreateWithoutOccurrencesInput, WorkUncheckedCreateWithoutOccurrencesInput>
     connectOrCreate?: WorkCreateOrConnectWithoutOccurrencesInput
     upsert?: WorkUpsertWithoutOccurrencesInput
+    disconnect?: boolean
+    delete?: boolean
     connect?: WorkWhereUniqueInput
     update?: XOR<WorkUpdateWithoutOccurrencesInput, WorkUncheckedUpdateWithoutOccurrencesInput>
   }
@@ -8073,8 +8123,9 @@ export namespace Prisma {
     split?: number | null
     regionX?: string | null
     originalLanguage?: string | null
-    literatureForm?: string | null
-    genreX?: string | null
+    literatureForm?: WorkCreateliteratureFormInput | Enumerable<string>
+    genreX?: WorkCreategenreXInput | Enumerable<string>
+    genreY?: string | null
     origin?: string | null
     mainSubject?: string | null
     narrativeLocation?: string | null
@@ -8116,8 +8167,9 @@ export namespace Prisma {
     split?: number | null
     regionX?: string | null
     originalLanguage?: string | null
-    literatureForm?: string | null
-    genreX?: string | null
+    literatureForm?: WorkCreateliteratureFormInput | Enumerable<string>
+    genreX?: WorkCreategenreXInput | Enumerable<string>
+    genreY?: string | null
     origin?: string | null
     mainSubject?: string | null
     narrativeLocation?: string | null
@@ -8183,8 +8235,9 @@ export namespace Prisma {
     split?: IntNullableFilter | number | null
     regionX?: StringNullableFilter | string | null
     originalLanguage?: StringNullableFilter | string | null
-    literatureForm?: StringNullableFilter | string | null
-    genreX?: StringNullableFilter | string | null
+    literatureForm?: StringNullableListFilter
+    genreX?: StringNullableListFilter
+    genreY?: StringNullableFilter | string | null
     origin?: StringNullableFilter | string | null
     mainSubject?: StringNullableFilter | string | null
     narrativeLocation?: StringNullableFilter | string | null
@@ -8250,7 +8303,6 @@ export namespace Prisma {
     field?: string | null
     occupation?: string | null
     country?: string | null
-    genreY?: string | null
     workCount?: number | null
     vocabCount?: number | null
     wordCount?: number | null
@@ -8277,6 +8329,7 @@ export namespace Prisma {
     mainResidence?: string | null
     authorX?: string | null
     authorY?: string | null
+    listOfWorks?: AuthorCreatelistOfWorksInput | Enumerable<string>
   }
 
   export type AuthorUncheckedCreateWithoutWorksInput = {
@@ -8302,7 +8355,6 @@ export namespace Prisma {
     field?: string | null
     occupation?: string | null
     country?: string | null
-    genreY?: string | null
     workCount?: number | null
     vocabCount?: number | null
     wordCount?: number | null
@@ -8330,6 +8382,7 @@ export namespace Prisma {
     id?: number
     authorX?: string | null
     authorY?: string | null
+    listOfWorks?: AuthorCreatelistOfWorksInput | Enumerable<string>
   }
 
   export type AuthorCreateOrConnectWithoutWorksInput = {
@@ -8410,7 +8463,6 @@ export namespace Prisma {
     field?: StringNullableFilter | string | null
     occupation?: StringNullableFilter | string | null
     country?: StringNullableFilter | string | null
-    genreY?: StringNullableFilter | string | null
     workCount?: IntNullableFilter | number | null
     vocabCount?: IntNullableFilter | number | null
     wordCount?: IntNullableFilter | number | null
@@ -8438,6 +8490,7 @@ export namespace Prisma {
     id?: IntFilter | number
     authorX?: StringNullableFilter | string | null
     authorY?: StringNullableFilter | string | null
+    listOfWorks?: StringNullableListFilter
   }
 
   export type WorkCreateWithoutOccurrencesInput = {
@@ -8470,8 +8523,9 @@ export namespace Prisma {
     split?: number | null
     regionX?: string | null
     originalLanguage?: string | null
-    literatureForm?: string | null
-    genreX?: string | null
+    literatureForm?: WorkCreateliteratureFormInput | Enumerable<string>
+    genreX?: WorkCreategenreXInput | Enumerable<string>
+    genreY?: string | null
     origin?: string | null
     mainSubject?: string | null
     narrativeLocation?: string | null
@@ -8513,8 +8567,9 @@ export namespace Prisma {
     split?: number | null
     regionX?: string | null
     originalLanguage?: string | null
-    literatureForm?: string | null
-    genreX?: string | null
+    literatureForm?: WorkCreateliteratureFormInput | Enumerable<string>
+    genreX?: WorkCreategenreXInput | Enumerable<string>
+    genreY?: string | null
     origin?: string | null
     mainSubject?: string | null
     narrativeLocation?: string | null
@@ -8566,8 +8621,9 @@ export namespace Prisma {
     split?: NullableIntFieldUpdateOperationsInput | number | null
     regionX?: NullableStringFieldUpdateOperationsInput | string | null
     originalLanguage?: NullableStringFieldUpdateOperationsInput | string | null
-    literatureForm?: NullableStringFieldUpdateOperationsInput | string | null
-    genreX?: NullableStringFieldUpdateOperationsInput | string | null
+    literatureForm?: WorkUpdateliteratureFormInput | Enumerable<string>
+    genreX?: WorkUpdategenreXInput | Enumerable<string>
+    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     origin?: NullableStringFieldUpdateOperationsInput | string | null
     mainSubject?: NullableStringFieldUpdateOperationsInput | string | null
     narrativeLocation?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8609,8 +8665,9 @@ export namespace Prisma {
     split?: NullableIntFieldUpdateOperationsInput | number | null
     regionX?: NullableStringFieldUpdateOperationsInput | string | null
     originalLanguage?: NullableStringFieldUpdateOperationsInput | string | null
-    literatureForm?: NullableStringFieldUpdateOperationsInput | string | null
-    genreX?: NullableStringFieldUpdateOperationsInput | string | null
+    literatureForm?: WorkUpdateliteratureFormInput | Enumerable<string>
+    genreX?: WorkUpdategenreXInput | Enumerable<string>
+    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     origin?: NullableStringFieldUpdateOperationsInput | string | null
     mainSubject?: NullableStringFieldUpdateOperationsInput | string | null
     narrativeLocation?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8652,8 +8709,9 @@ export namespace Prisma {
     split?: NullableIntFieldUpdateOperationsInput | number | null
     regionX?: NullableStringFieldUpdateOperationsInput | string | null
     originalLanguage?: NullableStringFieldUpdateOperationsInput | string | null
-    literatureForm?: NullableStringFieldUpdateOperationsInput | string | null
-    genreX?: NullableStringFieldUpdateOperationsInput | string | null
+    literatureForm?: WorkUpdateliteratureFormInput | Enumerable<string>
+    genreX?: WorkUpdategenreXInput | Enumerable<string>
+    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     origin?: NullableStringFieldUpdateOperationsInput | string | null
     mainSubject?: NullableStringFieldUpdateOperationsInput | string | null
     narrativeLocation?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8695,8 +8753,9 @@ export namespace Prisma {
     split?: NullableIntFieldUpdateOperationsInput | number | null
     regionX?: NullableStringFieldUpdateOperationsInput | string | null
     originalLanguage?: NullableStringFieldUpdateOperationsInput | string | null
-    literatureForm?: NullableStringFieldUpdateOperationsInput | string | null
-    genreX?: NullableStringFieldUpdateOperationsInput | string | null
+    literatureForm?: WorkUpdateliteratureFormInput | Enumerable<string>
+    genreX?: WorkUpdategenreXInput | Enumerable<string>
+    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     origin?: NullableStringFieldUpdateOperationsInput | string | null
     mainSubject?: NullableStringFieldUpdateOperationsInput | string | null
     narrativeLocation?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8738,8 +8797,9 @@ export namespace Prisma {
     split?: NullableIntFieldUpdateOperationsInput | number | null
     regionX?: NullableStringFieldUpdateOperationsInput | string | null
     originalLanguage?: NullableStringFieldUpdateOperationsInput | string | null
-    literatureForm?: NullableStringFieldUpdateOperationsInput | string | null
-    genreX?: NullableStringFieldUpdateOperationsInput | string | null
+    literatureForm?: WorkUpdateliteratureFormInput | Enumerable<string>
+    genreX?: WorkUpdategenreXInput | Enumerable<string>
+    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     origin?: NullableStringFieldUpdateOperationsInput | string | null
     mainSubject?: NullableStringFieldUpdateOperationsInput | string | null
     narrativeLocation?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8817,7 +8877,6 @@ export namespace Prisma {
     field?: NullableStringFieldUpdateOperationsInput | string | null
     occupation?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
-    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     workCount?: NullableIntFieldUpdateOperationsInput | number | null
     vocabCount?: NullableIntFieldUpdateOperationsInput | number | null
     wordCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -8844,6 +8903,7 @@ export namespace Prisma {
     mainResidence?: NullableStringFieldUpdateOperationsInput | string | null
     authorX?: NullableStringFieldUpdateOperationsInput | string | null
     authorY?: NullableStringFieldUpdateOperationsInput | string | null
+    listOfWorks?: AuthorUpdatelistOfWorksInput | Enumerable<string>
   }
 
   export type AuthorUncheckedUpdateWithoutWorksInput = {
@@ -8869,7 +8929,6 @@ export namespace Prisma {
     field?: NullableStringFieldUpdateOperationsInput | string | null
     occupation?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
-    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     workCount?: NullableIntFieldUpdateOperationsInput | number | null
     vocabCount?: NullableIntFieldUpdateOperationsInput | number | null
     wordCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -8897,6 +8956,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     authorX?: NullableStringFieldUpdateOperationsInput | string | null
     authorY?: NullableStringFieldUpdateOperationsInput | string | null
+    listOfWorks?: AuthorUpdatelistOfWorksInput | Enumerable<string>
   }
 
   export type AuthorUncheckedUpdateManyWithoutAuthorsInput = {
@@ -8922,7 +8982,6 @@ export namespace Prisma {
     field?: NullableStringFieldUpdateOperationsInput | string | null
     occupation?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
-    genreY?: NullableStringFieldUpdateOperationsInput | string | null
     workCount?: NullableIntFieldUpdateOperationsInput | number | null
     vocabCount?: NullableIntFieldUpdateOperationsInput | number | null
     wordCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -8950,6 +9009,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     authorX?: NullableStringFieldUpdateOperationsInput | string | null
     authorY?: NullableStringFieldUpdateOperationsInput | string | null
+    listOfWorks?: AuthorUpdatelistOfWorksInput | Enumerable<string>
   }
 
 

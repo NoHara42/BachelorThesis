@@ -5,22 +5,25 @@
     "email": "contact@nohara.me",
     "name": "Ned O'Hara"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NoHara42/BachelorThesis"
+  },
   "private": true,
-  "source": "public/index.html",
+  "source": "index.html",
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@prisma/client": "^4.0.0",
     "@tailwindcss/typography": "^0.5.0",
+    "@vitejs/plugin-react": "^2.0.1",
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "d3": "^7.6.1",
     "d3-array": "^3.1.6",
-    "d3-node": "^2.2.3",
     "daisyui": "^2.17.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "jsdom": "^20.0.0",
     "papaparse": "^5.3.2",
     "postcss": "^8.4.5",
     "prisma": "^4.0.0",
@@ -33,16 +36,22 @@
     "serialize-javascript": "^6.0.0",
     "tailwindcss": "^3.0.24",
     "uuid": "^8.3.2",
-    "vite": "^3.0.5"
+    "vite": "^3.0.9"
   },
   "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+    "seed": "ts-node prisma/seed.ts"
   },
   "scripts": {
-    "client": "yarn parcel --dist-dir src/dist",
-    "server": "ts-node --project server/tsconfig.json server/src/server.ts",
-    "server-watch": "nodemon server/src/server.ts --exec 'ts-node --project server/tsconfig.json server/src/server.ts'",
-    "dev": "concurrently \"yarn run client\" \"yarn run server-watch\"",
+    "dev:server": "nodemon --watch src/server --exec 'ts-node -r dotenv/config src/server/server.ts dotenv_config_path=.env.develop'",
+    "dev:client": "vite -m 'develop' --config vite.config.ts dev",
+    "build": "rimraf dist && tsc -p tsconfig.prod.json && yarn build:client && yarn build:server && yarn copy-files",
+    "build:client": "vite build --emptyOutDir",
+    "typecheck": "tsc --noEmit",
+    "serve:server": "DEBUG=express:* yarn ts-node -r dotenv/config dotenv_config_path=.env' --project /tsconfig.prod.json /src/server/server.ts",
+    "serve:client": "DEBUG=express:* yarn ts-node -r dotenv/config dotenv_config_path=.env' --project /tsconfig.prod.json /src/client/client.ts",
+    "serve:local": "vite serve",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles static/* dist/assets && copyfiles index.html dist",
     "refill": "rm -rf ./prisma/migrations/* && yarn prisma migrate dev -n init"
   },
   "devDependencies": {
@@ -51,14 +60,13 @@
     "@types/node": "^17.0.39",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
-    "@types/tailwindcss": "^3.0.10",
     "buffer": "^6.0.3",
     "concurrently": "^7.2.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "copyfiles": "^2.4.1",
     "nodemon": "^2.0.18",
     "os-browserify": "^0.3.0",
-    "parcel": "^2.5.0",
     "path-browserify": "^1.0.1",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.3.5"
   }

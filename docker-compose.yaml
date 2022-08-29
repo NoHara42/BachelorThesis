@@ -1,0 +1,61 @@
+version: '3.8'
+
+networks:
+  bil-explorer:
+    driver: bridge
+
+volumes:
+  pgsql-data:
+
+services:
+  pgsql:
+    image: postgres:latest
+    restart: unless-stopped
+    container_name: pgsql
+    env_file:
+      - .env
+    volumes:
+      - type: volume
+        source: pgsql-data
+        target: /var/lib/postgresql/data
+    networks:
+      - bil-explorer
+
+  server:
+    build:
+      context: .
+      dockerfile: dockerfile-server
+    restart: unless-stopped
+    container_name: server
+    env_file:
+      - .env
+    depends_on:
+      - pgsql
+    volumes:
+      - type: bind
+        source: ./prisma
+        target: /prisma
+      - type: bind
+        source: ./data
+        target: /data
+    networks:
+      - bil-explorer
+  
+  client:
+    build:
+      context: .
+      dockerfile: dockerfile-client
+    restart: unless-stopped
+    container_name: client
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - server
+    volumes:
+      - type: bind
+        source: ./static
+        target: /static
+    networks:
+      - bil-explorer

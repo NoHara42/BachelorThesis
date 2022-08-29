@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "incremental": true,
+      "module": "NodeNext",
+      "moduleResolution": "Node",
+      "types": ["@types/express"],
+      "esModuleInterop": true
+    }
+  }
+}
