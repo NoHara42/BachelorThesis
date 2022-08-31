@@ -67,11 +67,15 @@ export default function ExpandedNav(props) {
       <label className="italic text-xs mb-4">
         Only include specific author(s)...
         <SelectSearch
+          filterFunc={((option, inputValue) =>
+            inputValue !== "" && (option.label.toLowerCase().includes(inputValue.toLowerCase())) 
+          )}
           labelFunc={(dataValue) => dataValue.authorY}
           value={configObj?.authors}
           //filters already selected authors out of the initial dataset
           data={globalData.allAuthors.filter((author) => !configObj?.authors?.map((author) => author.label)?.includes(author.authorY))}
           config={{
+            noOptionsMessage: () => "Type to search for authors...",
             menuPlacement: "top",
             defaultOptions: true,
             isMulti: true,

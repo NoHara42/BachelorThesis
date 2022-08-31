@@ -1,22 +1,38 @@
 import { DocumentDownloadIcon, RefreshIcon } from "@heroicons/react/solid";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { deserialize } from "../../server/utils/utils";
 import { downloadAsJSON } from "../utils/utils";
-
-function deserialize(serializedJavascript) {
-  return eval("(" + serializedJavascript + ")");
-}
+import Mark from "mark.js";
 
 export default function ExpandedMetadataNav({ data }) {
   let dataObjs: { relatedAuthors: any; relatedOccurrences: any, relatedWork: any } = data?.data;
-  const [configObj, setConfigObj] = useState(null);
 
-  useEffect(() => {
-    setConfigObj(deserialize(data?.config?.data));
-  }, [data]);
+  const [requestMetadata, setRequestMetadata] = useState(null);
+
+  let toMark = useRef();
 
   const handleDownload = () => {
     downloadAsJSON(data, "author-work_metadata.json");
   }
+
+  useEffect(() => {
+    if(data?.config?.data) {
+      setRequestMetadata(deserialize(deserialize(data.config.data)?.config));
+    }
+  }, [data]);
+
+  let markInstance;
+  useEffect(() => {
+    if(toMark?.current && requestMetadata?.label) {
+      console.log(toMark.current, requestMetadata?.label);
+      markInstance = new Mark(toMark.current);
+      markInstance.mark(requestMetadata?.label);
+    }
+  }, [requestMetadata, toMark]);
+
+  useEffect(() => {
+    console.log(toMark);
+  }, [toMark])
 
   if(data == undefined) {
     return <RefreshIcon className="text-primary-light h-20 w-20 animate-spin"></RefreshIcon>;
@@ -24,7 +40,7 @@ export default function ExpandedMetadataNav({ data }) {
   return (
     <>
       <div className="inline-flex w-full justify-between">
-        <h5>Related book data: {configObj?.title}</h5>
+        <h5>Related book data: <em className="text-gray-500 font-normal ml-4">{requestMetadata?.title}</em></h5>
         <DocumentDownloadIcon onClick={handleDownload} className="h-8 w-8 text-primary animate-pulse cursor-pointer"></DocumentDownloadIcon>
       </div>
       <div className="divider"></div>
@@ -80,7 +96,7 @@ export default function ExpandedMetadataNav({ data }) {
         <h5 className="mb-2">Occurrence(s):</h5>
         <div className="divider"></div>
         {dataObjs && dataObjs.relatedOccurrences.length > 0 && (
-          <table className="table table-compact w-full">
+          <table className="table table-compact w-full" ref={toMark}>
             <thead>
               <tr>
               </tr>

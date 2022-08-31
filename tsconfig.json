@@ -37,7 +37,6 @@
   "include": ["src/**/*"],
   "exclude": ["node_modules", "./dist", "src/client/styles.css", "src/client/client.ts"],
   "ts-node": {
-    "transpileOnly": true,
     "compilerOptions": {
       "incremental": true,
       "module": "NodeNext",

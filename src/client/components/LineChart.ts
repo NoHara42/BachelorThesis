@@ -7,6 +7,7 @@ import { requestWorkFreq } from '..';
 // https://observablehq.com/@d3/multi-line-chart
 
 export default function LineChart(
+  config,
   context,
   outletSelectionString,
   data,
@@ -187,7 +188,7 @@ svg.selectAll("mylabels")
     const year: number = (new Date(X[i]) as Date)?.toLocaleString("de-DE", {year: "numeric"});
     const label: string = T[i];
     
-    requestWorkFreq({year,label}, context);
+    requestWorkFreq({year,label}, config, context);
   }
 
   function pointermoved(event) {    
@@ -202,7 +203,7 @@ svg.selectAll("mylabels")
       .filter(([z]) => Z[i] === z)
       .raise();
     dot.attr("transform", `translate(${xScale(X[i]) ?? 0},${yScale(Y[i]) ?? 0})`);
-    if (T) dot.select("text").text(`${T[i]}, Count: ${Y[i]}, Year: ${X[i]?.toLocaleString("de-DE", {year: "numeric"})}`);
+    if (T) dot.select("text").text(`${T[i]}, normalisedCount: ${Y[i]}, Year: ${X[i]?.toLocaleString("de-DE", {year: "numeric"})}`);
 
     xLine
     .style("stroke", "red")

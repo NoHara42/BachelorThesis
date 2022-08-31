@@ -4,7 +4,6 @@
     "jsx": "react-jsx",
   },
   "ts-node": {
-    "transpileOnly": true,
     "compilerOptions": {
       "incremental": true,
       "module": "NodeNext",

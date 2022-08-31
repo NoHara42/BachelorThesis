@@ -6,9 +6,12 @@ import { DrawerStateType } from "./components/drawers";
 import LineChart from "./components/LineChart";
 import { toOptions } from "./components/formElements/selectSearch";
 import serialize from "serialize-javascript";
+import { v4 as uuidv4 } from "uuid";
 
 const appElement = document.getElementById("app") as HTMLElement;
 const root = ReactDOMClient.createRoot(appElement);
+
+const sessionID = uuidv4();
 
 let SERVER_URL;
 
@@ -79,22 +82,22 @@ export async function requestViz(
     .then((response) => {
       // handle success
       type ProcessedData = {
+        relativeCount: any;
         occId: string;
         year: Date;
-        count: number;
       };
 
       //replaces outlet with the rendered linechart
 
       //@ts-ignore
       response?.data &&
-        LineChart(context, "#outlet", response?.data, {
+        LineChart(params, context, "#outlet", response?.data, {
           width: outlet?.clientWidth,
           height: outlet?.clientHeight,
           x: (d: ProcessedData) => new Date(d.year),
-          y: (d: ProcessedData) => d.count,
+          y: (d: ProcessedData) => d.relativeCount,
           z: (d: ProcessedData) => d.occId,
-          yLabel: "Absolute no. of Occurrences",
+          yLabel: "Work Frequency for given year / Total Occurrences in given year",
         });
       return;
     });
@@ -105,16 +108,16 @@ type WorkFreqParams = {
   year: number;
 };
 
-export function requestWorkFreq(params: WorkFreqParams, context) {
+export function requestWorkFreq(params: WorkFreqParams, config, context) {
   //Opens the right nav to show the content is being loaded
   context[0][1](null);
   context[1][1](DrawerStateType.Open);
 
-  let url = new URL("workfreq", SERVER_URL).href;
+  let url = new URL("work-freq", SERVER_URL).href;
 
   axios
     .post(url, {
-      config: serialize(params),
+      config: serialize({workFreqParams: params, allConfigs: config}),
     })
     .then((response) => {
       //sets the state of the rightNavMetadataObj to the response
@@ -127,7 +130,7 @@ export function requestWorkFreq(params: WorkFreqParams, context) {
 }
 
 export function requestAssociatedMetadata(params: Object | null) {
-  let url = new URL("associatedmetadata", SERVER_URL).href;
+  let url = new URL("associated-metadata", SERVER_URL).href;
   return axios
     .post(url, {
       config: serialize(params),

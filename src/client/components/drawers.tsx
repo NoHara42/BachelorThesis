@@ -69,11 +69,11 @@ export default function Drawers({
           </div>
           <div className="drawer-side">
             <label
+              htmlFor="right"
               onClick={(e) => {
-                e.preventDefault();      
+                e.preventDefault();
                 setRightNavState(DrawerStateType.Closed);
               }}
-              htmlFor="right"
               className="drawer-overlay"
             ></label>
             <ul className="menu overflow-y-auto overflow-x-clip w-full text-base-content ">
@@ -97,7 +97,14 @@ export default function Drawers({
         </div>
       </div>
       <div className="drawer-side">
-        <label htmlFor="left" className="drawer-overlay"></label>
+        <label
+          htmlFor="left"
+          onClick={(e) => {
+            e.preventDefault();
+            setLeftNavState(DrawerStateType.Closed);
+          }}
+          className="drawer-overlay"
+        ></label>
         <ExpandedNavContext.Provider
           value={[expandedNavSelection, setExpandedNavSelection]}
         >
@@ -124,10 +131,6 @@ function LeftNav(props) {
       </ul>
       <label
         htmlFor="left"
-        onClick={(e) => {
-          e.preventDefault();
-          props.stateObj[1](DrawerStateType.Closed);
-        }}
         className="drawer-button col-span-2 lg:col-span-3"
       ></label>
     </div>
