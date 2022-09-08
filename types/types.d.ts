@@ -1,8 +1,25 @@
+export type FlattenedData = {
+  occId: string;
+  year: number;
+  fileId: string;
+};
+
+export type YearTaxonWorkFreqMap = Map<string, PreNormalisedData>;
+
+export type YearWorkFreqMap = Map<number, Set<string>>;
+
+export type NormalisedWorkFreqMap = Map<string, ProcessedData>;
+
+export type PreNormalisedData = {
+  year: Date;
+  occId: string;
+  works: Set<string>;
+};
 
 export type ProcessedData = {
   occId: string;
   year: Date;
-  count: number;
+  relativeLiteraryImportance: number;
 };
 
 export type Author = {

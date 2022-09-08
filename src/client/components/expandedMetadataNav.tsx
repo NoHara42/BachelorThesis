@@ -1,7 +1,7 @@
 import { DocumentDownloadIcon, RefreshIcon } from "@heroicons/react/solid";
 import React, { useEffect, useRef, useState } from "react";
 import { deserialize } from "../../server/utils/utils";
-import { downloadAsJSON } from "../utils/utils";
+import { downloadAsCSV, downloadAsJSON } from "../utils/utils";
 import Mark from "mark.js";
 
 export default function ExpandedMetadataNav({ data }) {
@@ -12,7 +12,7 @@ export default function ExpandedMetadataNav({ data }) {
   let toMark = useRef();
 
   const handleDownload = () => {
-    downloadAsJSON(data, "author-work_metadata.json");
+    downloadAsCSV(dataObjs, "author-work_metadata.csv");
   }
 
   useEffect(() => {
@@ -30,17 +30,13 @@ export default function ExpandedMetadataNav({ data }) {
     }
   }, [requestMetadata, toMark]);
 
-  useEffect(() => {
-    console.log(toMark);
-  }, [toMark])
-
   if(data == undefined) {
     return <RefreshIcon className="text-primary-light h-20 w-20 animate-spin"></RefreshIcon>;
   }
   return (
     <>
       <div className="inline-flex w-full justify-between">
-        <h5>Related book data: <em className="text-gray-500 font-normal ml-4">{requestMetadata?.title}</em></h5>
+        <h5 className="w-full">Related book data:</h5>
         <DocumentDownloadIcon onClick={handleDownload} className="h-8 w-8 text-primary animate-pulse cursor-pointer"></DocumentDownloadIcon>
       </div>
       <div className="divider"></div>
@@ -93,7 +89,7 @@ export default function ExpandedMetadataNav({ data }) {
           </table>
           </>
         )}
-        <h5 className="mb-2">Occurrence(s):</h5>
+        <h5 className="mb-2">Occurrence(s): ({dataObjs?.relatedOccurrences?.length})</h5>
         <div className="divider"></div>
         {dataObjs && dataObjs.relatedOccurrences.length > 0 && (
           <table className="table table-compact w-full" ref={toMark}>

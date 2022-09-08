@@ -16,6 +16,9 @@ export type WorkFreqParams = {
 export const getWorkFreq = async (req, res) => {
   let allParams: AllWorkFreqParams = deserialize(req.body.config) as AllWorkFreqParams;
   let {workFreqParams, allConfigs} = allParams;
+  
+  console.log(workFreqParams);
+  
 
   // incase empty graph is clicked
   if (!workFreqParams.year || !workFreqParams.label) {
@@ -98,16 +101,16 @@ export const getWorkFreq = async (req, res) => {
       authors: {
         every: {
           mainResidence: (authorTableFormPairs.get("mainResidence") ?? undefined) && {
-            equals: authorTableFormPairs.get("mainResidence"),
             not: null,
+            equals: authorTableFormPairs.get("mainResidence"),
           },
           mainRegion: (authorTableFormPairs.get("mainRegion") ?? undefined) && {
-            equals: authorTableFormPairs.get("mainRegion"),
             not: null,
+            equals: authorTableFormPairs.get("mainRegion"),
           },
           gender: (authorTableFormPairs.get("gender") ?? undefined) && {
-            equals: authorTableFormPairs.get("gender"),
             not: null,
+            equals: authorTableFormPairs.get("gender"),
           },
           authorY: {
             in: selectedAuthors,
@@ -143,6 +146,6 @@ export const getWorkFreq = async (req, res) => {
     workFreqParams.isSortedAscending ?? false
       ? bookFreqData.sort((objA, objB) => objA.count - objB.count)
       : bookFreqData.sort((objA, objB) => objB.count - objA.count);
-      
+    
   return res.send(bookFreqData ?? null);
 }

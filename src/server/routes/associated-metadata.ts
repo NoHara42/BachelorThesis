@@ -25,9 +25,8 @@ export const getAssociatedMetadata = async (req, res) => {
       sentence: true,
     },
   });
-  relatedOccurrences = relatedOccurrences.splice(0, 100);
 
-  let authorsOfRelatedWorks = await prisma.author.findMany({
+  let relatedAuthors = await prisma.author.findMany({
     where: {
       works: {
         every: {
@@ -45,7 +44,6 @@ export const getAssociatedMetadata = async (req, res) => {
       year: Number(params.year),
     },
   });
-  let relatedAuthors = authorsOfRelatedWorks.splice(0, 100);
 
   res.send({ relatedOccurrences, relatedAuthors, relatedWork });
 }

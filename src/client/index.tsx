@@ -82,7 +82,7 @@ export async function requestViz(
     .then((response) => {
       // handle success
       type ProcessedData = {
-        relativeCount: any;
+        relativeLiteraryImportance: any;
         occId: string;
         year: Date;
       };
@@ -95,9 +95,9 @@ export async function requestViz(
           width: outlet?.clientWidth,
           height: outlet?.clientHeight,
           x: (d: ProcessedData) => new Date(d.year),
-          y: (d: ProcessedData) => d.relativeCount,
+          y: (d: ProcessedData) => d.relativeLiteraryImportance,
           z: (d: ProcessedData) => d.occId,
-          yLabel: "Work Frequency for given year / Total Occurrences in given year",
+          yLabel: "WorkFreq per given year, taxon / WorkFreq per year",
         });
       return;
     });

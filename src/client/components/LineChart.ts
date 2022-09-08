@@ -203,7 +203,7 @@ svg.selectAll("mylabels")
       .filter(([z]) => Z[i] === z)
       .raise();
     dot.attr("transform", `translate(${xScale(X[i]) ?? 0},${yScale(Y[i]) ?? 0})`);
-    if (T) dot.select("text").text(`${T[i]}, normalisedCount: ${Y[i]}, Year: ${X[i]?.toLocaleString("de-DE", {year: "numeric"})}`);
+    if (T) dot.select("text").text(`${T[i]}, relLitImportance: ${Y[i]}, Year: ${X[i]?.toLocaleString("de-DE", {year: "numeric"})}`);
 
     xLine
     .style("stroke", "red")

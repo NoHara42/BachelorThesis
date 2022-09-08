@@ -7,7 +7,6 @@ import { getTaxons } from './routes/taxons';
 import { getAssociatedMetadata } from './routes/associated-metadata';
 import { getWorkFreq } from './routes/work-freq';
 import { getViz } from './routes/viz';
-import { PlotObj } from './../../types/types.d';
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";

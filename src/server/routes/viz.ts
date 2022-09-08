@@ -1,17 +1,25 @@
-import { Blob } from 'buffer';
+import { Blob } from "buffer";
 import { prisma } from "./../server";
 import {
   PlotObj,
   DynamicFormEntry,
   ProcessedData,
+  YearTaxonWorkFreqMap,
+  YearWorkFreqMap,
+  NormalisedWorkFreqMap,
+  FlattenedData,
 } from "./../../../types/types.d";
 import { deserialize } from "../utils/utils";
 
 export const getViz = async (req, res) => {
   let plotOccurrencePromises = [];
   let plotConfigs: Map<string, PlotObj> = deserialize(req.body.config);
+  let authorTableFormPairs = new Map();
+  let workTableFormPairs = new Map();
+  let selectedAuthors = [];
 
   let labels = new Map();
+
   //assign uniqueLabel to configuration cache so we can use it later to fine-tune queries
   plotConfigs.forEach((plotConfig) => {
     // check for duplicate labels
@@ -27,9 +35,8 @@ export const getViz = async (req, res) => {
     }
   });
 
-
   plotConfigs.forEach((plotConfig) => {
-    let authorTableFormPairs = new Map(
+    authorTableFormPairs = new Map(
       Array.from(plotConfig.Author).map(
         (tableKey: [string, DynamicFormEntry]) => [
           tableKey[1].label,
@@ -37,7 +44,7 @@ export const getViz = async (req, res) => {
         ]
       )
     );
-    let workTableFormPairs = new Map(
+    workTableFormPairs = new Map(
       Array.from(plotConfig.Work).map(
         (tableKey: [string, DynamicFormEntry]) => [
           tableKey[1].label,
@@ -46,7 +53,7 @@ export const getViz = async (req, res) => {
       )
     );
 
-    let selectedAuthors =
+    selectedAuthors =
       plotConfig.authors?.length > 0 ?? undefined
         ? Array.from(plotConfig.authors).map((authorObj) => authorObj?.label)
         : undefined;
@@ -60,9 +67,9 @@ export const getViz = async (req, res) => {
       Array.from(workTableFormPairs)
     );
 
+    //TODO: find the reason why sometimes Dy is lower than dfty
     plotOccurrencePromises.push(
-      
-      // gets all occurrences for a plot label      
+      // gets all occurrences for a plot label
       prisma.occurrence.findMany({
         where: {
           occId: plotConfig.label ?? undefined,
@@ -87,10 +94,20 @@ export const getViz = async (req, res) => {
             },
             authors: {
               every: {
-                gender: authorTableFormPairs.get("gender") ?? undefined,
-                mainRegion: authorTableFormPairs.get("mainRegion") ?? undefined,
-                mainResidence:
-                  authorTableFormPairs.get("mainResidence") ?? undefined,
+                gender: (authorTableFormPairs.get("gender") ?? undefined) && {
+                  not: null,
+                  equals: authorTableFormPairs.get("gender"),
+                },
+                mainRegion: (authorTableFormPairs.get("mainRegion") ??
+                  undefined) && {
+                  not: null,
+                  equals: authorTableFormPairs.get("mainRegion"),
+                },
+                mainResidence: (authorTableFormPairs.get("mainResidence") ??
+                  undefined) && {
+                  not: null,
+                  equals: authorTableFormPairs.get("mainResidence"),
+                },
                 authorY: {
                   in: selectedAuthors,
                 },
@@ -111,7 +128,7 @@ export const getViz = async (req, res) => {
     );
   });
 
-  Promise.all(plotOccurrencePromises).then((dataPlotConfigs) => {
+  Promise.all(plotOccurrencePromises).then(async (dataPlotConfigs) => {
     //apply unique label to database responses incase defined
     let labels = new Map();
     dataPlotConfigs.forEach((dataPlotConfig) => {
@@ -129,7 +146,7 @@ export const getViz = async (req, res) => {
         labels.set(occId, 1);
       }
     });
-    
+
     let flattenedData = dataPlotConfigs
       .flat(1)
       .map(({ work, ...allFlatConfigsOmittedWork }: any) => ({
@@ -138,40 +155,63 @@ export const getViz = async (req, res) => {
         fileId: work.fileId,
       }));
 
-    type FlattenedData = {
-      occId: string;
-      year: number;
-      fileId: string,
-    };
+    let yearTaxonWorkFreqMap = new Map() as YearTaxonWorkFreqMap;
+    let yearWorkFreqMap = new Map() as YearWorkFreqMap;
+    let normalisedWorkFreqMap = new Map() as NormalisedWorkFreqMap;
 
-    let tempMap = new Map();
-    
     flattenedData.map((data: FlattenedData) => {
       if (data.year !== null) {
         // Here I create a custom key which can be rereferenced.
         // Using an object as a key here suffers from object referentiality
         let keyStringIKnowItsHacky = `${data.year} ${data.occId}`;
-        tempMap.set(keyStringIKnowItsHacky, {
+        yearTaxonWorkFreqMap.set(keyStringIKnowItsHacky, {
           year: new Date(Date.UTC(data.year, 1)),
           occId: data.occId,
-          count: (tempMap.get(keyStringIKnowItsHacky)?.count ?? 0) + 1,
-          works: (tempMap.get(keyStringIKnowItsHacky)?.works ? tempMap.get(keyStringIKnowItsHacky).works.add(data.fileId) : new Set()),
+          works: yearTaxonWorkFreqMap.get(keyStringIKnowItsHacky)?.works
+            ? yearTaxonWorkFreqMap
+                .get(keyStringIKnowItsHacky)
+                .works.add(data.fileId)
+            : new Set().add(data.fileId) as Set<string>
         });
       }
     });
 
-    //normalise the tempMap
-    tempMap.forEach(async (occurrencesInYearValue, key) => {
-      tempMap.set(key, {
-        year: occurrencesInYearValue.year,
-        occId: occurrencesInYearValue.occId,
-        relativeCount: ((occurrencesInYearValue.count) ** -1) * occurrencesInYearValue.works.size,
-      })
+    // get a list of all filtered works, not associated with a specific taxon
+    const allWorks = await prisma.work.findMany({
+      select: {
+        year: true,
+        fileId: true,
+      },
     });
 
-    let processedData: Array<ProcessedData> = Array.from(tempMap.values()).sort(
-      (a, b) => a.year - b.year
-    );
+    allWorks.map((filteredWork) => {
+      yearWorkFreqMap.set(
+        filteredWork.year,
+        yearWorkFreqMap.get(filteredWork.year)
+          ? yearWorkFreqMap.get(filteredWork.year).add(filteredWork.fileId)
+          : new Set().add(filteredWork.fileId) as Set<string>
+      );
+    });
+
+    //normalise the tempMap
+    yearTaxonWorkFreqMap.forEach(async (occurrencesInYearValue, key) => {
+      let dfty = occurrencesInYearValue.works.size;
+      let Dy = yearWorkFreqMap.get(
+        occurrencesInYearValue.year.getFullYear()
+      ).size;
+      
+      let formula = (Dy !== 0 ? (dfty / Dy) : 0);
+
+      normalisedWorkFreqMap.set(key, {
+        year: occurrencesInYearValue.year,
+        occId: occurrencesInYearValue.occId,
+        relativeLiteraryImportance: formula,
+      });
+    });
+
+    let processedData: Array<ProcessedData> = Array.from(
+      normalisedWorkFreqMap.values()
+    ).sort((a, b) => a.year.getFullYear() - b.year.getFullYear());
 
     console.log("ProcessedData number of elements:", processedData.length);
     console.log(
@@ -179,7 +219,7 @@ export const getViz = async (req, res) => {
       new Blob(processedData as any).size / 1000
     );
 
-    if(processedData.length === 0) {
+    if (processedData.length === 0) {
       return;
     }
 

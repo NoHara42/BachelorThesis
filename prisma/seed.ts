@@ -62,80 +62,81 @@ function processData(papaParseOptions, csvFileName) {
 
 async function main() {
 
-  // // Create all Authors while creating empty Works with their PKs
-  // // -after that, update works that were initialized as null
-  // await processData(
-  //   {
-  //     step: async (result, parser) => {
-  //       parser.pause();
-  //       let processedAuthorsAndWorks = processAuthorsAndWorks(result.data);
-  //       let authorData = extractedAuthor(processedAuthorsAndWorks);
-  //       let workData = extractedWork(processedAuthorsAndWorks);
+  // Create all Authors while creating empty Works with their PKs
+  // -after that, update works that were initialized as null
+  await processData(
+    {
+      step: async (result, parser) => {
+        parser.pause();
+        let processedAuthorsAndWorks = processAuthorsAndWorks(result.data);
+        let authorData = extractedAuthor(processedAuthorsAndWorks);
+        let workData = extractedWork(processedAuthorsAndWorks);
         
 
-  //       await prisma.author.createMany({
-  //         data: {
-  //           id: (countAuthors + 1),
-  //           ...authorData
-  //         }, skipDuplicates: true,
-  //       })
+        await prisma.author.createMany({
+          data: {
+            id: (countAuthors + 1),
+            ...authorData
+          }, skipDuplicates: true,
+        })
 
-  //       await prisma.work.create({
-  //         data: {
-  //           authors: {
-  //             connect: {
-  //               id: (countAuthors + 1)
-  //             }
-  //           },
-  //           ...workData,
-  //         }
-  //       }).then(() => {
-  //         if (countAuthors % 1000 == 0) {
-  //           console.log(
-  //             `Total author/work insert percentage complete: ${
-  //               (countAuthors / sizeWorks) * 100
-  //             }`
-  //           );
-  //         }
-  //         countAuthors++;
-  //         parser.resume();
-  //       });
-  //     },
-  //     transformHeader: (header, index) => {
-  //       switch (index) {
-  //         case 0:
-  //           return "Author_y";
-  //         case 1:
-  //           return "fileId";
-  //         case 13:
-  //           return "Author_x";
-  //         case 29:
-  //           return "Region_x";
-  //         case 32:
-  //           return "Genre_x";
-  //         case 38:
-  //           return "completeFlag_x";
-  //         case 39:
-  //           return "Literary_period_x";
-  //         case 54:
-  //           return "Region_y";
-  //         case 55:
-  //           return "Literary_period_y";
-  //         case 63:
-  //           return "Genre_y";
-  //         case 81:
-  //           return "completeFlag_y";
-  //         default:
-  //           return header;
-  //       }
-  //     },
-  //     encoding: "utf8",
-  //     delimiter: ",",
-  //     header: true,
-  //     dynamicTyping: true,
-  //   },
-  //   worksFileName
-  // );
+        await prisma.work.create({
+          data: {
+            authors: {
+              connect: {
+                id: (countAuthors + 1)
+              }
+            },
+            ...workData,
+          }
+        }).then(() => {
+          if (countAuthors % 1000 == 0) {
+            console.log(
+              `Total author/work insert percentage complete: ${
+                (countAuthors / sizeWorks) * 100
+              }`
+            );
+          }
+          countAuthors++;
+          parser.resume();
+        });
+      },
+      transformHeader: (header, index) => {
+        switch (index) {
+          case 0:
+            return "Author_y";
+          case 1:
+            return "fileId";
+          case 13:
+            return "Author_x";
+          case 29:
+            return "Region_x";
+          case 32:
+            return "Genre_x";
+          case 38:
+            return "completeFlag_x";
+          case 39:
+            return "Literary_period_x";
+          case 54:
+            return "Region_y";
+          case 55:
+            return "Literary_period_y";
+          case 63:
+            return "Genre_y";
+          case 81:
+            return "completeFlag_y";
+          default:
+            return header;
+        }
+      },
+      encoding: "utf8",
+      delimiter: ",",
+      header: true,
+      dynamicTyping: true,
+    },
+    worksFileName
+  );
+  
   // Insert all Occurrences
   await processData(
     {
