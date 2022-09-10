@@ -236,7 +236,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/nohaha/Git/Bachelor/prisma/generated/client",
+      "value": "/prisma/generated/client",
       "fromEnvVar": null
     },
     "config": {
@@ -247,8 +247,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../..",
   "clientVersion": "4.1.1",

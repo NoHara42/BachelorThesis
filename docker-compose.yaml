@@ -1,7 +1,7 @@
 version: '3.8'
 
 networks:
-  bil-explorer:
+  bil-network:
     driver: bridge
 
 volumes:
@@ -9,9 +9,11 @@ volumes:
 
 services:
   pgsql:
-    image: postgres:latest
+    image: postgres
     restart: unless-stopped
     container_name: pgsql
+    ports:
+    - "5432:5432"
     env_file:
       - .env
     volumes:
@@ -19,7 +21,7 @@ services:
         source: pgsql-data
         target: /var/lib/postgresql/data
     networks:
-      - bil-explorer
+      - bil-network
 
   server:
     build:
@@ -27,6 +29,8 @@ services:
       dockerfile: dockerfile-server
     restart: unless-stopped
     container_name: server
+    ports:
+      - "3000:3000"
     env_file:
       - .env
     depends_on:
@@ -39,7 +43,8 @@ services:
         source: ./data
         target: /data
     networks:
-      - bil-explorer
+      - bil-network
+
   
   client:
     build:
@@ -58,4 +63,4 @@ services:
         source: ./static
         target: /static
     networks:
-      - bil-explorer
+      - bil-network

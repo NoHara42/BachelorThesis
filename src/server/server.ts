@@ -22,15 +22,8 @@ export const prisma = new PrismaClient({
 expressApp.use(bodyParser.urlencoded({ extended: false }));
 expressApp.use(bodyParser.json());
 
-expressApp.use(express.static("dist"));
 
-expressApp.use(
-  cors({
-    origin: [process.env.VITE_CLIENT_URL],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["*"],
-  })
-);
+expressApp.use(cors());
 
 expressApp.listen(port, () => {
   console.log(`Server listening on port ${port}`);

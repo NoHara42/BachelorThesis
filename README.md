@@ -12,9 +12,15 @@ It builds upon the data produced by
 
 ## Prod Setup
 
-Prerequisite: Install docker.
+Prerequisite: 
+  Install docker.
+  Ask for .env file.
 
-Theoretically all setup should be handled with `docker compose up`.
+0. Change occurrence `SERVER_URL` fallback in the `index.tsx` file to match the server origin (not `localhost:3000`), as this will be run in the browser.
+1. Run `docker compose build && docker compose up`.
+2. Find and copy the `bil-explorer_server` container ID with `docker ps`.
+3. Use `docker exec -it [replace with containerID] bash` to shell into the server container.
+4. Reset and seed the database here with `yarn prisma migrate reset --force` (or manage with `yarn prisma -h`).
 
 ## Local Dev Setup
 

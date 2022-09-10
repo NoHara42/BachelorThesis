@@ -15,9 +15,12 @@ const sessionID = uuidv4();
 
 let SERVER_URL;
 
+//only accessible when using vite bundler in dev mode
 if (import.meta.env.VITE_SERVER_URL) {
   SERVER_URL = import.meta.env.VITE_SERVER_URL;
-} else SERVER_URL = "http://server:3000";
+}
+//fallback
+else SERVER_URL = "http://localhost:3000";
 
 async function main() {
   await getAllAuthors().then(async (allAuthors) => {

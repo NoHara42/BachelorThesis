@@ -11,7 +11,8 @@ COPY yarn.lock ./
 COPY package.json ./
 COPY tsconfig.json ./
 COPY tsconfig.prod.json ./
-COPY ./src/server/server.ts /src/server/server.ts
+COPY ./src/server /src/server
+COPY ./types ./types
 
 # Install app dependencies
 RUN yarn install

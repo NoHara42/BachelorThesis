@@ -9,7 +9,8 @@
       "module": "NodeNext",
       "moduleResolution": "Node",
       "types": ["@types/express"],
-      "esModuleInterop": true
-    }
+      "esModuleInterop": true,
+    },
+    "exclude": ["node_modules", "./dist", "src/client/styles.css"],
   }
 }

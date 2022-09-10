@@ -7,8 +7,8 @@ import { extractedWork } from "./utils/types/workType";
 import { occurrenceType } from "./utils/types/occurrenceType";
 import fs from "fs";
 
-const occurrencesFileName = "/home/nohaha/Git/Bachelor/data/validCorpus.csv";
-const worksFileName = "/home/nohaha/Git/Bachelor/data/extCompDB.csv";
+const occurrencesFileName = "/data/validCorpus.csv";
+const worksFileName = "/data/extCompDB.csv";
 const sizeWorks = 13519;
 const sizeOccurrences = 5733516;
 

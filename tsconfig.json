@@ -42,6 +42,7 @@
       "module": "NodeNext",
       "moduleResolution": "Node",
       "types": ["@types/express"]
-    }
+    },
+    "exclude": ["node_modules", "./dist", "src/client/styles.css"],
   }
 }

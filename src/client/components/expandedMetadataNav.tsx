@@ -1,7 +1,6 @@
 import { DocumentDownloadIcon, RefreshIcon } from "@heroicons/react/solid";
 import React, { useEffect, useRef, useState } from "react";
-import { deserialize } from "../../server/utils/utils";
-import { downloadAsCSV, downloadAsJSON } from "../utils/utils";
+import { downloadAsCSV, deserialize } from "../utils/utils";
 import Mark from "mark.js";
 
 export default function ExpandedMetadataNav({ data }) {

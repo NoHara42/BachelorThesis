@@ -16,6 +16,7 @@ COPY .postcssrc.json ./
 COPY tailwind.config.js ./
 COPY vite.config.ts ./
 COPY ./src/client ./src/client
+COPY ./types ./types
 RUN mkdir ./dist
 
 

@@ -39,19 +39,17 @@
     "vite": "^3.0.9"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node --project tsconfig.prod.json ./prisma/seed.ts"
   },
   "scripts": {
     "dev:server": "nodemon --watch src/server/** --exec 'ts-node -r dotenv/config src/server/server.ts dotenv_config_path=.env.develop'",
     "dev:client": "vite -m 'develop' --config vite.config.ts dev",
-    "build": "rimraf dist && tsc -p tsconfig.prod.json && yarn build:client && yarn build:server && yarn copy-files",
-    "build:client": "vite build --emptyOutDir",
+    "build:client": "tsc -p tsconfig.prod.json && vite build --emptyOutDir",
     "typecheck": "tsc --noEmit",
-    "serve:server": "DEBUG=express:* yarn ts-node -r dotenv/config dotenv_config_path=.env' --project /tsconfig.prod.json /src/server/server.ts",
-    "serve:client": "DEBUG=express:* yarn ts-node -r dotenv/config dotenv_config_path=.env' --project /tsconfig.prod.json /src/client/client.ts",
+    "serve:server": "DEBUG=express:* dotenv_config_path=.env yarn ts-node -r dotenv/config --project tsconfig.prod.json src/server/server.ts",
+    "serve:client": "DEBUG=express:* dotenv_config_path=.env yarn ts-node -r dotenv/config --project tsconfig.prod.json src/client/client.ts",
     "serve:local": "vite serve",
     "clean": "rimraf dist/",
-    "copy-files": "copyfiles static/* dist/assets && copyfiles index.html dist",
     "refill": "rm -rf ./prisma/migrations/* && yarn prisma migrate dev -n init"
   },
   "devDependencies": {
@@ -69,5 +67,6 @@
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.3.5"
-  }
+  },
+  "license": "MIT"
 }

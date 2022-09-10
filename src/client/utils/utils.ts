@@ -22,3 +22,12 @@ export function downloadAsCSV(data, fileName) {
   let url = URL.createObjectURL(blob);
   triggerDownload(url, fileName);
 }
+
+export function deserialize(serializedJavascript) {
+  try {
+    return JSON.parse(serializedJavascript);
+  } catch (err) {
+    console.error("Error occurred while parsing JSON, trying with eval...");
+    return eval( "(" + serializedJavascript + ")")
+  }
+}

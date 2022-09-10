@@ -44,4 +44,7 @@ yarn.lock
 /src/generated/**/*
 
 /prisma/migrations/**/*
-/prisma/generated/**/*
+/prisma/generated
+
+.vscode
+*.sql
