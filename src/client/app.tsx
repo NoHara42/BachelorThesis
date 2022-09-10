@@ -16,6 +16,7 @@ export const GlobalContext = React.createContext(null);
 
 export function App(props) {
   const defaultPlots = [
+    // for testing
     // { value: "dog", label: "Dog", id: uuidv4() },
     // { value: "cat", label: "Cat", id: uuidv4() },
   ];
@@ -73,44 +74,11 @@ export function App(props) {
   };
 
   const savePlotConfig = (id, plotToSave) => {
-    // // if generalConfig, save for all other configs if their value is undefined or null
-    // if(id === "generalConfig") {
-    //   allPlotConfigs.forEach((plotConfig, plotConfigKey) => {        
-    //     (typeof plotConfig.generallyDefined === "undefined" || plotConfig.generallyDefined) && (() => {
-    //       let {authors, ...plotConfigOmmittedAuthors} = plotConfig;
-    //       let {range, ...plotConfigOmmittedRange} = plotConfig;
-
-    //       if(!plotConfig.authors) {
-    //         allPlotConfigs.set(plotConfigKey, {authors: plotToSave.authors, ...plotConfigOmmittedAuthors, generallyDefined: true});
-    //       }
-          
-    //       if(plotConfig.range[0] === 1705 || plotConfig.range[1] === 1969) {
-    //         //sets the generallyDefined flag if the config has not been individually set yet
-    //         allPlotConfigs.set(plotConfigKey, {range: plotToSave.range, ...plotConfigOmmittedRange, generallyDefined: true});
-    //       }
-    //     })()
-    //   })
-    // } else {
-      allPlotConfigs.set(id, plotToSave);
-    // }
+    allPlotConfigs.set(id, plotToSave);
   };
 
   const saveDynChange = (currentPlotId, tableName, dynKey, dynValue) => {
-    // // if generalConfig, save for all other configs if their value is undefined or null
-    // if(currentPlotId === "generalConfig") {
-    //   console.log("save dyn generalconfig");
-      
-    //   allPlotConfigs.forEach((plotConfig, key) => {
-    //     //save if undefined or null
-    //     if(Boolean(allPlotConfigs.get(key)[tableName].get(dynKey))) {
-    //       allPlotConfigs.get(currentPlotId)[tableName].set(dynKey, dynValue);
-    //     }
-    //   });
-    // } else {
-      allPlotConfigs.get(currentPlotId)[tableName].set(dynKey, dynValue);
-      //allPlotConfig state only rerendered when the drawer is closed.
-      //trigger method is passed to selectCardlist
-    // }
+    allPlotConfigs.get(currentPlotId)[tableName].set(dynKey, dynValue);
   };
 
   let rerenderEvent = new Event("rerender");
@@ -307,6 +275,7 @@ export function App(props) {
                 <br />
                 For a complete, unique list of taxons that are available to this app, <a href="https://github.com/NoHara42/BachelorThesis/unique-taxons.csv">click here.</a> 
                 <br />
+                See the paper that relates to the creation of this app <a href="https://docs.google.com/document/d/16a-4Gt8Qx1sqJ7BUxUJGsayCfc5emojmtfn9YFADODQ/edit?usp=sharing">here</a>.
                 <br />
                 Feel free to contact me{" "}
                 <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x63;&#x6f;&#x6e;&#x74;&#x61;&#x63;&#x74;&#x40;&#x6e;&#x6f;&#x68;&#x61;&#x72;&#x61;&#x2e;&#x6d;&#x65;?subject=Hey! - BiL Explorer">

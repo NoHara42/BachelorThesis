@@ -38,6 +38,8 @@ After the database is filled, (once your occurrences are being filled you can al
 you can setup your dev environment locally by running
 `yarn run dev:client`, and `yarn run dev:server`, simaltaneously.
 
+See the paper for the creation of this app <a href="https://docs.google.com/document/d/16a-4Gt8Qx1sqJ7BUxUJGsayCfc5emojmtfn9YFADODQ/edit?usp=sharing">here</a>.
+
 Feel free to contact me
 <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x63;&#x6f;&#x6e;&#x74;&#x61;&#x63;&#x74;&#x40;&#x6e;&#x6f;&#x68;&#x61;&#x72;&#x61;&#x2e;&#x6d;&#x65;?subject=Hey! - BiL Explorer">
   here
