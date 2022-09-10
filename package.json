@@ -44,7 +44,7 @@
   "scripts": {
     "dev:server": "nodemon --watch src/server/** --exec 'ts-node -r dotenv/config src/server/server.ts dotenv_config_path=.env.develop'",
     "dev:client": "vite -m 'develop' --config vite.config.ts dev",
-    "build:client": "tsc -p tsconfig.prod.json && vite build --emptyOutDir",
+    "build:client": "vite build -c vite.config.ts",
     "typecheck": "tsc --noEmit",
     "serve:server": "DEBUG=express:* dotenv_config_path=.env yarn ts-node -r dotenv/config --project tsconfig.prod.json src/server/server.ts",
     "serve:client": "DEBUG=express:* dotenv_config_path=.env yarn ts-node -r dotenv/config --project tsconfig.prod.json src/client/client.ts",

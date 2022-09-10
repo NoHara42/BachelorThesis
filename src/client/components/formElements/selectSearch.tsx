@@ -3,6 +3,9 @@ import WindowedSelect from "react-windowed-select";
 import { v4 as uuidv4 } from "uuid";
 import { AxiosResponse } from "axios";
 
+// for whatever reason production builds using vite on docker wont work without this
+const WindowedSelectAlias = (WindowedSelect as any).default ? (WindowedSelect as any).default : WindowedSelect;
+
 type labelFuncType = (dataValue: Pick<AxiosResponse, "data">) => string
 type ToOptions<T> = (data, labelFunc, metaDataFunc) => {value: string, label: string, type: string} 
 
@@ -35,7 +38,7 @@ export default function SelectSearch(props) {
   const options = toOptions(props.data, props.labelFunc, uuidv4, props.metaData);
 
   return (
-    <WindowedSelect
+    <WindowedSelectAlias
       onKeyDown={props.onKeyDown}
       tabIndex={0}
       className="z-10"
