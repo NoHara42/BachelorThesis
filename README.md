@@ -20,7 +20,7 @@ Prerequisite:
 1. Run `docker compose build && docker compose up`.
 2. Find and copy the `bil-explorer_server` container ID with `docker ps`.
 3. Use `docker exec -it [replace with containerID] bash` to shell into the server container.
-4. Reset and seed the database here with `yarn prisma migrate reset --force` (or manage with `yarn prisma -h`).
+4. Reset and seed the database here with `yarn prisma migrate reset --force` (or manage the database using the prisma CLI - see `yarn prisma -h`).
 
 ## Local Dev Setup
 
