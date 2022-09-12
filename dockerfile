@@ -15,14 +15,14 @@ COPY index.html ./
 COPY .postcssrc.json ./
 COPY tailwind.config.js ./
 COPY vite.config.ts ./
-COPY ./src/client ./src/client
+COPY ./src /src
 COPY ./types ./types
 RUN mkdir ./dist
-
 
 # Install app dependencies
 RUN yarn install
 RUN yarn run build:client
+RUN yarn prisma generate
 
 
-CMD ["yarn", "serve:client"]
+CMD ["yarn", "serve"]

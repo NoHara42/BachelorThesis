@@ -12,7 +12,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 const expressApp = express();
-const port = 3000;
+const port = 8080;
 
 
 export const prisma = new PrismaClient({
@@ -25,16 +25,19 @@ expressApp.use(bodyParser.json());
 
 expressApp.use(cors());
 
+expressApp.use("/bil-explorer", express.static("dist"));
+expressApp.use("/bil-explorer", express.static("dist/assets"));
+
 expressApp.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`App Server listening on port ${port}`);
 });
 
 // Get the plots, find all occurrences by year
-expressApp.post("/viz", getViz);
-expressApp.post("/work-freq", getWorkFreq);
-expressApp.post("/associated-metadata", getAssociatedMetadata);
-expressApp.get("/taxons", getTaxons);
-expressApp.get("/authors", getAuthors);
-expressApp.get("/headers", getHeaders);
-expressApp.post("/distinct-column-values", getDistinctColumnValues);
-expressApp.post("/range-column-number-values", getRangeColumnNumberValues);
+expressApp.post("/bil-explorer/api/viz", getViz);
+expressApp.post("/bil-explorer/api/work-freq", getWorkFreq);
+expressApp.post("/bil-explorer/api/associated-metadata", getAssociatedMetadata);
+expressApp.get("/bil-explorer/api/taxons", getTaxons);
+expressApp.get("/bil-explorer/api/authors", getAuthors);
+expressApp.get("/bil-explorer/api/headers", getHeaders);
+expressApp.post("/bil-explorer/api/distinct-column-values", getDistinctColumnValues);
+expressApp.post("/bil-explorer/api/range-column-number-values", getRangeColumnNumberValues);

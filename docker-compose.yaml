@@ -23,14 +23,14 @@ services:
     networks:
       - bil-network
 
-  server:
+  app:
     build:
       context: .
-      dockerfile: dockerfile-server
+      dockerfile: dockerfile
     restart: unless-stopped
-    container_name: server
+    container_name: app
     ports:
-      - "3000:3000"
+      - "8080:8080"
     env_file:
       - .env
     depends_on:
@@ -42,23 +42,6 @@ services:
       - type: bind
         source: ./data
         target: /data
-    networks:
-      - bil-network
-
-  
-  client:
-    build:
-      context: .
-      dockerfile: dockerfile-client
-    restart: unless-stopped
-    container_name: client
-    ports:
-      - "8080:8080"
-    env_file:
-      - .env
-    depends_on:
-      - server
-    volumes:
       - type: bind
         source: ./static
         target: /static
