@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
     container_name: pgsql
     ports:
-    - "5432:5432"
+    - "5532:5432"
     env_file:
       - .env
     volumes:
@@ -30,7 +30,7 @@ services:
     restart: unless-stopped
     container_name: app
     ports:
-      - "8080:8080"
+      - "5100:8080"
     env_file:
       - .env
     depends_on:
@@ -42,8 +42,5 @@ services:
       - type: bind
         source: ./data
         target: /data
-      - type: bind
-        source: ./static
-        target: /static
     networks:
       - bil-network
