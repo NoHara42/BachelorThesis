@@ -20,7 +20,7 @@ if (import.meta.env.VITE_SERVER_URL) {
   SERVER_URL = import.meta.env.VITE_SERVER_URL;
 }
 //fallback
-else SERVER_URL = "http://localhost:8080/bil-explorer/api/";
+else SERVER_URL = "https://localhost:8080/bil-explorer/api/";
 
 async function main() {
   await getAllAuthors().then(async (allAuthors) => {
